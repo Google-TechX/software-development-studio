@@ -1,0 +1,18 @@
+{
+  "environment": "web",
+  "format": "md",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2021-05-07T16:56:48Z",
+  "id": "01a-cloud-shell",
+  "duration": 0,
+  "title": "Using Cloud Shell with Python",
+  "authors": "Tim Swast",
+  "summary": "Setup Google Cloud Shell for developing Python applications.",
+  "source": "1iYGnCE9AqZKczqEBQJQ4LgliY0UcZdQdgkNcPc3msJU",
+  "theme": "",
+  "status": null,
+  "category": null,
+  "tags": [],
+  "url": "01a-cloud-shell"
+}
