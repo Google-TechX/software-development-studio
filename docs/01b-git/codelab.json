@@ -1,0 +1,18 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2021-05-10T17:41:25-05:00",
+  "id": "01b-git",
+  "duration": 0,
+  "title": "Using Git with Cloud Shell",
+  "authors": "Tim Swast",
+  "summary": "Connect Cloud Shell to GitLab and use the git command-line.",
+  "source": "codelabs/01b-git/index.md",
+  "theme": "",
+  "status": null,
+  "category": null,
+  "tags": [],
+  "url": "01b-git"
+}
