@@ -5,7 +5,7 @@ authors: Tim Swast
 
 ---
 
-# Using Cloud Shell with Python
+# Using Python with Cloud Shell
 
 
 
@@ -36,7 +36,7 @@ In this codelab, you'll setup  [Google Cloud Shell](https://cloud.google.com/she
 1. Navigate to the Google Cloud Console:  [https://console.cloud.google.com/](https://console.cloud.google.com/)
 
 Accept any terms of service that appear.
-2. Click the Cloud Shell icon on the top of the screen.  <img src="img/57863b7d6eb4521.png" alt="57863b7d6eb4521.png"  width="41.00" /> <img src="img/e08d2f6c861f00ec.png" alt="e08d2f6c861f00ec.png"  width="624.00" />
+2. Click the Cloud Shell button  <img src="img/57863b7d6eb4521.png" alt="57863b7d6eb4521.png"  width="41.00" /> at the top of the screen. <img src="img/e08d2f6c861f00ec.png" alt="e08d2f6c861f00ec.png"  width="624.00" />
 3. Click the Continue button if it appears to activate Cloud Shell. <img src="img/86df2418057af2f4.png" alt="86df2418057af2f4.png"  width="624.00" />
 
 
