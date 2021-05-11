@@ -1,0 +1,18 @@
+{
+  "environment": "web",
+  "format": "md",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2021-05-11T20:46:55Z",
+  "id": "01c-conflicts",
+  "duration": 0,
+  "title": "Handling Conflicts with Git",
+  "authors": "Tim Swast",
+  "summary": "Learn about common ways Git conflicts can arise and how to resolve them.",
+  "source": "1yq9913ERgkF6S_6-nUXO1U1v_1v1NAP92sgiX6srbeE",
+  "theme": "",
+  "status": null,
+  "category": null,
+  "tags": [],
+  "url": "01c-conflicts"
+}

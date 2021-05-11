@@ -18,7 +18,7 @@ In this codelab, you'll use Cloud Shell to clone and modify a git repository, ho
 
 ### Prerequisites
 
-* Using Cloud Shell and Cloud Shell Editor ( [codelab](https://google-techx.github.io/software-development-studio/01a-cloud-shell/index.html#0))
+* Using Cloud Shell and Cloud Shell Editor ( [codelab](https://google-techx.github.io/software-development-studio/01a-cloud-shell/?index=/software-development-studio/#0))
 
 ### What you'll need
 
@@ -29,9 +29,9 @@ In this codelab, you'll use Cloud Shell to clone and modify a git repository, ho
 ### What you'll learn
 
 * Clone a repository hosted on GitLab
-* Make changes to a code repository
-* Create a merge request in GitLab
-* Resolve conflicts when there are multiple changes to the same file
+* Add a commit to version control
+* Create and merge a version control branch
+* Push changes to a remote server
 
 
 ## Open Cloud Shell

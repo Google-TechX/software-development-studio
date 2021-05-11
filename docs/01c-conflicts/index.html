@@ -1,0 +1,170 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Handling Conflicts with Git</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="01c-conflicts"
+                  title="Handling Conflicts with Git"
+                  environment="web"
+                  feedback-link="">
+    
+      <google-codelab-step label="Overview" duration="0">
+        <p>Whenever multiple people work on the same project, conflicts can arise. This is also true with version control. In this codelab, you&#39;ll create some artificial conflicts and then resolve them using the Git command line and Cloud Shell Editor.</p>
+<h2 is-upgraded>Prerequisites</h2>
+<ul>
+<li>Using Cloud Shell and Cloud Shell Editor ( <a href="https://google-techx.github.io/software-development-studio/01a-cloud-shell/?index=/software-development-studio/#0" target="_blank">codelab</a>)</li>
+<li>Using Git ( <a href="https://google-techx.github.io/software-development-studio/01b-git/?index=/software-development-studio/#0" target="_blank">codelab</a>)</li>
+</ul>
+<h2 is-upgraded>What you&#39;ll need</h2>
+<ul>
+<li>Google account</li>
+<li>GitLab account</li>
+<li>Web browser (Google Chrome recommended)</li>
+</ul>
+<h2 class="checklist" is-upgraded>What you&#39;ll learn</h2>
+<ul>
+<li>Pull changes from GitLab</li>
+<li>Create a Git conflict</li>
+<li>Resolve a Git conflict</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Check out the code" duration="0">
+        <p>Download a local copy of the repository the instructor has created to your development environment.</p>
+<ol type="1">
+<li>Open Cloud Shell.</li>
+<li>Download the <code>s-USERNAME/lesson01-conflict</code> repository with the git clone command.  <pre><code>git clone git@techx-gitlab.640k.net:s-USER/lesson01-conflict.git
+</code></pre>
+</li>
+<li>Open Cloud Shell Editor.</li>
+<li>Set the working directory to the repository directory.</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Add a commit" duration="0">
+        <p>In the repository, you should see a file named &#34;sequence.txt&#34; containing integers 1, 2, 3.</p>
+<ol type="1">
+<li>Add 7 additional lines to this file, counting from 1 to 10.</li>
+<li>Open the Terminal in Cloud Shell Editor.</li>
+<li>Add the &#34;sequence.txt&#34; file to your Git staging area.  <pre><code>git add sequence.txt
+</code></pre>
+</li>
+<li>Commit your changes.  <pre><code>git commit -m &#39;create a sequence of natural numbers&#39;
+</code></pre>
+</li>
+<li>Push your changes to GitLab.  <pre><code>git push origin main
+</code></pre>
+</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Fetching code from a remote" duration="0">
+        <p>The instructor has created a branch called &#34;fibonacci&#34;. Download this branch and check it out.</p>
+<ol type="1">
+<li>Download the latest version of a branch from a remote using the git fetch command.  <pre><code>git fetch origin fibonacci
+</code></pre>
+</li>
+<li>Use the git checkout command to view the code on that branch.  <pre><code>git checkout origin/fibonacci
+</code></pre>
+</li>
+</ol>
+<aside class="special"><p> This allows you to view the code from a remote branch in a  <a href="https://git-scm.com/docs/git-checkout#_detached_head" target="_blank">&#34;detached HEAD&#34; state</a>. If you don&#39;t already have a local branch called &#34;fibonacci&#34;, <code>git checkout fibonacci</code> does the same thing, but allows you to make changes locally.</p>
+</aside>
+<ol type="1">
+<li>View the &#34;sequence.txt&#34; file to see how it is different.</li>
+<li>Explore the Git commit history with the git log command.  <pre><code>git log
+</code></pre>
+</li>
+<li>Switch back to your main branch.  <pre><code>git checkout main
+</code></pre>
+</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Dealing with conflicts" duration="0">
+        <p>In the last section, you saw that the &#34;fibonacci&#34; branch made a different set of changes to the &#34;sequence.txt&#34; file than you have made. This problem can often occur when working on the same project as other people. Luckily Git provides mechanisms for identifying and resolving these conflicting changes.</p>
+<ol type="1">
+<li>Attempt to pull in the changes from the fibonacci branch with the git merge command. <br><code>git merge origin/fibonacci<br></code></li>
+</ol>
+<p>You should see the following output:</p>
+<pre><code>Auto-merging sequence.txt
+CONFLICT (content): Merge conflict in sequence.txt
+Automatic merge failed; fix conflicts and then commit the result.
+</code></pre>
+<ol type="1">
+<li>Run the git status command to see which files were not merged.  <pre><code>git status
+</code></pre>
+</li>
+<li>In addition to the command, Cloud Shell Editor can show conflicted files.</li>
+</ol>
+<p>Open the version control pane in Cloud Shell Editor. <img alt="47604b7d80f9062.png" style="width: 491.00px" src="img/47604b7d80f9062.png"></p>
+<ol type="1">
+<li>Find any files with the &#34;C&#34; status. This indicates that there is a merge conflict which you need to handle. <img alt="892b397142c945f5.png" style="width: 491.00px" src="img/892b397142c945f5.png"></li>
+<li>Click the filename to open it.</li>
+<li>You&#39;ll see several options on how to handle the conflict. In this case, select &#34;Accept incoming change&#34;, as that corresponds to the version from the &#34;fibonacci&#34; branch.</li>
+</ol>
+<p class="image-container"><img alt="46a5e91987d7179d.png" style="width: 624.00px" src="img/46a5e91987d7179d.png"></p>
+<ol type="1">
+<li>Save the change to the file.</li>
+<li>Add the file to your staging area.  <pre><code>git add sequence.txt
+</code></pre>
+</li>
+<li>Commit the merge.  <pre><code>git commit
+</code></pre>
+</li>
+<li>Push your changes to GitLab.  <pre><code>git push origin main
+</code></pre>
+</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Extra credit" duration="0">
+        <p>If you have additional time, practice the version control skills you&#39;ve learned by submitting an extra-credit coding project to a new branch of the repository used in this codelab.</p>
+<ol type="1">
+<li>Choose an  <a href="https://oeis.org/" target="_blank">integer sequence</a> that hasn&#39;t been mentioned in this codelab.</li>
+<li>In a programming language of your choice, write code to generate the first 100 elements of the sequence and save it to the sequence.txt.</li>
+<li>Submit your code for grading by pushing it to a branch called &#34;extra-credit&#34;.</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>
