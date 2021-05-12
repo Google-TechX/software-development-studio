@@ -1,0 +1,18 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2021-05-12T15:00:38-05:00",
+  "id": "02b-curl",
+  "duration": 0,
+  "title": "Calling a Web API from Python",
+  "authors": "Tim Swast",
+  "summary": "Use cURL and the subprocess module access a web API from Python.",
+  "source": "codelabs/02b-curl/index.md",
+  "theme": "",
+  "status": null,
+  "category": null,
+  "tags": [],
+  "url": "02b-curl"
+}

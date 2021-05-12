@@ -1,0 +1,145 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Calling a Web API from Python</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="02b-curl"
+                  title="Calling a Web API from Python"
+                  environment="web"
+                  feedback-link="">
+    
+      <google-codelab-step label="Overview" duration="0">
+        <p>In this codelab, you&#39;ll use the Python subprocess module with the cURL command to work with a web API.</p>
+<h2 is-upgraded>Prerequisites</h2>
+<ul>
+<li>Using Cloud Shell and Cloud Shell Editor ( <a href="https://google-techx.github.io/software-development-studio/01a-cloud-shell/?index=/software-development-studio/#0" target="_blank">codelab</a>)</li>
+<li>Using Git ( <a href="https://google-techx.github.io/software-development-studio/01b-git/?index=/software-development-studio/#0" target="_blank">codelab</a>)</li>
+</ul>
+<h2 is-upgraded>What you&#39;ll need</h2>
+<ul>
+<li>Google account</li>
+<li>GitLab account</li>
+<li>Web browser (Google Chrome recommended)</li>
+</ul>
+<h2 class="checklist" is-upgraded>What you&#39;ll learn</h2>
+<ul>
+<li>Use cURL to explore a web API</li>
+<li>Use the Python subprocess module to call an external program</li>
+<li>Test your Python code with pytest</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Getting started" duration="0">
+        <p>The web comic  <a href="https://xkcd.com/" target="_blank">xkcd</a> is somewhat popular among developers. It provides a web API for downloading information about the comic, documented at  <a href="https://xkcd.com/json.html" target="_blank">https://xkcd.com/json.html</a>.</p>
+<p class="image-container"><img alt="cf1701606eac402f.png" style="width: 500.00px" src="img/cf1701606eac402f.png"></p>
+<p>Use the API from the command line to learn how it works.</p>
+<ol type="1">
+<li>Open Cloud Shell</li>
+<li>Use the  <a href="https://curl.se/docs/manual.html" target="_blank">cURL command line program</a> to make a request to the xkcd API. <br><code>curl -L https://xkcd.com/info.0.json<br></code></li>
+</ol>
+<p>You should see output like the following:</p>
+<pre><code>{&#34;month&#34;: &#34;5&#34;, &#34;num&#34;: 2461, &#34;link&#34;: &#34;&#34;, &#34;year&#34;: &#34;2021&#34;,
+ &#34;news&#34;: &#34;&#34;, &#34;safe_title&#34;: &#34;90&#39;s Kid Space Program&#34;,
+ &#34;transcript&#34;: &#34;&#34;,
+ &#34;alt&#34;: &#34;NASA may not want to admit it, but at this point they ARE the 90&#39;s Kid Space Program.&#34;,
+ &#34;img&#34;: &#34;https://imgs.xkcd.com/comics/90s_kid_space_program.png&#34;,
+ &#34;title&#34;: &#34;90&#39;s Kid Space Program&#34;, &#34;day&#34;: &#34;10&#34;}
+</code></pre>
+<ol type="1">
+<li>Try on your own to make a request with cURL to get the information for a specific comic number.</li>
+<li>Find the <code>lesson02-curl</code> project in GitLab that the instructors have created for you.</li>
+<li>Clone the repository.  <pre><code>git clone git@techx-gitlab.640k.net:s-USER/lesson02-curl.git
+</code></pre>
+</li>
+<li>Open Cloud Shell Editor in the directory just created.</li>
+<li>Open the Terminal in Cloud Shell Editor.</li>
+<li>Run the tests with the pytest command.  <pre><code>pytest download_comic_test.py
+</code></pre>
+</li>
+</ol>
+<p>Not all tests have been implemented. Some failures are expected. You should see 4 passing tests and 2 failing tests.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Requirements" duration="0">
+        <h2 is-upgraded>Functionality</h2>
+<h3 is-upgraded>1 - Use cURL from Python to request comic info from the API.</h3>
+<ul>
+<li>If num is set to None, request the information for the latest comic.</li>
+<li>Otherwise, request the information for the comic corresponding to the number provided.</li>
+<li>Hint: Python provides a  <a href="https://docs.python.org/3/library/subprocess.html#subprocess.run" target="_blank">subprocess.run()</a> function to call commands from your program.</li>
+<li>Hint: Pass <code>capture_output=True</code> to <code>subprocess.run()</code> to tell Python to save the bytes output from the program.</li>
+</ul>
+<h3 is-upgraded>2 - Use cURL to download the bytes for the image referenced.</h3>
+<ul>
+<li>Hint: Use subprocess.run in the same way as when downloading comic information.</li>
+</ul>
+<h3 is-upgraded>3 - Parse the comic information response.</h3>
+<ul>
+<li>Hint: Python provides a  <a href="https://docs.python.org/3/library/json.html#json.loads" target="_blank">json.loads(str_or_bytes)</a> function to parse JSON text.</li>
+</ul>
+<h3 is-upgraded>4 - If the output directory does not exist, create it.</h3>
+<ul>
+<li>Hint: The  <a href="https://docs.python.org/3/library/os.html#os.makedirs" target="_blank">os.makedirs()</a> function creates a directory and any missing parent directories.</li>
+<li>Hint: The <code>exist_ok=True</code> argument prevents errors when the directory already exists.</li>
+</ul>
+<h3 is-upgraded>5 - Save the alt text to a file named &#34;alt.txt&#34; in a specified output directory.</h3>
+<ul>
+<li>Hint: Open the file in &#34;text mode&#34;.</li>
+</ul>
+<h3 is-upgraded>6 - Save image to a file named &#34;img.png&#34; in a specified output directory.</h3>
+<ul>
+<li>Hint: Open the file in &#34;binary mode&#34;.</li>
+</ul>
+<h2 is-upgraded>Tests</h2>
+<h3 is-upgraded>7 - Integration test with no comic number</h3>
+<ul>
+<li>Hint: Use the  <a href="https://docs.pytest.org/en/6.2.x/tmpdir.html#the-tmp-path-fixture" target="_blank">tmp_path pytest fixture</a> to get a temporary directory for testing.</li>
+</ul>
+<h3 is-upgraded>8 - Integration test when a comic number is specified</h3>
+<h3 is-upgraded>9 - Tests pass when run with pytest</h3>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Grading rubric" duration="0">
+        <ul>
+<li>50% - Code must be pushed to the repository in GitLab which has been created for you.</li>
+<li>50% - All requirements have been met.</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>
