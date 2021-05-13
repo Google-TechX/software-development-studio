@@ -56,8 +56,10 @@
 <p>Use the API from the command line to learn how it works.</p>
 <ol type="1">
 <li>Open Cloud Shell</li>
-<li>Use the  <a href="https://curl.se/docs/manual.html" target="_blank">cURL command line program</a> to make a request to the xkcd API. <br><code>curl -L https://xkcd.com/info.0.json<br></code></li>
+<li>Use the  <a href="https://curl.se/docs/manual.html" target="_blank">cURL command line program</a> to make a request to the xkcd API.</li>
 </ol>
+<pre>curl -L https://xkcd.com/info.0.json
+</pre>
 <p>You should see output like the following:</p>
 <pre><code>{&#34;month&#34;: &#34;5&#34;, &#34;num&#34;: 2461, &#34;link&#34;: &#34;&#34;, &#34;year&#34;: &#34;2021&#34;,
  &#34;news&#34;: &#34;&#34;, &#34;safe_title&#34;: &#34;90&#39;s Kid Space Program&#34;,
@@ -69,15 +71,17 @@
 <ol type="1">
 <li>Try on your own to make a request with cURL to get the information for a specific comic number.</li>
 <li>Find the <code>lesson02-curl</code> project in GitLab that the instructors have created for you.</li>
-<li>Clone the repository.  <pre><code>git clone git@techx-gitlab.640k.net:s-USER/lesson02-curl.git
-</code></pre>
-</li>
+<li>Clone the repository.</li>
+</ol>
+<pre>git clone git@techx-gitlab.640k.net:s-USER/lesson02-curl.git
+</pre>
+<ol type="1">
 <li>Open Cloud Shell Editor in the directory just created.</li>
 <li>Open the Terminal in Cloud Shell Editor.</li>
-<li>Run the tests with the pytest command.  <pre><code>pytest download_comic_test.py
-</code></pre>
-</li>
+<li>Run the tests with the pytest command.</li>
 </ol>
+<pre>pytest download_comic_test.py
+</pre>
 <p>Not all tests have been implemented. Some failures are expected. You should see 4 passing tests and 2 failing tests.</p>
 
 

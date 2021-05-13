@@ -47,7 +47,7 @@ Use the API from the command line to learn how it works.
 1. Open Cloud Shell
 2. Use the  [cURL command line program](https://curl.se/docs/manual.html) to make a request to the xkcd API.
 
-```
+```console
 curl -L https://xkcd.com/info.0.json
 ```
 
@@ -67,7 +67,7 @@ You should see output like the following:
 4. Find the `lesson02-curl` project in GitLab that the instructors have created for you.
 5. Clone the repository.
 
-```
+```console
 git clone git@techx-gitlab.640k.net:s-USER/lesson02-curl.git
 ```
 
@@ -75,7 +75,7 @@ git clone git@techx-gitlab.640k.net:s-USER/lesson02-curl.git
 7. Open the Terminal in Cloud Shell Editor.
 8. Run the tests with the pytest command.
 
-```
+```console
 pytest download_comic_test.py
 ```
 
