@@ -1,0 +1,18 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2021-05-14T16:16:09-05:00",
+  "id": "03a-wiki-setup",
+  "duration": 0,
+  "title": "Setup Your Wiki Repository",
+  "authors": "Tim Swast",
+  "summary": "Create and run a “hello world” Flask application as the foundation for your wiki.",
+  "source": "codelabs/03a-wiki-setup/index.md",
+  "theme": "",
+  "status": null,
+  "category": null,
+  "tags": [],
+  "url": "03a-wiki-setup"
+}

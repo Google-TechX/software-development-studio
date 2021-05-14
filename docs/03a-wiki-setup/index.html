@@ -1,0 +1,549 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Setup Your Wiki Repository</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="03a-wiki-setup"
+                  title="Setup Your Wiki Repository"
+                  environment="web"
+                  feedback-link="">
+    
+      <google-codelab-step label="Overview" duration="0">
+        <p>In this codelab, you&#39;ll create and run a &#34;hello world&#34; Flask application. You&#39;ll also practice collaborating in real-time with your teammates on a shared code repository.</p>
+<h2 is-upgraded>Prerequisites</h2>
+<ul>
+<li>Cloud Shell</li>
+<li>Git</li>
+<li>Python</li>
+<li>pytest</li>
+</ul>
+<h2 is-upgraded>What you&#39;ll need</h2>
+<ul>
+<li>Google account</li>
+<li>GitLab account</li>
+<li>Web browser (Google Chrome recommended)</li>
+</ul>
+<h2 class="checklist" is-upgraded>What you&#39;ll learn</h2>
+<ul>
+<li>Setup an empty Python repository</li>
+<li>Create a &#34;hello world&#34; Flask application</li>
+<li>Test a Flask application</li>
+<li>Collaborate with teammates in real-time</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Clone the repository" duration="0">
+        <aside class="special"><p> All students should complete these steps.</p>
+</aside>
+<p>The instructors have created a group and empty repository in GitLab. Find your repository and clone it to your development environment.</p>
+<h2 is-upgraded>Find the repository in GitLab</h2>
+<ol type="1">
+<li>Navigate to &#34;Groups&#34; ( <a href="https://techx-gitlab.640k.net/dashboard/groups" target="_blank">https://techx-gitlab.640k.net/dashboard/groups</a>) and find the group corresponding to your project group. <img alt="25828dbba37a8b2.png" style="width: 624.00px" src="img/25828dbba37a8b2.png"></li>
+<li>Click the name of the project group.</li>
+<li>In the &#34;projects&#34; listing, click the &#34;wiki&#34; repository. <img alt="b62be7beae59c22b.png" style="width: 624.00px" src="img/b62be7beae59c22b.png"></li>
+<li>Click the Clone button to see the repository URLs. <img alt="788495d8bfa08440.png" style="width: 624.00px" src="img/788495d8bfa08440.png"></li>
+<li>Copy the text from Clone with SSH.</li>
+</ol>
+<h2 is-upgraded>Clone the repository in Cloud Shell</h2>
+<ol type="1">
+<li>Navigate to the Google Cloud Console:  <a href="https://console.cloud.google.com/" target="_blank">https://console.cloud.google.com/</a></li>
+<li>Click the Cloud Shell button  <img alt="57863b7d6eb4521.png" style="width: 41.00px" src="img/57863b7d6eb4521.png"> at the top of the screen.</li>
+<li>Click the square button  <img alt="3acf8536387fbe43.png" style="width: 51.00px" src="img/3acf8536387fbe43.png"> to open Cloud Shell in a new window.</li>
+<li>Clone the repository with the git clone command.</li>
+</ol>
+<pre>git clone git@techx-gitlab.640k.net:g-GROUP_NAME/wiki.git
+</pre>
+<h2 is-upgraded>Open the repository in Cloud Shell Editor</h2>
+<ol type="1">
+<li>Click the pencil icon to open Cloud Shell Editor.</li>
+<li>Navigate to the File -&gt; Open menu button.</li>
+<li>Select the &#34;wiki&#34; directory which has just been created.</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Configure the Git repository" duration="0">
+        <p>Some files are undesirable to check into a Git repository. For example, they may be automatically generated, or they may be specific to a particular development environment. These files make the repository messy to review and aren&#39;t necessary for a developer using the project.</p>
+<aside class="warning"><p> One student should complete these steps. Share your screen as you do so!</p>
+</aside>
+<ol type="1">
+<li>Open the &#34;Terminal&#34; panel in Cloud Shell Editor.</li>
+<li>A &#34;.gitignore&#34; file (note the leading &#34;.&#34; character) tells Git which files are not needed to be tracked.</li>
+</ol>
+<p>Use cURL to download a &#34;.gitignore&#34; file with some useful defaults for Python.</p>
+<pre>curl -L \
+  https://raw.githubusercontent.com/github/gitignore/master/Python.gitignore \
+  &gt; .gitignore
+</pre>
+<ol type="1">
+<li>Add all the changes you&#39;ve made to the Git staging area.</li>
+</ol>
+<pre>git add .gitignore
+</pre>
+<ol type="1">
+<li>See which files have been staged.</li>
+</ol>
+<pre>git status
+</pre>
+<p>You should see the following output:</p>
+<pre>Changes to be committed:
+  (use &#34;git rm --cached &lt;file&gt;...&#34; to unstage)
+
+        new file:   .gitignore
+</pre>
+<ol type="1">
+<li>Commit your changes.</li>
+</ol>
+<pre>git commit -m &#39;add .gitignore for Python development&#39;
+</pre>
+<ol type="1">
+<li>Push your changes to GitLab.</li>
+</ol>
+<pre>git push origin main
+</pre>
+<h2 is-upgraded>Verify that .gitignore has been uploaded</h2>
+<aside class="special"><p> All students should complete these steps.</p>
+</aside>
+<p>Download the code that your teammate just pushed and merge it with your local copy.</p>
+<ol type="1">
+<li>Download the code.</li>
+</ol>
+<pre>git fetch origin main
+</pre>
+<ol type="1">
+<li>Merge it into your local copy.</li>
+</ol>
+<pre>git merge origin/main
+</pre>
+<ol type="1">
+<li>Verify that you now have a &#34;.gitignore&#34; file with contents matching the file at  <a href="https://github.com/github/gitignore/blob/master/Python.gitignore" target="_blank">https://github.com/github/gitignore/blob/master/Python.gitignore</a>.</li>
+</ol>
+<p>In other tutorials, you may see instructions that request you run <code>git pull origin main</code>. This command combines a &#34;fetch&#34; and &#34;merge&#34; in one step.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Create files needed for a Python project" duration="0">
+        <p>Next, add the &#34;boilerplate&#34; files needed for a Python package.</p>
+<aside class="warning"><p> One student (different from the previous) should complete these steps. Share your screen as you do so!</p>
+</aside>
+<h2 is-upgraded>Create a Python package</h2>
+<p>Your wiki project is complex enough that it should eventually contain multiple code files. To facilitate that, create a Python &#34;package&#34; to contain your code.</p>
+<ol type="1">
+<li>Create a directory (folder) named &#34;techxwiki&#34;. <img alt="d0a2719d7262e41a.png" style="width: 503.00px" src="img/d0a2719d7262e41a.png"></li>
+<li>Inside the &#34;techxwiki&#34; directory, create a file named &#34;<code>__init__.py</code>&#34;. That&#39;s two underscore (_) characters before and after &#34;init&#34;. <img alt="bdabcd6a753495f7.png" style="width: 525.00px" src="img/bdabcd6a753495f7.png"></li>
+<li>So that you can test your code later, add code to the <code>__init__.py</code> file that prints &#34;Hello, World!&#34;.  <pre><code>print(&#34;Hello, World!&#34;)
+</code></pre>
+</li>
+<li>Create a new file at the root of your repository called &#34;setup.py&#34;. This will tell Python about your new Python package. <img alt="90f161161b26b74f.png" style="width: 513.00px" src="img/90f161161b26b74f.png"></li>
+<li>Add the package description to the setup.py file.  <pre><code>from setuptools import setup
+setup(
+name=&#34;techxwiki&#34;,
+packages=[&#34;techxwiki&#34;],
+)
+</code></pre>
+</li>
+</ol>
+<p>The &#34;name&#34; argument tells Python the package name. The name determines how you&#39;d install this package, if you were to upload the package to a Python package repository.</p>
+<p>The &#34;packages&#34; argument tells Python which directories to include when installing your package.</p>
+<h2 is-upgraded>Install and manually test your Python package</h2>
+<p>Now that you&#39;ve created the necessary files for a Python package, it&#39;s time to install it and try it out.</p>
+<ol type="1">
+<li>Open the &#34;Terminal&#34; in Cloud Shell Editor.</li>
+<li>Install your package using the pip install command.</li>
+</ol>
+<pre>pip install -e .
+</pre>
+<p>The &#34;-e&#34; option tells the pip command to install in &#34;editable&#34; mode. This means that any changes you make to your code will still apply to your package. Without this option, the pip install command creates a copy of your code when installing.</p>
+<p>The &#34;.&#34; option says to install the package from the current directory.</p>
+<ol type="1">
+<li>Now, when you import your package in a Python script, you&#39;ll see your code execute. Try it out with the &#34;-c&#34; option to Python.</li>
+</ol>
+<pre>python -c &#39;import techxwiki&#39;
+</pre>
+<h2 is-upgraded>Push your changes to GitLab</h2>
+<p>If you successfully saw &#34;Hello, World!&#34; printed in the previous step, commit your changes and push them to GitLab so that your teammates can benefit from your work. If not, work with your teammates to debug before continuing.</p>
+<ol type="1">
+<li>Add all the changes you&#39;ve made to the Git staging area.</li>
+</ol>
+<pre>git add .
+</pre>
+<p>The &#34;.&#34; says to add all files Git finds in the current directory or sub-directories.</p>
+<ol type="1">
+<li>See which files have been staged.</li>
+</ol>
+<pre>git status
+</pre>
+<p>You should see the following output:</p>
+<pre>Changes to be committed:
+  (use &#34;git rm --cached &lt;file&gt;...&#34; to unstage)
+
+        new file:   setup.py
+        new file:   techxwiki/__init__.py
+</pre>
+<p>If you see files you don&#39;t expect, check your &#34;.gitignore&#34; file to make sure it matches the recommended file at  <a href="https://github.com/github/gitignore/blob/master/Python.gitignore" target="_blank">https://github.com/github/gitignore/blob/master/Python.gitignore</a>.</p>
+<ol type="1">
+<li>Commit your changes.</li>
+</ol>
+<pre>git commit -m &#39;add empty techxwiki Python package&#39;
+</pre>
+<ol type="1">
+<li>Push your changes to GitLab.</li>
+</ol>
+<pre>git push origin main
+</pre>
+<h2 is-upgraded>Verify that the package has been uploaded</h2>
+<aside class="special"><p> All students should complete these steps.</p>
+</aside>
+<p>Download the code that your teammate just pushed and merge it with your local copy.</p>
+<ol type="1">
+<li>Download the code.</li>
+</ol>
+<pre>git fetch origin main
+</pre>
+<ol type="1">
+<li>Merge it into your local copy.</li>
+</ol>
+<pre>git merge origin/main
+</pre>
+<ol type="1">
+<li>Open the &#34;Terminal&#34; in Cloud Shell Editor.</li>
+<li>Install your package using the pip install command.</li>
+</ol>
+<pre>pip install -e .
+</pre>
+<ol type="1">
+<li>Now, when you import your package in a Python script, you&#39;ll see your code execute. Try it out with the &#34;-c&#34; option to Python.</li>
+</ol>
+<pre>python -c &#39;import techxwiki&#39;
+</pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Setup a Flask application" duration="0">
+        <p>Create a &#34;Flask&#34; application to be the web server for your wiki.</p>
+<aside class="warning"><p> One student (different from the previous) should complete these steps. Share your screen as you do so!</p>
+</aside>
+<ol type="1">
+<li>Modify the <code>techxwiki/__init__.py</code> file to create a Flask server.  <pre><code>from flask import Flask
+app = Flask(__name__)
+@app.route(&#34;/&#34;)
+def main():
+return &#34;Hello, World!\n&#34;
+</code></pre>
+</li>
+<li>In a Terminal panel, run the Flask server.</li>
+</ol>
+<pre>export FLASK_APP=techxwiki
+export FLASK_ENV=development
+flask run -p 8080
+</pre>
+<ol type="1">
+<li>Open a second Terminal panel (keeping the first one open).</li>
+<li>In the second Terminal panel, use cURL to test your local web server.</li>
+</ol>
+<pre>curl localhost:8080
+</pre>
+<p>You should see &#34;Hello, World!&#34; printed.</p>
+<ol type="1">
+<li>In the first Terminal panel, press the &#34;Ctrl + C&#34; shortcut to stop Flask from running. (Note: Control also on macOS, not ⌘)</li>
+</ol>
+<h2 is-upgraded>Script to run Flask</h2>
+<p>Since it can be hard to remember the three commands to start the Flask server, create a script with these commands.</p>
+<ol type="1">
+<li>Create a new file named run-flask.sh in the root directory of the repository. <img alt="b133958e14ffb3ae.png" style="width: 624.00px" src="img/b133958e14ffb3ae.png"></li>
+<li>Add the three commands, as well as a &#34;shebang&#34; that indicates this file is a script.  <pre><code>#!/usr/bin/env bash
+export FLASK_APP=techxwiki
+export FLASK_ENV=development
+flask run -p 8080
+</code></pre>
+</li>
+<li>In the Terminal panel, make the script &#34;executable&#34; with the chmod command.</li>
+</ol>
+<pre>chmod +x run-flask.sh
+</pre>
+<h2 is-upgraded>Try the server</h2>
+<p>Cloud Shell provides a web preview feature, which allows you to access your Flask server from a web browser. It prevents access from anyone but you by using your Google credentials.</p>
+<p>Run the server and use the Cloud Shell web preview to access it.</p>
+<ol type="1">
+<li>In a Terminal panel, run the run-flask.sh script you just created.</li>
+</ol>
+<pre>./run-flask.sh
+</pre>
+<ol type="1">
+<li>In the top-right corner of the window, click the web preview  <img alt="b1d7918d5ed8a1f8.png" style="width: 38.00px" src="img/b1d7918d5ed8a1f8.png"> button and select &#34;Preview on port 8080&#34;. <img alt="52aeb3163b0633a6.png" style="width: 356.00px" src="img/52aeb3163b0633a6.png"></li>
+<li>In the browser window that opens, you may have to select your Google account. Select the same one that you are using for Cloud Shell.</li>
+<li>Verify that you see &#34;Hello, World!&#34; printed in the browser window.</li>
+<li>Press &#34;Ctrl + C&#34; in the Terminal panel to stop the Flask server.</li>
+</ol>
+<h2 is-upgraded>Push your changes to GitLab</h2>
+<p>If you successfully saw &#34;Hello, World!&#34; printed in the previous step, commit your changes and push them to GitLab.</p>
+<ol type="1">
+<li>Add all the changes you&#39;ve made to the Git staging area.</li>
+</ol>
+<pre>git add .
+</pre>
+<p>The &#34;.&#34; says to add all files Git finds in the current directory or sub-directories.</p>
+<ol type="1">
+<li>See which files have been staged.</li>
+</ol>
+<pre>git status
+</pre>
+<p>You should see the following output:</p>
+<pre>Changes to be committed:
+  (use &#34;git reset HEAD &lt;file&gt;...&#34; to unstage)
+
+        new file:   run-flask.sh
+        modified:   techxwiki/__init__.py
+</pre>
+<ol type="1">
+<li>Commit your changes.</li>
+</ol>
+<pre>git commit -m &#39;add Flask server&#39;
+</pre>
+<ol type="1">
+<li>Push your changes to GitLab.</li>
+</ol>
+<pre>git push origin main
+</pre>
+<h2 is-upgraded>Verify that the Flask server has been uploaded</h2>
+<aside class="special"><p> All students should complete these steps.</p>
+</aside>
+<p>Download the code that your teammate just pushed and merge it with your local copy.</p>
+<ol type="1">
+<li>Download the code.</li>
+</ol>
+<pre>git fetch origin main
+</pre>
+<ol type="1">
+<li>Merge it into your local copy.</li>
+</ol>
+<pre>git merge origin/main
+</pre>
+<ol type="1">
+<li>Open the &#34;Terminal&#34; in Cloud Shell Editor.</li>
+<li>Run the Flask server.</li>
+</ol>
+<pre>./run-flask.sh
+</pre>
+<ol type="1">
+<li>In the top-right corner of the window, click the web preview  <img alt="b1d7918d5ed8a1f8.png" style="width: 38.00px" src="img/b1d7918d5ed8a1f8.png"> button and select &#34;Preview on port 8080&#34;.</li>
+<li>Verify that you see &#34;Hello, World!&#34; printed in the browser window.</li>
+<li>Press &#34;Ctrl + C&#34; in the Terminal panel to stop the Flask server.</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Add a Blueprint to handle wiki pages" duration="0">
+        <p>Flask Blueprints allow an application to be split across multiple Python files. Create one which will be used for viewing your wiki pages.</p>
+<aside class="warning"><p> One student (different from the previous) should complete these steps. Share your screen as you do so!</p>
+</aside>
+<ol type="1">
+<li>Create a &#34;viewer.py&#34; file in the &#34;techxwiki&#34; directory. <img alt="e35412a92e843d50.png" style="width: 508.00px" src="img/e35412a92e843d50.png"></li>
+<li>Edit &#34;viewer.py&#34; and create the Flask Blueprint. <br><code>from flask import Blueprint<br>bp = Blueprint(&#34;viewer&#34;, __name__, url_prefix=&#34;/view&#34;)<br>@bp.route(&#34;/&#34;)<br>def main():<br>return &#34;Hello, Blueprint!\n&#34;<br></code></li>
+</ol>
+<p>The &#34;<code>url_prefix</code>&#34; parameter tells Flask that this Blueprint should be used for URLs starting with &#34;/view&#34;.</p>
+<ol type="1">
+<li>Edit &#34;<strong>init</strong>.py&#34; and register the Blueprint you just created.  <pre><code>from flask import Flask
+from . import viewer  # Add this line
+app = Flask(__name__)
+app.register_blueprint(viewer.bp)  # Add this line
+@app.route(&#34;/&#34;)
+def main():
+return &#34;Hello, World!\n&#34;
+</code></pre>
+</li>
+<li>In the Terminal pane, run the Flask server.</li>
+</ol>
+<pre>./run-flask.sh
+</pre>
+<ol type="1">
+<li>In a second Terminal pane, make a request to your new Blueprint with cURL.</li>
+</ol>
+<pre>curl localhost:8080/view/
+</pre>
+<p>Alternatively, open the web preview and navigate to the &#34;/view/&#34; page. You may have to delete &#34;?authuser=0&#34; from the URL.</p>
+<ol type="1">
+<li>Verify that you see &#34;Hello, Blueprint!&#34; printed.</li>
+<li>In the first Terminal pane, press &#34;Ctrl + C&#34; to stop the Flask server.</li>
+</ol>
+<h2 is-upgraded>Push your changes to GitLab</h2>
+<p>If you successfully saw &#34;Hello, Blueprint!&#34; printed in the previous step, commit your changes and push them to GitLab.</p>
+<ol type="1">
+<li>Add all the changes you&#39;ve made to the Git staging area.</li>
+</ol>
+<pre>git add .
+</pre>
+<p>The &#34;.&#34; says to add all files Git finds in the current directory or sub-directories.</p>
+<ol type="1">
+<li>See which files have been staged.</li>
+</ol>
+<pre>git status
+</pre>
+<p>You should see the following output:</p>
+<pre>Changes to be committed:
+  (use &#34;git reset HEAD &lt;file&gt;...&#34; to unstage)
+
+        modified:   techxwiki/__init__.py
+        new file:   techxwiki/viewer.py
+</pre>
+<ol type="1">
+<li>Commit your changes.</li>
+</ol>
+<pre>git commit -m &#39;add Flask Blueprint&#39;
+</pre>
+<ol type="1">
+<li>Push your changes to GitLab.</li>
+</ol>
+<pre>git push origin main
+</pre>
+<p>Verify that the Flask Blueprint has been uploaded</p>
+<aside class="special"><p> All students should complete these steps.</p>
+</aside>
+<p>Download the code that your teammate just pushed and merge it with your local copy.</p>
+<ol type="1">
+<li>Download the code.</li>
+</ol>
+<pre>git fetch origin main
+</pre>
+<ol type="1">
+<li>Merge it into your local copy.</li>
+</ol>
+<pre>git merge origin/main
+</pre>
+<ol type="1">
+<li>Open the &#34;Terminal&#34; in Cloud Shell Editor.</li>
+<li>Run the Flask server.</li>
+</ol>
+<pre>./run-flask.sh
+</pre>
+<ol type="1">
+<li>In a second Terminal pane, make a request to your new Blueprint with cURL.</li>
+</ol>
+<pre>curl localhost:8080/view/
+</pre>
+<ol type="1">
+<li>Verify that you see &#34;Hello, Blueprint!&#34; printed.</li>
+<li>In the first Terminal pane, press &#34;Ctrl + C&#34; to stop the Flask server.</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Add tests" duration="0">
+        <p>It&#39;s important to add automated tests to ensure that your project continues to work as expected after making code changes. This is especially important when there are multiple contributors to the project.</p>
+<p>Add tests to check that the Flask application is working properly.</p>
+<aside class="warning"><p> One student (different from the previous) should complete these steps. Share your screen as you do so!</p>
+</aside>
+<ol type="1">
+<li>Create a directory called &#34;tests&#34;. <img alt="913631983108c21.png" style="width: 506.00px" src="img/913631983108c21.png"></li>
+<li>Create a file called &#34;test_techxwiki.py&#34; in the tests directory. <img alt="74f25f7defd6d332.png" style="width: 558.00px" src="img/74f25f7defd6d332.png"></li>
+<li>Edit the &#34;test_techxwiki.py&#34; file and add a test that checks for &#34;Hello, World!&#34; in the home page. <br><code>import pytest<br>import techxwiki<br>@pytest.fixture<br>def client():<br>techxwiki.app.config[&#34;TESTING&#34;] = True<br>with techxwiki.app.test_client() as client:<br>    yield client<br>def test_homepage(client):<br>resp = client.get(&#34;/&#34;)<br>assert resp.status_code == 200<br>assert b&#34;Hello, World!\n&#34; in resp.data<br></code></li>
+</ol>
+<p>The &#34;client&#34; function is a  <a href="https://docs.pytest.org/en/6.2.x/fixture.html" target="_blank">pytest fixture</a> that creates a  <a href="https://flask.palletsprojects.com/en/1.1.x/testing/" target="_blank">Flask test client</a> ( <a href="https://flask.palletsprojects.com/en/1.1.x/api/#flask.testing.FlaskClient" target="_blank">api reference</a>,  <a href="https://werkzeug.palletsprojects.com/en/2.0.x/test/#werkzeug.test.Client" target="_blank">additional reference</a>). This allows you to add a &#34;client&#34; argument to your tests, which you can use to make requests to your Flask application.</p>
+<p>The result of calling the &#34;client.get()&#34; method is a  <a href="https://flask.palletsprojects.com/en/1.1.x/api/#response-objects" target="_blank">Response</a> object, which contains useful properties such as &#34;status_code&#34; and &#34;data&#34;. The assertions check that these are the expected values.</p>
+<ol type="1">
+<li>From a Terminal panel, run the test with the pytest command.</li>
+</ol>
+<pre>pytest tests
+</pre>
+<ol type="1">
+<li>Verify that the test has passed.</li>
+</ol>
+<h2 is-upgraded>Push your changes to GitLab</h2>
+<p>If the test passed in the previous step, commit your changes and push them to GitLab.</p>
+<ol type="1">
+<li>Add all the changes you&#39;ve made to the Git staging area.</li>
+</ol>
+<pre>git add .
+</pre>
+<ol type="1">
+<li>See which files have been staged.</li>
+</ol>
+<pre>git status
+</pre>
+<p>You should see the following output:</p>
+<pre>Changes to be committed:
+  (use &#34;git reset HEAD &lt;file&gt;...&#34; to unstage)
+
+        new file:   tests/test_techxwiki.py
+</pre>
+<ol type="1">
+<li>Commit your changes.</li>
+</ol>
+<pre>git commit -m &#39;add test for home page&#39;
+</pre>
+<ol type="1">
+<li>Push your changes to GitLab.</li>
+</ol>
+<pre>git push origin main
+</pre>
+<h2 is-upgraded>Verify that the tests have been uploaded</h2>
+<aside class="special"><p> All students should complete these steps.</p>
+</aside>
+<p>Download the code that your teammate just pushed and merge it with your local copy.</p>
+<ol type="1">
+<li>Download the code.</li>
+</ol>
+<pre>git fetch origin main
+</pre>
+<ol type="1">
+<li>Merge it into your local copy.</li>
+</ol>
+<pre>git merge origin/main
+</pre>
+<ol type="1">
+<li>Open the &#34;Terminal&#34; in Cloud Shell Editor.</li>
+<li>Run the test with the pytest command.</li>
+</ol>
+<pre>pytest tests
+</pre>
+<ol type="1">
+<li>Verify that the test has passed.</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Finishing up" duration="0">
+        <p>Double-check that the code has been pushed by viewing the code on GitLab.</p>
+<p>You now have the necessary files in place to continue developing your wiki. In the Milestone 1 description, you will receive additional instructions about the expected next steps.</p>
+<p>Continue to work together as a group, pushing your changes when you&#39;ve added a feature, and pulling your teammates&#39; changes often.</p>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>
