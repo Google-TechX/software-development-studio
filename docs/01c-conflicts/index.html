@@ -54,9 +54,11 @@
         <p>Download a local copy of the repository the instructor has created to your development environment.</p>
 <ol type="1">
 <li>Open Cloud Shell.</li>
-<li>Download the <code>s-USERNAME/lesson01-conflict</code> repository with the git clone command.  <pre><code>git clone git@techx-gitlab.640k.net:s-USER/lesson01-conflict.git
-</code></pre>
-</li>
+<li>Download the <code>s-USERNAME/lesson01-conflict</code> repository with the git clone command.</li>
+</ol>
+<pre>git clone git@techx-gitlab.640k.net:s-USER/lesson01-conflict.git
+</pre>
+<ol type="1">
 <li>Open Cloud Shell Editor.</li>
 <li>Set the working directory to the repository directory.</li>
 </ol>
@@ -69,16 +71,20 @@
 <ol type="1">
 <li>Add 7 additional lines to this file, counting from 1 to 10.</li>
 <li>Open the Terminal in Cloud Shell Editor.</li>
-<li>Add the &#34;sequence.txt&#34; file to your Git staging area.  <pre><code>git add sequence.txt
-</code></pre>
-</li>
-<li>Commit your changes.  <pre><code>git commit -m &#39;create a sequence of natural numbers&#39;
-</code></pre>
-</li>
-<li>Push your changes to GitLab.  <pre><code>git push origin main
-</code></pre>
-</li>
+<li>Add the &#34;sequence.txt&#34; file to your Git staging area.</li>
 </ol>
+<pre>git add sequence.txt
+</pre>
+<ol type="1">
+<li>Commit your changes.</li>
+</ol>
+<pre>git commit -m &#39;create a sequence of natural numbers&#39;
+</pre>
+<ol type="1">
+<li>Push your changes to GitLab.</li>
+</ol>
+<pre>git push origin main
+</pre>
 
 
       </google-codelab-step>
@@ -86,13 +92,15 @@
       <google-codelab-step label="Fetching code from a remote" duration="0">
         <p>The instructor has created a branch called &#34;fibonacci&#34;. Download this branch and check it out.</p>
 <ol type="1">
-<li>Download the latest version of a branch from a remote using the git fetch command.  <pre><code>git fetch origin fibonacci
-</code></pre>
-</li>
-<li>Use the git checkout command to view the code on that branch.  <pre><code>git checkout origin/fibonacci
-</code></pre>
-</li>
+<li>Download the latest version of a branch from a remote using the git fetch command.</li>
 </ol>
+<pre>git fetch origin fibonacci
+</pre>
+<ol type="1">
+<li>Use the git checkout command to view the code on that branch.</li>
+</ol>
+<pre>git checkout origin/fibonacci
+</pre>
 <aside class="special"><p> This allows you to view the code from a remote branch in a  <a href="https://git-scm.com/docs/git-checkout#_detached_head" target="_blank">&#34;detached HEAD&#34; state</a>. If you don&#39;t already have a local branch called &#34;fibonacci&#34;, <code>git checkout fibonacci</code> does the same thing, but allows you to make changes locally.</p>
 </aside>
 <ol type="1">
@@ -111,17 +119,22 @@
       <google-codelab-step label="Dealing with conflicts" duration="0">
         <p>In the last section, you saw that the &#34;fibonacci&#34; branch made a different set of changes to the &#34;sequence.txt&#34; file than you have made. This problem can often occur when working on the same project as other people. Luckily Git provides mechanisms for identifying and resolving these conflicting changes.</p>
 <ol type="1">
-<li>Attempt to pull in the changes from the fibonacci branch with the git merge command. <br><code>git merge origin/fibonacci<br></code></li>
+<li>Attempt to merge the changes from the fibonacci branch with the git merge command.</li>
 </ol>
+<pre>git merge origin/fibonacci
+</pre>
 <p>You should see the following output:</p>
-<pre><code>Auto-merging sequence.txt
+<pre>Auto-merging sequence.txt
 CONFLICT (content): Merge conflict in sequence.txt
 Automatic merge failed; fix conflicts and then commit the result.
-</code></pre>
+</pre>
+<p>In other tutorials, you may see instructions that request you run <code>git pull</code>. This command combines a &#34;fetch&#34; and &#34;merge&#34; in one step.</p>
 <ol type="1">
-<li>Run the git status command to see which files were not merged.  <pre><code>git status
-</code></pre>
-</li>
+<li>Run the git status command to see which files were not merged.</li>
+</ol>
+<pre>git status
+</pre>
+<ol type="1">
 <li>In addition to the command, Cloud Shell Editor can show conflicted files.</li>
 </ol>
 <p>Open the version control pane in Cloud Shell Editor. <img alt="47604b7d80f9062.png" style="width: 491.00px" src="img/47604b7d80f9062.png"></p>
@@ -133,16 +146,20 @@ Automatic merge failed; fix conflicts and then commit the result.
 <p class="image-container"><img alt="46a5e91987d7179d.png" style="width: 624.00px" src="img/46a5e91987d7179d.png"></p>
 <ol type="1">
 <li>Save the change to the file.</li>
-<li>Add the file to your staging area.  <pre><code>git add sequence.txt
-</code></pre>
-</li>
-<li>Commit the merge.  <pre><code>git commit
-</code></pre>
-</li>
-<li>Push your changes to GitLab.  <pre><code>git push origin main
-</code></pre>
-</li>
+<li>Add the file to your staging area.</li>
 </ol>
+<pre>git add sequence.txt
+</pre>
+<ol type="1">
+<li>Commit the merge.</li>
+</ol>
+<pre>git commit
+</pre>
+<ol type="1">
+<li>Push your changes to GitLab.</li>
+</ol>
+<pre>git push origin main
+</pre>
 
 
       </google-codelab-step>

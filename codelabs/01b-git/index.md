@@ -53,7 +53,7 @@ Git is pre-installed on Google Cloud Shell, but it needs to be configured.
 
 1. Set your name and email, which will appear in git version history.
 
-```
+```console
 git config --global user.name "Your Name"
 git config --global user.email "yourname@google.com"
 ```
@@ -62,7 +62,7 @@ git config --global user.email "yourname@google.com"
 
 In the Cloud Shell command-line, run the ssh-keygen command to create a private/public key pair.
 
-```
+```console
 ssh-keygen -t ed25519 -C "Cloud Shell"
 ```
 
@@ -70,7 +70,7 @@ When it asks for a passphrase, press Enter to create a key without a passphrase.
 
 3. Display the public key and copy the output.
 
-```
+```console
 cat "$HOME/.ssh/id_ed25519.pub"
 ```
 
@@ -88,7 +88,7 @@ Configure your SSH keys in the GitLab settings.
 <img src="img/1e63591b2181ce20.png" alt="1e63591b2181ce20.png"  width="549.00" />
 5. (In Cloud Shell) Reconnect to Cloud Shell if it has disconnected. Display the SSH key you created and copy the output.
 
-```
+```console
 cat "$HOME/.ssh/id_ed25519.pub"
 ```
 
@@ -113,13 +113,13 @@ This should navigate you to `techx-gitlab.640k.net/s-YOUR_USERNAME/lesson01-git`
 <img src="img/2727a892bfaa40f5.png" alt="2727a892bfaa40f5.png"  width="354.00" />
 4. (In Cloud Shell) Clone the repository with the git clone command.
 
-```
+```console
 git clone git@techx-gitlab.640k.net:s-USER/lesson01-git.git
 ```
 
 5. Change to the `lesson01-git` directory.
 
-```
+```console
 cd lesson01-git
 ```
 
@@ -127,7 +127,7 @@ cd lesson01-git
 
 Use the git remote command to view the remotes for your repository.
 
-```
+```console
 git remote -v
 ```
 
@@ -159,7 +159,7 @@ A git "commit" is a pointer to a version of the repository. To upload your chang
 <img src="img/4521d58f531cd42.png" alt="4521d58f531cd42.png"  width="624.00" />
 2. Run the git status command to see all the changes to your repository since the last commit.
 
-```
+```console
 git status
 ```
 
@@ -167,13 +167,13 @@ git status
 
 3. The red files in the "Untracked" section indicate files that have been modified, but haven't been added to your git "staging area". Use the git add command to add files to the staging area.
 
-```
+```console
 git add hello.py
 ```
 
 4. Use the git status command again to see the staging area.
 
-```
+```console
 git status
 ```
 
@@ -184,7 +184,7 @@ You should see that hello.py has turned green and is in the "Changes to be commi
 5. Use the git commit command to save all the changes in your staging area as new version.
 
 
-```
+```console
 git commit -m 'added initial Python code'
 ```
 
@@ -193,7 +193,7 @@ The "-m" option provides a log message describing the changes. Your collaborator
 
 6. Run the git log command to see the new version you've added.
 
-```
+```console
 git log
 ```
 
@@ -210,7 +210,7 @@ A versioned history is useful locally to see what changes you've made and why, b
 
 Use the git push command to send your changes to GitLab.
 
-```
+```console
 git push origin main
 ```
 
@@ -231,13 +231,13 @@ One of the benefits of Git is that it's very easy to create "branches", which ca
 
 1. Create a branch with the git checkout command.
 
-```
+```console
 git checkout -b goodbye origin/main
 ```
 
 2. Run the git status command to see that the current branch has changed from "main" to "goodbye".
 
-```
+```console
 git status
 ```
 
@@ -253,7 +253,7 @@ print("See you later!")
 4. Save your changes to `hello.py`.
 5. In the Terminal, use the git diff command to see your changes.
 
-```
+```console
 git diff -- hello.py
 ```
 
@@ -262,19 +262,19 @@ git diff -- hello.py
 
 6. Add your changes to the staging area.
 
-```
+```console
 git add hello.py
 ```
 
 7. Commit your changes to the "goodbye" branch.
 
-```
+```console
 git commit -m "add goodbyes to Python script"
 ```
 
 8. Push your branch to GitLab.
 
-```
+```console
 git push origin goodbye
 ```
 
@@ -290,7 +290,7 @@ Once your feature is ready, you'll want to include it back in the main branch of
 
 1. In the Terminal pane, switch back to the main branch of your repository with the git checkout command.
 
-```
+```console
 git checkout main
 ```
 
@@ -300,19 +300,19 @@ When run without the -b option, the checkout command switches to a branch rather
 2. To simulate work on the main branch, create an empty file called `test.txt`.
 3. Add the file to your staging area.
 
-```
+```console
 git add test.txt
 ```
 
 4. Commit the changes to your main branch.
 
-```
+```console
 git commit -m 'add test data'
 ```
 
 5. Next, pull in your changes from the "goodbye" branch with the git merge command.
 
-```
+```console
 git merge goodbye
 ```
 
@@ -321,7 +321,7 @@ This opens a command line text editor to allow you to modify the commit message.
 
 6. View the commit history with the git log command.
 
-```
+```console
 git log
 ```
 
@@ -336,7 +336,7 @@ Congrats! You've successfully used Git to track source code versions.
 
 1. Push your changes to GitLab so that the instructor can grade completion of this exercise.
 
-```
+```console
 git push origin main
 ```
 

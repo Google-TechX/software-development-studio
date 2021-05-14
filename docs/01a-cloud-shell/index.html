@@ -61,26 +61,34 @@
       <google-codelab-step label="Create a Python 3 virtual environment" duration="0">
         <p>To isolate our Python environment from the system Python, create a virtual environment.</p>
 <ol type="1">
-<li>Create a directory to hold virtual environment files. Paste this command into the Cloud Shell and press Enter to execute it.  <pre><code>mkdir ~/venvs
-</code></pre>
-</li>
-<li>Create a virtual environment called &#34;dev&#34;.  <pre><code>python3 -m venv venvs/dev
-</code></pre>
-</li>
-<li>Edit the .bashrc file so that our virtual environment is used by default when you open Cloud Shell.  <pre><code>echo &#39;
+<li>Create a directory to hold virtual environment files. Paste this command into the Cloud Shell and press Enter to execute it.</li>
+</ol>
+<pre>mkdir ~/venvs
+</pre>
+<ol type="1">
+<li>Create a virtual environment called &#34;dev&#34;.</li>
+</ol>
+<pre>python3 -m venv venvs/dev
+</pre>
+<ol type="1">
+<li>Edit the .bashrc file so that our virtual environment is used by default when you open Cloud Shell.</li>
+</ol>
+<pre>echo &#39;
 source &#34;$HOME/venvs/dev/bin/activate&#34;
 &#39; &gt;&gt; &#34;$HOME/.bashrc&#34;
-</code></pre>
-</li>
-</ol>
+</pre>
 <p>The &#34;echo&#34; command prints text, and the &#34;&gt;&gt;&#34; command appends that text to the file.</p>
 <ol type="1">
-<li>Activate your virtual environment by loading the configuration you just created. <br><code>source .bashrc<br></code></li>
+<li>Activate your virtual environment by loading the configuration you just created.</li>
 </ol>
+<pre>source .bashrc
+</pre>
 <p>Now when you open Cloud Shell, you should see &#34;(dev)&#34;, which indicates you are using the virtual environment you just created.</p>
 <ol type="1">
-<li>Verify the Python binary is the one from the virtual environment by using the &#34;which&#34; command. <br><code>which python<br></code></li>
+<li>Verify the Python binary is the one from the virtual environment by using the &#34;which&#34; command.</li>
 </ol>
+<pre>which python
+</pre>
 <p>If you have successfully activated the virtual environment, you should see an output like &#34;/home/USERNAME/venvs/dev/bin/python&#34;.</p>
 
 
@@ -173,12 +181,16 @@ zipp==3.4.1
 </ol>
 <p>You should see a terminal pane at the bottom of your window. <img alt="66b1f8ddf3e4bc48.png" style="width: 624.00px" src="img/66b1f8ddf3e4bc48.png"></p>
 <ol type="1">
-<li>Verify the Python binary is the one from the virtual environment by using the &#34;which&#34; command. <br><code>which python<br></code></li>
+<li>Verify the Python binary is the one from the virtual environment by using the &#34;which&#34; command.</li>
 </ol>
+<pre>which python
+</pre>
 <p>If you have successfully activated the virtual environment, you should see an output like &#34;/home/USERNAME/venvs/dev/bin/python&#34;.</p>
 <ol type="1">
-<li>Run the &#34;ls&#34; command to list the files in the current directory. <br><code>ls<br></code></li>
+<li>Run the &#34;ls&#34; command to list the files in the current directory.</li>
 </ol>
+<pre>ls
+</pre>
 <p>Verify that the &#34;requirements.txt&#34; file appears in the list.</p>
 
 
@@ -187,13 +199,15 @@ zipp==3.4.1
       <google-codelab-step label="Install Python packages" duration="0">
         <p>Finally, add the Python packages that you&#39;ll use in this course to the virtual environment.</p>
 <ol type="1">
-<li>Install the packages from the &#34;requirements.txt&#34; file into your virtual environment by running the &#34;pip&#34; command.  <pre><code>pip install -r requirements.txt
-</code></pre>
-</li>
-<li>From the command-line verify that the packages were installed successfully. Use the &#34;-c&#34; option for Python to run a short one-line program to verify that Flask was installed.  <pre><code>python -c &#39;import flask; print(flask.__version__)&#39;
-</code></pre>
-</li>
+<li>Install the packages from the &#34;requirements.txt&#34; file into your virtual environment by running the &#34;pip&#34; command.</li>
 </ol>
+<pre>pip install -r requirements.txt
+</pre>
+<ol type="1">
+<li>From the command-line verify that the packages were installed successfully. Use the &#34;-c&#34; option for Python to run a short one-line program to verify that Flask was installed.</li>
+</ol>
+<pre>python -c &#39;import flask; print(flask.__version__)&#39;
+</pre>
 <p>You should see &#34;1.1.2&#34; printed to the command-line output.</p>
 
 

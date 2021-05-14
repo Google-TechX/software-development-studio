@@ -48,19 +48,19 @@ To isolate our Python environment from the system Python, create a virtual envir
 
 1. Create a directory to hold virtual environment files. Paste this command into the Cloud Shell and press Enter to execute it.
 
-```
+```console
 mkdir ~/venvs
 ```
 
 2. Create a virtual environment called "dev".
 
-```
+```console
 python3 -m venv venvs/dev
 ```
 
 3. Edit the .bashrc file so that our virtual environment is used by default when you open Cloud Shell.
 
-```
+```console
 echo '
 source "$HOME/venvs/dev/bin/activate"
 ' >> "$HOME/.bashrc"
@@ -70,7 +70,7 @@ The "echo" command prints text, and the ">>" command appends that text to the fi
 
 4. Activate your virtual environment by loading the configuration you just created.
 
-```
+```console
 source .bashrc
 ```
 
@@ -78,7 +78,7 @@ Now when you open Cloud Shell, you should see "(dev)", which indicates you are u
 
 5. Verify the Python binary is the one from the virtual environment by using the "which" command.
 
-```
+```console
 which python
 ```
 
@@ -192,7 +192,7 @@ You should see a terminal pane at the bottom of your window.
 <img src="img/66b1f8ddf3e4bc48.png" alt="66b1f8ddf3e4bc48.png"  width="624.00" />
 2. Verify the Python binary is the one from the virtual environment by using the "which" command.
 
-```
+```console
 which python
 ```
 
@@ -200,7 +200,7 @@ If you have successfully activated the virtual environment, you should see an ou
 
 3. Run the "ls" command to list the files in the current directory.
 
-```
+```console
 ls
 ```
 
@@ -216,13 +216,13 @@ Finally, add the Python packages that you'll use in this course to the virtual e
 
 1. Install the packages from the "requirements.txt" file into your virtual environment by running the "pip" command.
 
-```
+```console
 pip install -r requirements.txt
 ```
 
 2. From the command-line verify that the packages were installed successfully. Use the "-c" option for Python to run a short one-line program to verify that Flask was installed.
 
-```
+```console
 python -c 'import flask; print(flask.__version__)'
 ```
 

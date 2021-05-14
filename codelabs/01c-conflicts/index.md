@@ -43,7 +43,7 @@ Download a local copy of the repository the instructor has created to your devel
 1. Open Cloud Shell.
 2. Download the `s-USERNAME/lesson01-conflict` repository with the git clone command.
 
-```
+```console
 git clone git@techx-gitlab.640k.net:s-USER/lesson01-conflict.git
 ```
 
@@ -61,19 +61,19 @@ In the repository, you should see a file named "sequence.txt" containing integer
 2. Open the Terminal in Cloud Shell Editor.
 3. Add the "sequence.txt" file to your Git staging area.
 
-```
+```console
 git add sequence.txt
 ```
 
 4. Commit your changes.
 
-```
+```console
 git commit -m 'create a sequence of natural numbers'
 ```
 
 5. Push your changes to GitLab.
 
-```
+```console
 git push origin main
 ```
 
@@ -86,13 +86,13 @@ The instructor has created a branch called "fibonacci". Download this branch and
 
 1. Download the latest version of a branch from a remote using the git fetch command.
 
-```
+```console
 git fetch origin fibonacci
 ```
 
 2. Use the git checkout command to view the code on that branch.
 
-```
+```console
 git checkout origin/fibonacci
 ```
 
@@ -119,23 +119,26 @@ git checkout main
 
 In the last section, you saw that the "fibonacci" branch made a different set of changes to the "sequence.txt" file than you have made. This problem can often occur when working on the same project as other people. Luckily Git provides mechanisms for identifying and resolving these conflicting changes.
 
-1. Attempt to pull in the changes from the fibonacci branch with the git merge command.
+1. Attempt to merge the changes from the fibonacci branch with the git merge command.
 
-```
+```console
 git merge origin/fibonacci
 ```
 
 You should see the following output:
 
-```
+```console
 Auto-merging sequence.txt
 CONFLICT (content): Merge conflict in sequence.txt
 Automatic merge failed; fix conflicts and then commit the result.
 ```
 
+
+In other tutorials, you may see instructions that request you run `git pull`. This command combines a "fetch" and "merge" in one step.
+
 2. Run the git status command to see which files were not merged.
 
-```
+```console
 git status
 ```
 
@@ -152,19 +155,19 @@ Open the version control pane in Cloud Shell Editor.
 7. Save the change to the file.
 8. Add the file to your staging area.
 
-```
+```console
 git add sequence.txt
 ```
 
 9. Commit the merge.
 
-```
+```console
 git commit
 ```
 
 10. Push your changes to GitLab.
 
-```
+```console
 git push origin main
 ```
 
