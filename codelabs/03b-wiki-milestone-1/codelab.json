@@ -1,0 +1,18 @@
+{
+  "environment": "web",
+  "format": "md",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2021-05-14T22:14:38Z",
+  "id": "03b-wiki-milestone-1",
+  "duration": 0,
+  "title": "Wiki Viewer (Milestone 1)",
+  "authors": "Tim Swast",
+  "summary": "Use cURL and the subprocess module access a web API from Python.",
+  "source": "18-KHAEXE6zIYrMP1zgn0RkPwcP3n022MWuhIaAgbjtA",
+  "theme": "",
+  "status": null,
+  "category": null,
+  "tags": [],
+  "url": "03b-wiki-milestone-1"
+}

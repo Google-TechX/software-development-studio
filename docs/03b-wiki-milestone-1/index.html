@@ -1,0 +1,103 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Wiki Viewer (Milestone 1)</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="03b-wiki-milestone-1"
+                  title="Wiki Viewer (Milestone 1)"
+                  environment="web"
+                  feedback-link="">
+    
+      <google-codelab-step label="Overview" duration="0">
+        <p>In this milestone, you&#39;ll create the read-only implementation of your wiki home page.</p>
+<p>This is expected to be completed as a group.</p>
+<h2 is-upgraded>Prerequisites</h2>
+<ul>
+<li>You must have completed the &#34;Wiki Setup&#34; codelab with your project group.</li>
+</ul>
+<h2 is-upgraded>What you&#39;ll need</h2>
+<ul>
+<li>Google account</li>
+<li>GitLab account</li>
+<li>Web browser (Google Chrome recommended)</li>
+</ul>
+<h2 class="checklist" is-upgraded>What you&#39;ll learn</h2>
+<ul>
+<li>Reading files with Python</li>
+<li>Routing GET requests with Flask</li>
+<li>Working as a team</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Getting started" duration="0">
+        <p><a href="https://flask.palletsprojects.com/en/1.1.x/api/#url-route-registrations" target="_blank">Flask routes</a> requests to the correct function based on a set of rules. You have already defined some these rules with the <code>@app.route(&#34;/&#34;)</code> and <code>@bp.route(&#34;/&#34;)</code> decorators in your Flask app and blueprint, respectively.</p>
+<p>An important feature of Flask routes are variable parts. These are defined with angular brackets (<code>&lt;variable_name&gt;</code>) and match any string without a slash (<code>/</code>). You&#39;ll need to add an additional route to your view blueprint that contains a variable part for the page name.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Requirements" duration="0">
+        <h2 is-upgraded>Functionality</h2>
+<h3 is-upgraded>1 - Requests to localhost:8080/view/ return text from a file named FrontPage.txt</h3>
+<ul>
+<li>FrontPage.txt is located in a &#34;pages&#34; directory.</li>
+<li>Rather than always returning &#34;Hello, Blueprint!&#34;, read the file and return a response based on that.</li>
+<li>Bonus: The text is treated as HTML by the browser, which collapses any whitespace. This is OK for this milestone. If you&#39;d like, figure out a way to have the output render as plain text.</li>
+</ul>
+<h3 is-upgraded>2 - Requests to localhost:8080/view/PageName return text from a file named PageName.txt</h3>
+<ul>
+<li>Hint: Use the variable parts feature in  <a href="https://flask.palletsprojects.com/en/1.1.x/api/#url-route-registrations" target="_blank">Flask routing</a> to extract PageName from the request path.</li>
+<li>Bonus: Perhaps code can be shared between this requirement implementation and requirement (1)?</li>
+</ul>
+<h2 is-upgraded>Tests</h2>
+<h3 is-upgraded>3 - Test that some expected file contents are present in a response to /view/</h3>
+<ul>
+<li>Hint: Make the &#34;pages&#34; directory path configurable (possibly by a global constant or environment variable) and create a test pages directory that can be relied on even if the real wiki pages get modified.</li>
+<li>Bonus: Use a  <a href="https://docs.pytest.org/en/6.2.x/tmpdir.html#the-tmp-path-fixture" target="_blank">pytest fixture to create a new temporary directory</a> and populate that with your test data.</li>
+</ul>
+<h3 is-upgraded>4 - Test that some expected file contents are present in a response to /view/PageName</h3>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Grading rubric" duration="0">
+        <ul>
+<li>50% - Requirement (1) – /view/</li>
+<li>30% - Requirement (2) – /view/PageName</li>
+<li>20% - All tests have been implemented and pass</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>
