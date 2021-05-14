@@ -158,14 +158,15 @@
 </code></pre>
 </li>
 <li>Create a new file at the root of your repository called &#34;setup.py&#34;. This will tell Python about your new Python package. <img alt="90f161161b26b74f.png" style="width: 513.00px" src="img/90f161161b26b74f.png"></li>
-<li>Add the package description to the setup.py file.  <pre><code>from setuptools import setup
-setup(
-name=&#34;techxwiki&#34;,
-packages=[&#34;techxwiki&#34;],
-)
-</code></pre>
-</li>
+<li>Add the package description to the setup.py file.</li>
 </ol>
+<pre>from setuptools import setup
+
+setup(
+    name=&#34;techxwiki&#34;,
+    packages=[&#34;techxwiki&#34;],
+)
+</pre>
 <p>The &#34;name&#34; argument tells Python the package name. The name determines how you&#39;d install this package, if you were to upload the package to a Python package repository.</p>
 <p>The &#34;packages&#34; argument tells Python which directories to include when installing your package.</p>
 <h2 is-upgraded>Install and manually test your Python package</h2>
@@ -248,13 +249,17 @@ packages=[&#34;techxwiki&#34;],
 <aside class="warning"><p> One student (different from the previous) should complete these steps. Share your screen as you do so!</p>
 </aside>
 <ol type="1">
-<li>Modify the <code>techxwiki/__init__.py</code> file to create a Flask server.  <pre><code>from flask import Flask
+<li>Modify the <code>techxwiki/__init__.py</code> file to create a Flask server.</li>
+</ol>
+<pre>from flask import Flask
+
 app = Flask(__name__)
+
 @app.route(&#34;/&#34;)
 def main():
-return &#34;Hello, World!\n&#34;
-</code></pre>
-</li>
+    return &#34;Hello, World!\n&#34;
+</pre>
+<ol type="1">
 <li>In a Terminal panel, run the Flask server.</li>
 </ol>
 <pre>export FLASK_APP=techxwiki
@@ -364,19 +369,32 @@ flask run -p 8080
 </aside>
 <ol type="1">
 <li>Create a &#34;viewer.py&#34; file in the &#34;techxwiki&#34; directory. <img alt="e35412a92e843d50.png" style="width: 508.00px" src="img/e35412a92e843d50.png"></li>
-<li>Edit &#34;viewer.py&#34; and create the Flask Blueprint. <br><code>from flask import Blueprint<br>bp = Blueprint(&#34;viewer&#34;, __name__, url_prefix=&#34;/view&#34;)<br>@bp.route(&#34;/&#34;)<br>def main():<br>return &#34;Hello, Blueprint!\n&#34;<br></code></li>
+<li>Edit &#34;viewer.py&#34; and create the Flask Blueprint.</li>
 </ol>
+<pre>from flask import Blueprint
+
+bp = Blueprint(&#34;viewer&#34;, __name__, url_prefix=&#34;/view&#34;)
+
+@bp.route(&#34;/&#34;)
+def main():
+    return &#34;Hello, Blueprint!\n&#34;
+</pre>
 <p>The &#34;<code>url_prefix</code>&#34; parameter tells Flask that this Blueprint should be used for URLs starting with &#34;/view&#34;.</p>
 <ol type="1">
-<li>Edit &#34;<strong>init</strong>.py&#34; and register the Blueprint you just created.  <pre><code>from flask import Flask
+<li>Edit &#34;<strong>init</strong>.py&#34; and register the Blueprint you just created.</li>
+</ol>
+<pre>from flask import Flask
+
 from . import viewer  # Add this line
+
 app = Flask(__name__)
 app.register_blueprint(viewer.bp)  # Add this line
+
 @app.route(&#34;/&#34;)
 def main():
-return &#34;Hello, World!\n&#34;
-</code></pre>
-</li>
+    return &#34;Hello, World!\n&#34;
+</pre>
+<ol type="1">
 <li>In the Terminal pane, run the Flask server.</li>
 </ol>
 <pre>./run-flask.sh
@@ -462,8 +480,25 @@ return &#34;Hello, World!\n&#34;
 <ol type="1">
 <li>Create a directory called &#34;tests&#34;. <img alt="913631983108c21.png" style="width: 506.00px" src="img/913631983108c21.png"></li>
 <li>Create a file called &#34;test_techxwiki.py&#34; in the tests directory. <img alt="74f25f7defd6d332.png" style="width: 558.00px" src="img/74f25f7defd6d332.png"></li>
-<li>Edit the &#34;test_techxwiki.py&#34; file and add a test that checks for &#34;Hello, World!&#34; in the home page. <br><code>import pytest<br>import techxwiki<br>@pytest.fixture<br>def client():<br>techxwiki.app.config[&#34;TESTING&#34;] = True<br>with techxwiki.app.test_client() as client:<br>    yield client<br>def test_homepage(client):<br>resp = client.get(&#34;/&#34;)<br>assert resp.status_code == 200<br>assert b&#34;Hello, World!\n&#34; in resp.data<br></code></li>
+<li>Edit the &#34;test_techxwiki.py&#34; file and add a test that checks for &#34;Hello, World!&#34; in the home page.</li>
 </ol>
+<pre>import pytest
+
+import techxwiki
+
+@pytest.fixture
+def client():
+    techxwiki.app.config[&#34;TESTING&#34;] = True
+
+    with techxwiki.app.test_client() as client:
+        yield client
+
+
+def test_homepage(client):
+    resp = client.get(&#34;/&#34;)
+    assert resp.status_code == 200
+    assert b&#34;Hello, World!\n&#34; in resp.data
+</pre>
 <p>The &#34;client&#34; function is a  <a href="https://docs.pytest.org/en/6.2.x/fixture.html" target="_blank">pytest fixture</a> that creates a  <a href="https://flask.palletsprojects.com/en/1.1.x/testing/" target="_blank">Flask test client</a> ( <a href="https://flask.palletsprojects.com/en/1.1.x/api/#flask.testing.FlaskClient" target="_blank">api reference</a>,  <a href="https://werkzeug.palletsprojects.com/en/2.0.x/test/#werkzeug.test.Client" target="_blank">additional reference</a>). This allows you to add a &#34;client&#34; argument to your tests, which you can use to make requests to your Flask application.</p>
 <p>The result of calling the &#34;client.get()&#34; method is a  <a href="https://flask.palletsprojects.com/en/1.1.x/api/#response-objects" target="_blank">Response</a> object, which contains useful properties such as &#34;status_code&#34; and &#34;data&#34;. The assertions check that these are the expected values.</p>
 <ol type="1">

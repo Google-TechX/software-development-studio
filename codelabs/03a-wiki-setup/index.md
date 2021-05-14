@@ -181,7 +181,7 @@ print("Hello, World!")
 <img src="img/90f161161b26b74f.png" alt="90f161161b26b74f.png"  width="513.00" />
 5. Add the package description to the setup.py file.
 
-```
+```console
 from setuptools import setup
 
 setup(
@@ -306,7 +306,7 @@ Create a "Flask" application to be the web server for your wiki.
 
 1. Modify the `techxwiki/__init__.py` file to create a Flask server.
 
-```
+```console
 from flask import Flask
 
 app = Flask(__name__)
@@ -465,7 +465,7 @@ Flask Blueprints allow an application to be split across multiple Python files. 
 2. Edit "viewer.py" and create the Flask Blueprint.
 
 
-```
+```console
 from flask import Blueprint
 
 bp = Blueprint("viewer", __name__, url_prefix="/view")
@@ -480,7 +480,7 @@ The "`url_prefix`" parameter tells Flask that this Blueprint should be used for 
 
 3. Edit "__init__.py" and register the Blueprint you just created.
 
-```
+```console
 from flask import Flask
 
 from . import viewer  # Add this line
@@ -608,7 +608,7 @@ Add tests to check that the Flask application is working properly.
 <img src="img/74f25f7defd6d332.png" alt="74f25f7defd6d332.png"  width="558.00" />
 3. Edit the "test_techxwiki.py" file and add a test that checks for "Hello, World!" in the home page.
 
-```
+```console
 import pytest
 
 import techxwiki
