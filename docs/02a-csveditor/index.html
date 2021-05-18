@@ -1,0 +1,186 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Python CSV Editor</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="02a-csveditor"
+                  title="Python CSV Editor"
+                  environment="web"
+                  feedback-link="">
+    
+      <google-codelab-step label="Overview" duration="0">
+        <p>In this codelab, you&#39;ll write a very simple program to edit CSV files using Python, and create unit tests using pytest.</p>
+<p>A CSV (&#34;comma-separated values&#34;) file is a common file format for tables and spreadsheets. Rows in the table are represented by lines in the file, and columns in the table are separated by comma characters (<code>,</code>).</p>
+<p>For example, the following CSV file represents a table with 3 rows and 4 columns:</p>
+<pre>Computer Model,RAM,CPU,In Stock
+Chromebook Pixel,16 GB,Intel 5th Generation i7,4
+Acer Chromebook Spin 713,8 GB,Intel 10th Generation i5,12
+</pre>
+<h2 is-upgraded>Prerequisites</h2>
+<ul>
+<li>Using Cloud Shell and Cloud Shell Editor ( <a href="https://google-techx.github.io/software-development-studio/01a-cloud-shell/?index=/software-development-studio/#0" target="_blank">codelab</a>)</li>
+<li>Using Git ( <a href="https://google-techx.github.io/software-development-studio/01b-git/?index=/software-development-studio/#0" target="_blank">codelab</a>)</li>
+</ul>
+<h2 is-upgraded>What you&#39;ll need</h2>
+<ul>
+<li>Google account</li>
+<li>GitLab account</li>
+<li>Web browser (Google Chrome recommended)</li>
+</ul>
+<h2 class="checklist" is-upgraded>What you&#39;ll learn</h2>
+<ul>
+<li>Practice reading in a file, modifying it, and writing it out using Python File I/O</li>
+<li>Practice manipulating a CSV file in Python</li>
+<li>Test your Python code with pytest</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Clone your repo in Cloud Shell" duration="0">
+        <ol type="1">
+<li>Open Cloud Shell</li>
+<li>Clone the repository.</li>
+</ol>
+<pre>git clone git@techx-gitlab.640k.net:s-USER/lesson02-csveditor.git
+</pre>
+<ol type="1">
+<li>Open Cloud Shell Editor in the directory just created.</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Create a test data file" duration="0">
+        <p>In the cloud shell editor, create a new file called <code>test_data.csv</code>.</p>
+<p>Populate it either with the CSV contents on the first page of this codelab, or make your own if you like.</p>
+<p>Save the file when finished.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Implement the CSV Editor" duration="0">
+        <p>Open <code>csv_column_editor.py</code> and delete the <code>raise NotImplementedError</code> line (inside of <code>edit_csv_file</code>.)</p>
+<p>Replace the contents of this function with your own implementation. Read the docstring of the function for help on what the function&#39;s arguments mean.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Manual Tests" duration="0">
+        <p>Manually test your CSV editor by running it with your test_data.csv you created earlier. Here is an example:</p>
+<pre>./csv_column_editor.py test_data.csv 0 1 0 3
+</pre>
+<p>Inspect the output contents to see if it looks correct:</p>
+<pre>$ cat test_data.csv
+Computer Model,RAM,Computer Model,In Stock
+Chromebook Pixel,16 GB,Chromebook Pixel,4
+Acer Chromebook Spin 713,8 GB,Acer Chromebook Spin 713,12
+</pre>
+<p>If the output wasn&#39;t what you expected, or you encountered errors, go back and correct your code.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Commit your work" duration="0">
+        <p>We aren&#39;t done yet (we need to implement automated tests using pytest), but it&#39;s good practice to commit incremental work as you get features working!</p>
+<p>Stage your changes:</p>
+<pre>git add csv_column_editor.py
+</pre>
+<p>Create a commit (and feel free to adjust the message as appropriate):</p>
+<pre>git commit -m &#34;Implemented column editor, still need to write tests&#34;
+</pre>
+<p>Push your changes to the <code>main</code> branch on GitLab:</p>
+<pre>git push origin main
+</pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Run unit tests" duration="0">
+        <p>Do an initial run of the unit tests (some tests will be passing, and some will fail). Notice which tests are failing:</p>
+<pre>python3 -m pytest csv_column_editor_test.py
+</pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Implement a test parameter" duration="0">
+        <p>Notice that <code>test_edit_csv</code> has already been implemented for you, but there&#39;s a missing parameter (see the TODO comment).</p>
+<p>Add one more parameter to the test with new expected inputs/outputs.</p>
+<p>Re-run the tests:</p>
+<pre>python3 -m pytest csv_column_editor_test.py
+</pre>
+<p>If you like, you can optionally add a third or even more parameters to the test.</p>
+<p>Once you&#39;ve completed this step, commit your changes again (see previous &#34;Commit your work&#34; step for reference on how to do this.)</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Implement out-of-range test" duration="0">
+        <p>For this part of the activity, you&#39;ll implement the <code>test_edit_csv_out_of_range</code> test. This test should ensure that when the input parameters refer to a column which does not exist, an <code>IndexError</code> gets raised.</p>
+<p>Unlike the previous test, this time we wrote the parameters for you, and you need to implement the test functionality.</p>
+<p>Once implemented, run the tests again. You should have all tests passing.</p>
+<p>Commit your changes and push to GitLab.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="You&#39;re done!" duration="0">
+        <p>Check the GitLab Web UI to ensure your repository looks as you expect.</p>
+<p>You should be able to do this at  <a href="https://techx-gitlab.640k.net/s-USER/lesson02-csveditor" target="_blank">https://techx-gitlab.640k.net/s-USER/lesson02-csveditor</a> (replace USER for your username).</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Requirements" duration="0">
+        <h2 is-upgraded>Functionality</h2>
+<h3 is-upgraded>1 - Able to process a CSV from the command line</h3>
+<p>Create a test CSV such as the one at the docstring in the top of csv_column_editor.py. Validate that the command given performs the mutation expected.</p>
+<h2 is-upgraded>Tests</h2>
+<h3 is-upgraded>2 - Add a parameter to the test_edit_csv test</h3>
+<p>You should make your own parameter (different from ours) to the test_edit_csv test.</p>
+<h3 is-upgraded>3 - Implement test_edit_csv_out_of_range</h3>
+<p>You should implement the body of this function. Parameters were provided for you.</p>
+<h3 is-upgraded>4 - Tests pass when run with pytest</h3>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Grading rubric" duration="0">
+        <ul>
+<li>50% - Code must be pushed to the repository in GitLab which has been created for you.</li>
+<li>50% - All requirements have been met.</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>
