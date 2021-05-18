@@ -1,0 +1,207 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Using the Git GUI in Cloud Shell Editor</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="01d-git-gui"
+                  title="Using the Git GUI in Cloud Shell Editor"
+                  environment="web"
+                  feedback-link="">
+    
+      <google-codelab-step label="Overview" duration="0">
+        <p>Now that you have some practice using the Git command-line tool, you can use the same commands via the Git plugin for Cloud Shell Editor. In this codelab, you&#39;ll create commits, fetch remotes, and merge branches using the Git GUI in Cloud Shell Editor.</p>
+<h2 is-upgraded>Prerequisites</h2>
+<ul>
+<li>Cloud Shell</li>
+<li>Git</li>
+</ul>
+<h2 is-upgraded>What you&#39;ll need</h2>
+<ul>
+<li>Google account</li>
+<li>GitLab account</li>
+<li>Web browser (Google Chrome recommended)</li>
+</ul>
+<h2 class="checklist" is-upgraded>What you&#39;ll learn</h2>
+<ul>
+<li>Review common Git commands</li>
+<li>Add files to the Git staging area</li>
+<li>Create a commit</li>
+<li>Fetch a remote branch</li>
+<li>Merge changes from a branch</li>
+<li>Push changes to a remote branch</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Check out the code" duration="0">
+        <p>Cloud Shell Editor works best once a Git repository is already cloned. Clone the repository with the Git command-line tool from Cloud Shell.</p>
+<ol type="1">
+<li>Login to our course GitLab server ( <a href="https://techx-gitlab.640k.net/" target="_blank">https://techx-gitlab.640k.net/</a>).</li>
+<li>Find the <code>s-USER/lesson01-git-gui</code> repository and copy the &#34;Clone with SSH&#34; path.</li>
+<li>Open Cloud Shell.</li>
+<li>Download the <code>s-USER/lesson01-git-gu</code> repository with the git clone command.</li>
+</ol>
+<p>Replace the text after <code>git clone</code> with the path you copied from GitLab.</p>
+<pre>git clone git@techx-gitlab.640k.net:s-USER/lesson01-git-gui
+</pre>
+<ol type="1">
+<li>Open Cloud Shell Editor.</li>
+<li>Set the working directory to the repository directory.</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Create a branch with the command palette" duration="0">
+        <p>It&#39;s a good practice to create a new branch when working on a feature. When collaborating, this ensures you don&#39;t affect the main branch that your teammates are relying on until your code is tested and ready to be merged.</p>
+<p>The Cloud Shell Editor provides keyboard-based shortcuts for creating new branches and checking out existing ones. Since Cloud Shell Editor is a deployment of Eclipse Theia, which is a fork of Visual Studio Code, these shortcuts are based on the Visual Studio Code &#34;Command Palette&#34; ( <a href="https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette" target="_blank">https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette</a>)</p>
+<ol type="1">
+<li>Open the &#34;Command Palette&#34; with the keyboard shortcut. On macOS, hold Command (⌘) + Shift + P. On Windows/Linux/Chromebook, hold Ctrl + Shift + P. <img alt="42e76c25e6e7d09a.png" style="width: 624.00px" src="img/42e76c25e6e7d09a.png"></li>
+<li>Type <code>Git: Checkout</code> in the palette, keeping the leading <code>&gt;</code> character. <img alt="11f72daf0755aff7.png" style="width: 624.00px" src="img/11f72daf0755aff7.png"></li>
+<li>Press the &#34;Enter&#34; key to run the command.</li>
+<li>Click &#34;Create new branch...&#34; <img alt="5d294cfccd95d887.png" style="width: 624.00px" src="img/5d294cfccd95d887.png"></li>
+<li>Type &#34;all-caps&#34; as the branch name. Press &#34;Enter&#34; to confirm.</li>
+<li>Verify that &#34;all-caps&#34; now appears in the bottom-left corner, which indicates the current Git branch name. <img alt="79887c6f81546322.png" style="width: 381.00px" src="img/79887c6f81546322.png"></li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Create allcaps.py" duration="0">
+        <p>Chat users have been asking for a way to make it easier to SHOUT when their keyboards are missing the CAPS LOCK key. Create a Python script that converts command line input into ALL CAPS and prints it to the terminal.</p>
+<ol type="1">
+<li>Create a new file named <code>allcaps.py</code>.</li>
+<li>Add the Python code.</li>
+</ol>
+<pre>import sys
+
+def print_allcaps(text: str):
+    print(text.upper())
+
+
+if __name__ == &#34;__main__&#34;:
+    print_allcaps(&#34; &#34;.join(sys.argv[1:]))
+</pre>
+<ol type="1">
+<li>Any production program needs tests to ensure it works as expected. Create a new file named <code>allcaps_test.py</code>.</li>
+<li>Add the test code.</li>
+</ol>
+<pre>import pytest
+
+import allcaps
+
+
+@pytest.mark.parametrize(
+    [&#34;message&#34;, &#34;expected&#34;],
+    [
+        (&#34;Hello, World!&#34;, &#34;HELLO, WORLD!\n&#34;),
+        (&#34;I&#39;M ALREADY LOUD&#34;, &#34;I&#39;M ALREADY LOUD\n&#34;),
+        (&#34;&#34;, &#34;\n&#34;)
+    ]
+)
+def test_print_allcaps(
+    # capsys is a built-in test fixture
+    # that allows pytest to check what has
+    # been printed by the program.
+    # https://docs.pytest.org/en/6.2.x/capture.html
+    capsys,
+    message,
+    expected,
+):
+    allcaps.print_allcaps(message)
+    captured = capsys.readouterr()
+    assert captured.out == expected
+</pre>
+<ol type="1">
+<li>Open the Terminal and verify that the tests pass.</li>
+</ol>
+<pre>pytest allcaps_test.py
+</pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Add files to the Git staging area" duration="0">
+        <p>Use the Git GUI built in to Cloud Shell Editor to add the files you just created.</p>
+<ol type="1">
+<li>Click the Git icon to manage your Git repository. <img alt="32d1d199400e6e7c.png" style="width: 451.00px" src="img/32d1d199400e6e7c.png"></li>
+<li>The files under &#34;Changes&#34; are the same as those that would appear under the &#34;Untracked Changes&#34; section when running the <code>git status</code> command.</li>
+</ol>
+<p>Hover over &#34;allcaps.py&#34; and click the &#34;+&#34; button to add &#34;allcaps.py to the Git staging area. <img alt="5fa9e951c479fd8b.png" style="width: 606.00px" src="img/5fa9e951c479fd8b.png"></p>
+<ol type="1">
+<li>Do the same for the &#34;allcaps_test.py&#34; file.</li>
+<li>Once both files are added to the &#34;Staged Changes&#34; menu, write a descriptive commit message in the text box that says &#34;Message&#34;. <img alt="a61ed6ba7930c727.png" style="width: 581.00px" src="img/a61ed6ba7930c727.png"></li>
+<li>When everything is ready to be committed, click the checkmark (✔️) button to create a Git commit for these changes. <img alt="16c85fbf0edcfd0d.png" style="width: 581.00px" src="img/16c85fbf0edcfd0d.png"></li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Checkout the main branch" duration="0">
+        <p>Now that the feature is ready, checkout the main branch.</p>
+<ol type="1">
+<li>Click the &#34;all-caps&#34; branch name in the bottom left corner. <img alt="79887c6f81546322.png" style="width: 381.00px" src="img/79887c6f81546322.png"> This is a shortcut to the &#34;Git: Checkout&#34; command palette you used earlier.</li>
+<li>Select &#34;main&#34; from the list of branches. <img alt="fdb133d584aeeae0.png" style="width: 624.00px" src="img/fdb133d584aeeae0.png"></li>
+<li>Verify that &#34;main&#34; is printed in the bottom left corner. Also, the Python files you created have disappeared.</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Merge the &#34;all-caps&#34; branch into &#34;main&#34;" duration="0">
+        <p>Since the feature is ready, you may merge the changes into the &#34;main&#34; branch.</p>
+<ol type="1">
+<li>Select the Git icon if it isn&#39;t already selected.</li>
+<li>Select the three dots (...) and click the &#34;Merge...&#34; button. <img alt="67bb022062be33eb.png" style="width: 624.00px" src="img/67bb022062be33eb.png"></li>
+<li>In the list of branches that appear in the command palette area, select &#34;all-caps&#34; <img alt="f227181f05ea633a.png" style="width: 624.00px" src="img/f227181f05ea633a.png"></li>
+<li>Verify that allcaps.py and allcaps_test.py now appear in the files list.</li>
+</ol>
+<p>There weren&#39;t any conflicts in this merge, but if there are, refer to the  <a href="https://google-techx.github.io/software-development-studio/01c-conflicts/?index=/software-development-studio/#0" target="_blank">Handling Conflicts with Git</a> codelab on how to resolve them.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Finishing up" duration="0">
+        <p>Now that the &#34;main&#34; branch has your new feature, push it to GitLab.</p>
+<ol type="1">
+<li>Select the Git icon.</li>
+<li>Click the three dots (...).</li>
+<li>Select the &#34;Push to...&#34; option.</li>
+<li>Click the &#34;origin&#34; remote from the list in the command palette area. <img alt="e41ae9137343b82e.png" style="width: 624.00px" src="img/e41ae9137343b82e.png"></li>
+<li>Verify that your changes have been pushed to GitLab.</li>
+</ol>
+<p>In future codelabs, Git commands will shown as command line examples, but you may use the GUI if you find it more intuitive.</p>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>

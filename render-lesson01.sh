@@ -8,3 +8,6 @@ claat export -f html -o docs codelabs/01b-git/index.md
 
 claat export -f md -o codelabs 1yq9913ERgkF6S_6-nUXO1U1v_1v1NAP92sgiX6srbeE
 claat export -f html -o docs codelabs/01c-conflicts/index.md
+
+claat export -f md -o codelabs 1c4iq133IL877BI_zLvlZ4tXjvnQMYHRIw42wJN52x4c
+claat export -f html -o docs codelabs/01d-git-gui/index.md

@@ -40,15 +40,19 @@ Whenever multiple people work on the same project, conflicts can arise. This is 
 
 Download a local copy of the repository the instructor has created to your development environment.
 
-1. Open Cloud Shell.
-2. Download the `s-USERNAME/lesson01-conflict` repository with the git clone command.
+1. Login to our course GitLab server ( [https://techx-gitlab.640k.net/](https://techx-gitlab.640k.net/)).
+2. Find the `s-USER/lesson01-conflict` repository and copy the "Clone with SSH" path.
+3. Open Cloud Shell.
+4. Download the `s-USER/lesson01-conflict` repository with the git clone command.
+
+Replace the text after `git clone` with the path you copied from GitLab.
 
 ```console
 git clone git@techx-gitlab.640k.net:s-USER/lesson01-conflict.git
 ```
 
-3. Open Cloud Shell Editor.
-4. Set the working directory to the repository directory.
+5. Open Cloud Shell Editor.
+6. Set the working directory to the repository directory.
 
 
 ## Add a commit
@@ -102,13 +106,13 @@ git checkout origin/fibonacci
 3. View the "sequence.txt" file to see how it is different.
 4. Explore the Git commit history with the git log command.
 
-```
+```console
 git log
 ```
 
 5. Switch back to your main branch.
 
-```
+```console
 git checkout main
 ```
 
@@ -160,6 +164,8 @@ git add sequence.txt
 ```
 
 9. Commit the merge.
+
+A command-line text editor will appear. By default " [nano](https://www.nano-editor.org/dist/latest/cheatsheet.html)" is the editor. In the command list at the bottom of the editor, the caret symbol "^" indicates the "Ctrl" button.
 
 ```console
 git commit

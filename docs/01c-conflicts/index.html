@@ -53,9 +53,12 @@
       <google-codelab-step label="Check out the code" duration="0">
         <p>Download a local copy of the repository the instructor has created to your development environment.</p>
 <ol type="1">
+<li>Login to our course GitLab server ( <a href="https://techx-gitlab.640k.net/" target="_blank">https://techx-gitlab.640k.net/</a>).</li>
+<li>Find the <code>s-USER/lesson01-conflict</code> repository and copy the &#34;Clone with SSH&#34; path.</li>
 <li>Open Cloud Shell.</li>
-<li>Download the <code>s-USERNAME/lesson01-conflict</code> repository with the git clone command.</li>
+<li>Download the <code>s-USER/lesson01-conflict</code> repository with the git clone command.</li>
 </ol>
+<p>Replace the text after <code>git clone</code> with the path you copied from GitLab.</p>
 <pre>git clone git@techx-gitlab.640k.net:s-USER/lesson01-conflict.git
 </pre>
 <ol type="1">
@@ -105,13 +108,15 @@
 </aside>
 <ol type="1">
 <li>View the &#34;sequence.txt&#34; file to see how it is different.</li>
-<li>Explore the Git commit history with the git log command.  <pre><code>git log
-</code></pre>
-</li>
-<li>Switch back to your main branch.  <pre><code>git checkout main
-</code></pre>
-</li>
+<li>Explore the Git commit history with the git log command.</li>
 </ol>
+<pre>git log
+</pre>
+<ol type="1">
+<li>Switch back to your main branch.</li>
+</ol>
+<pre>git checkout main
+</pre>
 
 
       </google-codelab-step>
@@ -153,6 +158,7 @@ Automatic merge failed; fix conflicts and then commit the result.
 <ol type="1">
 <li>Commit the merge.</li>
 </ol>
+<p>A command-line text editor will appear. By default &#34; <a href="https://www.nano-editor.org/dist/latest/cheatsheet.html" target="_blank">nano</a>&#34; is the editor. In the command list at the bottom of the editor, the caret symbol &#34;^&#34; indicates the &#34;Ctrl&#34; button.</p>
 <pre>git commit
 </pre>
 <ol type="1">

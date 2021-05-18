@@ -1,0 +1,18 @@
+{
+  "environment": "web",
+  "format": "md",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2021-05-18T22:53:21Z",
+  "id": "01d-git-gui",
+  "duration": 0,
+  "title": "Using the Git GUI in Cloud Shell Editor",
+  "authors": "Tim Swast",
+  "summary": "Create commits, fetch remotes, and merge branches using the Git GUI in Cloud Shell Editor.",
+  "source": "1c4iq133IL877BI_zLvlZ4tXjvnQMYHRIw42wJN52x4c",
+  "theme": "",
+  "status": null,
+  "category": null,
+  "tags": [],
+  "url": "01d-git-gui"
+}
