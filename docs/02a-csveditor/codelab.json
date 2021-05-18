@@ -1,0 +1,18 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2021-05-18T15:01:38-06:00",
+  "id": "02a-csveditor",
+  "duration": 0,
+  "title": "Python CSV Editor",
+  "authors": "Jack Rosenthal",
+  "summary": "Practice writing Python code and using pytest by writing a simple CSV editor",
+  "source": "codelabs/02a-csveditor/index.md",
+  "theme": "",
+  "status": null,
+  "category": null,
+  "tags": [],
+  "url": "02a-csveditor"
+}

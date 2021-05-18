@@ -2,6 +2,8 @@
 id: 02b-curl
 summary: Use cURL and the subprocess module access a web API from Python.
 authors: Tim Swast
+source: 1J8ynLAbtXq3HRZBWTmZD6u9WI8jE6xr8FNoTwJcajII
+duration: 0
 
 ---
 

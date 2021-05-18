@@ -3,7 +3,7 @@
   "format": "html",
   "prefix": "https://storage.googleapis.com",
   "mainga": "UA-49880327-14",
-  "updated": "2021-05-13T11:15:53-05:00",
+  "updated": "2021-05-18T15:01:40-06:00",
   "id": "02b-curl",
   "duration": 0,
   "title": "Calling a Web API from Python",
