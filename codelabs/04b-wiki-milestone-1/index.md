@@ -1,6 +1,6 @@
 ---
-id: 03b-wiki-milestone-1
-summary: Use cURL and the subprocess module access a web API from Python.
+id: 04b-wiki-milestone-1
+summary: Create the read-only implementation of your wiki.
 authors: Tim Swast
 
 ---

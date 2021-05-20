@@ -3,16 +3,16 @@
   "format": "html",
   "prefix": "https://storage.googleapis.com",
   "mainga": "UA-49880327-14",
-  "updated": "2021-05-14T17:15:54-05:00",
-  "id": "03b-wiki-milestone-1",
+  "updated": "2021-05-20T15:12:49-05:00",
+  "id": "04b-wiki-milestone-1",
   "duration": 0,
   "title": "Wiki Viewer (Milestone 1)",
   "authors": "Tim Swast",
-  "summary": "Use cURL and the subprocess module access a web API from Python.",
-  "source": "codelabs/03b-wiki-milestone-1/index.md",
+  "summary": "Create the read-only implementation of your wiki.",
+  "source": "codelabs/04b-wiki-milestone-1/index.md",
   "theme": "",
   "status": null,
   "category": null,
   "tags": [],
-  "url": "03b-wiki-milestone-1"
+  "url": "04b-wiki-milestone-1"
 }

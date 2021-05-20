@@ -1,0 +1,18 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2021-05-20T15:12:47-05:00",
+  "id": "04a-wiki-flask",
+  "duration": 0,
+  "title": "Creating a Flask App",
+  "authors": "Tim Swast",
+  "summary": "Create and run a “hello world” Flask application as the foundation for your wiki.",
+  "source": "codelabs/04a-wiki-flask/index.md",
+  "theme": "",
+  "status": null,
+  "category": null,
+  "tags": [],
+  "url": "04a-wiki-flask"
+}
