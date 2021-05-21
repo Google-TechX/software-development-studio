@@ -67,108 +67,22 @@
 
       </google-codelab-step>
     
-      <google-codelab-step label="Configure the Git repository" duration="0">
-        <p>Some files are undesirable to check into a Git repository. For example, they may be automatically generated, or they may be specific to a particular development environment. These files make the repository messy to review and aren&#39;t necessary for a developer using the project.</p>
+      <google-codelab-step label="Create files needed for a Flask application" duration="0">
+        <p>Next, add the &#34;boilerplate&#34; files needed for a Flask web application.</p>
 <aside class="warning"><p> One student should complete these steps. Share your screen as you do so!</p>
 </aside>
+<h2 is-upgraded>Create Python files</h2>
 <ol type="1">
-<li>Open the &#34;Terminal&#34; panel in Cloud Shell Editor.</li>
-<li>A &#34;.gitignore&#34; file (note the leading &#34;.&#34; character) tells Git which files are not needed to be tracked.</li>
-</ol>
-<p>Use cURL to download a &#34;.gitignore&#34; file with some useful defaults for Python.</p>
-<pre>curl -L \
-  https://raw.githubusercontent.com/github/gitignore/master/Python.gitignore \
-  &gt; .gitignore
-</pre>
-<ol type="1">
-<li>Add all the changes you&#39;ve made to the Git staging area.</li>
-</ol>
-<pre>git add .gitignore
-</pre>
-<ol type="1">
-<li>See which files have been staged.</li>
-</ol>
-<pre>git status
-</pre>
-<p>You should see the following output:</p>
-<pre>Changes to be committed:
-  (use &#34;git rm --cached &lt;file&gt;...&#34; to unstage)
-
-        new file:   .gitignore
-</pre>
-<ol type="1">
-<li>Commit your changes.</li>
-</ol>
-<pre>git commit -m &#39;add .gitignore for Python development&#39;
-</pre>
-<ol type="1">
-<li>Push your changes to GitLab.</li>
-</ol>
-<pre>git push origin main
-</pre>
-<h2 is-upgraded>Verify that .gitignore has been uploaded</h2>
-<aside class="special"><p> All students should complete these steps.</p>
-</aside>
-<p>Download the code that your teammate just pushed and merge it with your local copy.</p>
-<ol type="1">
-<li>Download the code.</li>
-</ol>
-<pre>git fetch origin main
-</pre>
-<ol type="1">
-<li>Merge it into your local copy.</li>
-</ol>
-<pre>git merge origin/main
-</pre>
-<ol type="1">
-<li>Verify that you now have a &#34;.gitignore&#34; file with contents matching the file at  <a href="https://github.com/github/gitignore/blob/master/Python.gitignore" target="_blank">https://github.com/github/gitignore/blob/master/Python.gitignore</a>.</li>
-</ol>
-<p>In other tutorials, you may see instructions that request you run <code>git pull origin main</code>. This command combines a &#34;fetch&#34; and &#34;merge&#34; in one step.</p>
-
-
-      </google-codelab-step>
-    
-      <google-codelab-step label="Create files needed for a Python project" duration="0">
-        <p>Next, add the &#34;boilerplate&#34; files needed for a Python package.</p>
-<aside class="warning"><p> One student (different from the previous) should complete these steps. Share your screen as you do so!</p>
-</aside>
-<h2 is-upgraded>Create a Python package</h2>
-<p>Your wiki project is complex enough that it should eventually contain multiple code files. To facilitate that, create a Python &#34;package&#34; to contain your code.</p>
-<ol type="1">
-<li>Create a directory (folder) named &#34;techxwiki&#34;. <img alt="d0a2719d7262e41a.png" style="width: 503.00px" src="img/d0a2719d7262e41a.png"></li>
-<li>Inside the &#34;techxwiki&#34; directory, create a file named &#34;<code>__init__.py</code>&#34;. That&#39;s two underscore (_) characters before and after &#34;init&#34;. <img alt="bdabcd6a753495f7.png" style="width: 525.00px" src="img/bdabcd6a753495f7.png"></li>
-<li>So that you can test your code later, add code to the <code>__init__.py</code> file that prints &#34;Hello, World!&#34;.  <pre><code>print(&#34;Hello, World!&#34;)
+<li>Create a file named &#34;wiki.py&#34;. <img alt="255d3fdea4b0fd0.png" style="width: 526.00px" src="img/255d3fdea4b0fd0.png"></li>
+<li>So that you can test your code later, add code to the <code>wiki.py</code> file that prints &#34;Hello, World!&#34;.  <pre><code>print(&#34;Hello, World!&#34;)
 </code></pre>
 </li>
-<li>Create a new file at the root of your repository called &#34;setup.py&#34;. This will tell Python about your new Python package. <img alt="90f161161b26b74f.png" style="width: 513.00px" src="img/90f161161b26b74f.png"></li>
-<li>Add the package description to the setup.py file.</li>
+<li>Check that your Python environment is set up correctly by running the &#34;wiki.py&#34; file. Open a new terminal panel and run the Python command.</li>
 </ol>
-<pre>from setuptools import setup
-
-setup(
-    name=&#34;techxwiki&#34;,
-    packages=[&#34;techxwiki&#34;],
-)
-</pre>
-<p>The &#34;name&#34; argument tells Python the package name. The name determines how you&#39;d install this package, if you were to upload the package to a Python package repository.</p>
-<p>The &#34;packages&#34; argument tells Python which directories to include when installing your package.</p>
-<h2 is-upgraded>Install and manually test your Python package</h2>
-<p>Now that you&#39;ve created the necessary files for a Python package, it&#39;s time to install it and try it out.</p>
-<ol type="1">
-<li>Open the &#34;Terminal&#34; in Cloud Shell Editor.</li>
-<li>Install your package using the pip install command.</li>
-</ol>
-<pre>pip install -e .
-</pre>
-<p>The &#34;-e&#34; option tells the pip command to install in &#34;editable&#34; mode. This means that any changes you make to your code will still apply to your package. Without this option, the pip install command creates a copy of your code when installing.</p>
-<p>The &#34;.&#34; option says to install the package from the current directory.</p>
-<ol type="1">
-<li>Now, when you import your package in a Python script, you&#39;ll see your code execute. Try it out with the &#34;-c&#34; option to Python.</li>
-</ol>
-<pre>python -c &#39;import techxwiki&#39;
+<pre>python wiki.py
 </pre>
 <h2 is-upgraded>Push your changes to GitLab</h2>
-<p>If you successfully saw &#34;Hello, World!&#34; printed in the previous step, commit your changes and push them to GitLab so that your teammates can benefit from your work. If not, work with your teammates to debug before continuing.</p>
+<p>If you successfully saw &#34;Hello, World!&#34; printed in the previous step, commit your changes and push them to GitLab so that your teammates can benefit from your work.</p>
 <ol type="1">
 <li>Add all the changes you&#39;ve made to the Git staging area.</li>
 </ol>
@@ -184,14 +98,13 @@ setup(
 <pre>Changes to be committed:
   (use &#34;git rm --cached &lt;file&gt;...&#34; to unstage)
 
-        new file:   setup.py
-        new file:   techxwiki/__init__.py
+        new file:   wiki.py
 </pre>
 <p>If you see files you don&#39;t expect, check your &#34;.gitignore&#34; file to make sure it matches the recommended file at  <a href="https://github.com/github/gitignore/blob/master/Python.gitignore" target="_blank">https://github.com/github/gitignore/blob/master/Python.gitignore</a>.</p>
 <ol type="1">
 <li>Commit your changes.</li>
 </ol>
-<pre>git commit -m &#39;add empty techxwiki Python package&#39;
+<pre>git commit -m &#39;add wiki Python module&#39;
 </pre>
 <ol type="1">
 <li>Push your changes to GitLab.</li>
@@ -212,16 +125,156 @@ setup(
 </ol>
 <pre>git merge origin/main
 </pre>
+<p>If conflicts arise, refer to the  <a href="https://google-techx.github.io/software-development-studio/01c-conflicts/?index=/software-development-studio/#4" target="_blank">Handling Conflicts with Git codelab</a>.</p>
 <ol type="1">
 <li>Open the &#34;Terminal&#34; in Cloud Shell Editor.</li>
-<li>Install your package using the pip install command.</li>
+<li>Now, when you run your Python module, you&#39;ll see your code execute.</li>
 </ol>
-<pre>pip install -e .
+<pre>python wiki.py
+</pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Setup a application requirements" duration="0">
+        <p>Your wiki depends on more than just the Python built-in modules. In a team environment, it&#39;s important to document which packages your application depends on so that your teammates can also run the code.</p>
+<p>By convention, Python developers create a file named &#34;requirements.txt&#34; containing the package names and versions of all the necessary packages to run your application.</p>
+<aside class="warning"><p> One student (different from the previous) should complete these steps. Share your screen as you do so!</p>
+</aside>
+<ol type="1">
+<li>Create a file called <code>requirements.txt</code> to indicate which packages your code depends on. <img alt="f98e639fa0aa64cd.png" style="width: 526.00px" src="img/f98e639fa0aa64cd.png"></li>
+<li>Your wiki depends on Flask and pytest. Add these to the requirements.txt file you just created.</li>
+</ol>
+<pre>Flask==1.1.2
+pytest==6.2.3
 </pre>
 <ol type="1">
-<li>Now, when you import your package in a Python script, you&#39;ll see your code execute. Try it out with the &#34;-c&#34; option to Python.</li>
+<li>Install these packages with the pip install command from the Terminal panel.</li>
 </ol>
-<pre>python -c &#39;import techxwiki&#39;
+<pre>pip install -r requirements.txt
+</pre>
+<p>Since you&#39;ve already installed the necessary packages in the  <a href="https://google-techx.github.io/software-development-studio/01a-cloud-shell/?index=/software-development-studio/#0" target="_blank">Using Python with Cloud Shell codelab</a>, you should see &#34;Requirement already satisfied&#34;.</p>
+<h2 is-upgraded>Push your changes to GitLab</h2>
+<p>Commit your changes and push them to GitLab so that your teammates can benefit from your work.</p>
+<ol type="1">
+<li>Add all the changes you&#39;ve made to the Git staging area.</li>
+</ol>
+<pre>git add .
+</pre>
+<p>The &#34;.&#34; says to add all files Git finds in the current directory or sub-directories.</p>
+<ol type="1">
+<li>See which files have been staged.</li>
+</ol>
+<pre>git status
+</pre>
+<p>You should see the following output:</p>
+<pre>Changes to be committed:
+  (use &#34;git rm --cached &lt;file&gt;...&#34; to unstage)
+
+        new file:   requirements.txt
+</pre>
+<ol type="1">
+<li>Commit your changes.</li>
+</ol>
+<pre>git commit -m &#39;add list of app dependencies&#39;
+</pre>
+<ol type="1">
+<li>Push your changes to GitLab.</li>
+</ol>
+<pre>git push origin main
+</pre>
+<h2 is-upgraded>Verify that the requirements.txt file has been uploaded</h2>
+<aside class="special"><p> All students should complete these steps.</p>
+</aside>
+<p>Download the code that your teammate just pushed and merge it with your local copy.</p>
+<ol type="1">
+<li>Download the code.</li>
+</ol>
+<pre>git fetch origin main
+</pre>
+<ol type="1">
+<li>Merge it into your local copy.</li>
+</ol>
+<pre>git merge origin/main
+</pre>
+<ol type="1">
+<li>Open the &#34;Terminal&#34; in Cloud Shell Editor.</li>
+<li>Install the necessary packages.</li>
+</ol>
+<pre>pip install -r requirements.txt
+</pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Create a test file" duration="0">
+        <p>It&#39;s good software engineering practice to have tests. Create a test file for your code.</p>
+<aside class="warning"><p> One student (different from the previous) should complete these steps. Share your screen as you do so!</p>
+</aside>
+<ol type="1">
+<li>Create a file named &#34;wiki_test.py&#34;. <img alt="7728f9c22446c5ab.png" style="width: 526.00px" src="img/7728f9c22446c5ab.png"></li>
+<li>Add a test that checks that you can import the &#34;wiki.py&#34; file from test code.</li>
+</ol>
+<pre>import wiki
+
+
+def test_import():
+    assert wiki is not None
+</pre>
+<ol type="1">
+<li>In a Terminal panel, run this test with the pytest command.</li>
+</ol>
+<pre>pytest wiki_test.py
+</pre>
+<p>You should see that 1 test has passed.</p>
+<h2 is-upgraded>Push your changes to GitLab</h2>
+<p>Commit your changes and push them to GitLab so that your teammates can benefit from your work.</p>
+<ol type="1">
+<li>Add all the changes you&#39;ve made to the Git staging area.</li>
+</ol>
+<pre>git add .
+</pre>
+<p>The &#34;.&#34; says to add all files Git finds in the current directory or sub-directories.</p>
+<ol type="1">
+<li>See which files have been staged.</li>
+</ol>
+<pre>git status
+</pre>
+<p>You should see the following output:</p>
+<pre>Changes to be committed:
+  (use &#34;git rm --cached &lt;file&gt;...&#34; to unstage)
+
+        new file:   wiki_test.py
+</pre>
+<ol type="1">
+<li>Commit your changes.</li>
+</ol>
+<pre>git commit -m &#39;add list of app dependencies&#39;
+</pre>
+<ol type="1">
+<li>Push your changes to GitLab.</li>
+</ol>
+<pre>git push origin main
+</pre>
+<h2 is-upgraded>Verify that the test file has been uploaded</h2>
+<aside class="special"><p> All students should complete these steps.</p>
+</aside>
+<p>Download the code that your teammate just pushed and merge it with your local copy.</p>
+<ol type="1">
+<li>Download the code.</li>
+</ol>
+<pre>git fetch origin main
+</pre>
+<ol type="1">
+<li>Merge it into your local copy.</li>
+</ol>
+<pre>git merge origin/main
+</pre>
+<ol type="1">
+<li>Open the &#34;Terminal&#34; in Cloud Shell Editor.</li>
+<li>Run the test file.</li>
+</ol>
+<pre>pytest wiki_test.py
 </pre>
 
 
@@ -232,7 +285,7 @@ setup(
 <aside class="warning"><p> One student (different from the previous) should complete these steps. Share your screen as you do so!</p>
 </aside>
 <ol type="1">
-<li>Modify the <code>techxwiki/__init__.py</code> file to create a Flask server.</li>
+<li>Replace the text in the <code>wiki.py</code> file with the code to create a Flask server.</li>
 </ol>
 <pre>from flask import Flask
 
@@ -243,9 +296,9 @@ def main():
     return &#34;Hello, World!\n&#34;
 </pre>
 <ol type="1">
-<li>In a Terminal panel, run the Flask server.</li>
+<li>In a Terminal panel, run the Flask server with these three commands.</li>
 </ol>
-<pre>export FLASK_APP=techxwiki
+<pre>export FLASK_APP=wiki
 export FLASK_ENV=development
 flask run -p 8080
 </pre>
@@ -259,17 +312,84 @@ flask run -p 8080
 <ol type="1">
 <li>In the first Terminal panel, press the &#34;Ctrl + C&#34; shortcut to stop Flask from running. (Note: Control also on macOS, not ⌘)</li>
 </ol>
-<h2 is-upgraded>Script to run Flask</h2>
-<p>Since it can be hard to remember the three commands to start the Flask server, create a script with these commands.</p>
+<h2 is-upgraded>Push your changes to GitLab</h2>
+<p>Commit your changes and push them to GitLab so that your teammates can benefit from your work.</p>
 <ol type="1">
-<li>Create a new file named run-flask.sh in the root directory of the repository. <img alt="b133958e14ffb3ae.png" style="width: 624.00px" src="img/b133958e14ffb3ae.png"></li>
+<li>Add all the changes you&#39;ve made to the Git staging area.</li>
+</ol>
+<pre>git add .
+</pre>
+<p>The &#34;.&#34; says to add all files Git finds in the current directory or sub-directories.</p>
+<ol type="1">
+<li>See which files have been staged.</li>
+</ol>
+<pre>git status
+</pre>
+<p>You should see the following output:</p>
+<pre>Changes to be committed:
+  (use &#34;git rm --cached &lt;file&gt;...&#34; to unstage)
+
+        modified:   wiki.py
+</pre>
+<ol type="1">
+<li>Commit your changes.</li>
+</ol>
+<pre>git commit -m &#39;create Hello World Flask application&#39;
+</pre>
+<ol type="1">
+<li>Push your changes to GitLab.</li>
+</ol>
+<pre>git push origin main
+</pre>
+<h2 is-upgraded>Verify that the application has been uploaded</h2>
+<aside class="special"><p> All students should complete these steps.</p>
+</aside>
+<p>Download the code that your teammate just pushed and merge it with your local copy.</p>
+<ol type="1">
+<li>Download the code.</li>
+</ol>
+<pre>git fetch origin main
+</pre>
+<ol type="1">
+<li>Merge it into your local copy.</li>
+</ol>
+<pre>git merge origin/main
+</pre>
+<ol type="1">
+<li>Open the &#34;Terminal&#34; in Cloud Shell Editor.</li>
+<li>In the Terminal panel, run the Flask server with these three commands.</li>
+</ol>
+<pre>export FLASK_APP=wiki
+export FLASK_ENV=development
+flask run -p 8080
+</pre>
+<ol type="1">
+<li>Open a second Terminal panel (keeping the first one open).</li>
+<li>In the second Terminal panel, use cURL to test your local web server.</li>
+</ol>
+<pre>curl localhost:8080
+</pre>
+<p>You should see &#34;Hello, World!&#34; printed.</p>
+<ol type="1">
+<li>In the first Terminal panel, press the &#34;Ctrl + C&#34; shortcut to stop Flask from running. (Note: Control also on macOS, not ⌘)</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Create a script to run Flask" duration="0">
+        <p>Since it can be hard to remember the three commands to start the Flask server, create a script with these commands.</p>
+<aside class="warning"><p> One student (different from the previous) should complete these steps. Share your screen as you do so!</p>
+</aside>
+<ol type="1">
+<li>Create a new file named <code>run-flask.sh</code> in the root directory of the repository. <img alt="8c964170b9d9100e.png" style="width: 526.00px" src="img/8c964170b9d9100e.png"></li>
 <li>Add the three commands, as well as a &#34;shebang&#34; that indicates this file is a script.  <pre><code>#!/usr/bin/env bash
-export FLASK_APP=techxwiki
+export FLASK_APP=wiki
 export FLASK_ENV=development
 flask run -p 8080
 </code></pre>
 </li>
-<li>In the Terminal panel, make the script &#34;executable&#34; with the chmod command.</li>
+<li>In the Terminal panel, make the script &#34;executable&#34; by running the <code>chmod</code> command.</li>
 </ol>
 <pre>chmod +x run-flask.sh
 </pre>
@@ -305,12 +425,11 @@ flask run -p 8080
   (use &#34;git reset HEAD &lt;file&gt;...&#34; to unstage)
 
         new file:   run-flask.sh
-        modified:   techxwiki/__init__.py
 </pre>
 <ol type="1">
 <li>Commit your changes.</li>
 </ol>
-<pre>git commit -m &#39;add Flask server&#39;
+<pre>git commit -m &#39;add command to run Flask server&#39;
 </pre>
 <ol type="1">
 <li>Push your changes to GitLab.</li>
@@ -346,135 +465,29 @@ flask run -p 8080
 
       </google-codelab-step>
     
-      <google-codelab-step label="Add a Blueprint to handle wiki pages" duration="0">
-        <p>Flask Blueprints allow an application to be split across multiple Python files. Create one which will be used for viewing your wiki pages.</p>
-<aside class="warning"><p> One student (different from the previous) should complete these steps. Share your screen as you do so!</p>
-</aside>
-<ol type="1">
-<li>Create a &#34;viewer.py&#34; file in the &#34;techxwiki&#34; directory. <img alt="e35412a92e843d50.png" style="width: 508.00px" src="img/e35412a92e843d50.png"></li>
-<li>Edit &#34;viewer.py&#34; and create the Flask Blueprint.</li>
-</ol>
-<pre>from flask import Blueprint
-
-bp = Blueprint(&#34;viewer&#34;, __name__, url_prefix=&#34;/view&#34;)
-
-@bp.route(&#34;/&#34;)
-def main():
-    return &#34;Hello, Blueprint!\n&#34;
-</pre>
-<p>The &#34;<code>url_prefix</code>&#34; parameter tells Flask that this Blueprint should be used for URLs starting with &#34;/view&#34;.</p>
-<ol type="1">
-<li>Edit &#34;<strong>init</strong>.py&#34; and register the Blueprint you just created.</li>
-</ol>
-<pre>from flask import Flask
-
-from . import viewer  # Add this line
-
-app = Flask(__name__)
-app.register_blueprint(viewer.bp)  # Add this line
-
-@app.route(&#34;/&#34;)
-def main():
-    return &#34;Hello, World!\n&#34;
-</pre>
-<ol type="1">
-<li>In the Terminal pane, run the Flask server.</li>
-</ol>
-<pre>./run-flask.sh
-</pre>
-<ol type="1">
-<li>In a second Terminal pane, make a request to your new Blueprint with cURL.</li>
-</ol>
-<pre>curl localhost:8080/view/
-</pre>
-<p>Alternatively, open the web preview and navigate to the &#34;/view/&#34; page. You may have to delete &#34;?authuser=0&#34; from the URL.</p>
-<ol type="1">
-<li>Verify that you see &#34;Hello, Blueprint!&#34; printed.</li>
-<li>In the first Terminal pane, press &#34;Ctrl + C&#34; to stop the Flask server.</li>
-</ol>
-<h2 is-upgraded>Push your changes to GitLab</h2>
-<p>If you successfully saw &#34;Hello, Blueprint!&#34; printed in the previous step, commit your changes and push them to GitLab.</p>
-<ol type="1">
-<li>Add all the changes you&#39;ve made to the Git staging area.</li>
-</ol>
-<pre>git add .
-</pre>
-<p>The &#34;.&#34; says to add all files Git finds in the current directory or sub-directories.</p>
-<ol type="1">
-<li>See which files have been staged.</li>
-</ol>
-<pre>git status
-</pre>
-<p>You should see the following output:</p>
-<pre>Changes to be committed:
-  (use &#34;git reset HEAD &lt;file&gt;...&#34; to unstage)
-
-        modified:   techxwiki/__init__.py
-        new file:   techxwiki/viewer.py
-</pre>
-<ol type="1">
-<li>Commit your changes.</li>
-</ol>
-<pre>git commit -m &#39;add Flask Blueprint&#39;
-</pre>
-<ol type="1">
-<li>Push your changes to GitLab.</li>
-</ol>
-<pre>git push origin main
-</pre>
-<p>Verify that the Flask Blueprint has been uploaded</p>
-<aside class="special"><p> All students should complete these steps.</p>
-</aside>
-<p>Download the code that your teammate just pushed and merge it with your local copy.</p>
-<ol type="1">
-<li>Download the code.</li>
-</ol>
-<pre>git fetch origin main
-</pre>
-<ol type="1">
-<li>Merge it into your local copy.</li>
-</ol>
-<pre>git merge origin/main
-</pre>
-<ol type="1">
-<li>Open the &#34;Terminal&#34; in Cloud Shell Editor.</li>
-<li>Run the Flask server.</li>
-</ol>
-<pre>./run-flask.sh
-</pre>
-<ol type="1">
-<li>In a second Terminal pane, make a request to your new Blueprint with cURL.</li>
-</ol>
-<pre>curl localhost:8080/view/
-</pre>
-<ol type="1">
-<li>Verify that you see &#34;Hello, Blueprint!&#34; printed.</li>
-<li>In the first Terminal pane, press &#34;Ctrl + C&#34; to stop the Flask server.</li>
-</ol>
-
-
-      </google-codelab-step>
-    
-      <google-codelab-step label="Add tests" duration="0">
-        <p>It&#39;s important to add automated tests to ensure that your project continues to work as expected after making code changes. This is especially important when there are multiple contributors to the project.</p>
+      <google-codelab-step label="Add tests for Flask homepage" duration="0">
+        <p>It&#39;s important to add automated tests for all application code to ensure that your project continues to work as expected after making code changes. This is especially important when there are multiple contributors to the project.</p>
 <p>Add tests to check that the Flask application is working properly.</p>
 <aside class="warning"><p> One student (different from the previous) should complete these steps. Share your screen as you do so!</p>
 </aside>
 <ol type="1">
-<li>Create a directory called &#34;tests&#34;. <img alt="913631983108c21.png" style="width: 506.00px" src="img/913631983108c21.png"></li>
-<li>Create a file called &#34;test_techxwiki.py&#34; in the tests directory. <img alt="74f25f7defd6d332.png" style="width: 558.00px" src="img/74f25f7defd6d332.png"></li>
-<li>Edit the &#34;test_techxwiki.py&#34; file and add a test that checks for &#34;Hello, World!&#34; in the home page.</li>
+<li>Edit the &#34;wiki_test.py&#34; file and add a test that checks for &#34;Hello, World!&#34; in the home page.</li>
 </ol>
 <pre>import pytest
 
-import techxwiki
+import wiki
+
 
 @pytest.fixture
 def client():
-    techxwiki.app.config[&#34;TESTING&#34;] = True
+    wiki.app.config[&#34;TESTING&#34;] = True
 
-    with techxwiki.app.test_client() as client:
+    with wiki.app.test_client() as client:
         yield client
+
+
+def test_import():
+    assert wiki is not None
 
 
 def test_homepage(client):
@@ -487,10 +500,10 @@ def test_homepage(client):
 <ol type="1">
 <li>From a Terminal panel, run the test with the pytest command.</li>
 </ol>
-<pre>pytest tests
+<pre>pytest .
 </pre>
 <ol type="1">
-<li>Verify that the test has passed.</li>
+<li>Verify that the tests have passed.</li>
 </ol>
 <h2 is-upgraded>Push your changes to GitLab</h2>
 <p>If the test passed in the previous step, commit your changes and push them to GitLab.</p>
@@ -508,7 +521,7 @@ def test_homepage(client):
 <pre>Changes to be committed:
   (use &#34;git reset HEAD &lt;file&gt;...&#34; to unstage)
 
-        new file:   tests/test_techxwiki.py
+        modified:   wiki_test.py
 </pre>
 <ol type="1">
 <li>Commit your changes.</li>
@@ -538,7 +551,7 @@ def test_homepage(client):
 <li>Open the &#34;Terminal&#34; in Cloud Shell Editor.</li>
 <li>Run the test with the pytest command.</li>
 </ol>
-<pre>pytest tests
+<pre>pytest .
 </pre>
 <ol type="1">
 <li>Verify that the test has passed.</li>
