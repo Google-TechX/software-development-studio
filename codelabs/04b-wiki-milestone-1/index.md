@@ -39,9 +39,9 @@ This is expected to be completed as a group.
 
 
 
-[Flask routes](https://flask.palletsprojects.com/en/1.1.x/api/#url-route-registrations) requests to the correct function based on a set of rules. You have already defined some these rules with the `@app.route("/")` and `@bp.route("/")` decorators in your Flask app and blueprint, respectively.
+[Flask routes](https://flask.palletsprojects.com/en/1.1.x/api/#url-route-registrations) requests to the correct function based on a set of rules. You have already defined a rule with the `@app.route("/")` decorator in your Flask app.
 
-An important feature of Flask routes are variable parts. These are defined with angular brackets (`<variable_name>`) and match any string without a slash (`/`). You'll need to add an additional route to your view blueprint that contains a variable part for the page name.
+An important feature of Flask routes are variable parts. These are defined with angular brackets (`<variable_name>`) and match any string without a slash (`/`). You'll need to add a function and a route that contains a variable part for the page name.
 
 
 ## Requirements
@@ -52,16 +52,19 @@ An important feature of Flask routes are variable parts. These are defined with 
 
 #### 1 - Requests to localhost:8080/view/ return text from a file named FrontPage.txt
 
-* FrontPage.txt is located in a "pages" directory.
-* Rather than always returning "Hello, Blueprint!", read the file and return a response based on that.
+* FrontPage.txt is located in a "pages" directory (i.e. at "`pages/FrontPage.txt`").
+* Rather than always returning "Hello, World!", read the file and return a response containing the text file contents.
 * Bonus: The text is treated as HTML by the browser, which collapses any whitespace. This is OK for this milestone. If you'd like, figure out a way to have the output render as plain text.
+* Bonus: Instead of returning the text directly, can you re-use the code from requirement #2? Hint: the  [flask.redirect](https://flask.palletsprojects.com/en/1.1.x/api/?highlight=redirect#flask.redirect) function may be useful.
 
 #### 2 - Requests to localhost:8080/view/PageName return text from a file named PageName.txt
 
-* Hint: Use the variable parts feature in  [Flask routing](https://flask.palletsprojects.com/en/1.1.x/api/#url-route-registrations) to extract PageName from the request path.
-* Bonus: Perhaps code can be shared between this requirement implementation and requirement (1)?
+* PageName.txt is located in a "pages" directory (i.e. at "`pages/PageName.txt`").
+* Hint: Use the variable parts feature in  [Flask routing](https://flask.palletsprojects.com/en/1.1.x/api/#url-route-registrations) to extract PageName from the request path. You'll need to add an argument to the request handler function you create for this.
 
 ### Tests
+
+For each of these requirements, use the "`client`" pytest fixture that you created in the  [Wiki Flask setup codelab](https://google-techx.github.io/software-development-studio/04a-wiki-flask/?index=/software-development-studio/#0).
 
 #### 3 - Test that some expected file contents are present in a response to /view/
 
@@ -74,6 +77,8 @@ An important feature of Flask routes are variable parts. These are defined with 
 ## Grading rubric
 
 
+
+Remember: to receive a grade, you must submit a peer feedback form indicating which work you did and which was done by your teammates. Non-coding tasks such as help debugging also counts towards participation.
 
 * 50% - Requirement (1) -- /view/
 * 30% - Requirement (2) -- /view/PageName

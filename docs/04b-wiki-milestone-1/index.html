@@ -51,8 +51,8 @@
       </google-codelab-step>
     
       <google-codelab-step label="Getting started" duration="0">
-        <p><a href="https://flask.palletsprojects.com/en/1.1.x/api/#url-route-registrations" target="_blank">Flask routes</a> requests to the correct function based on a set of rules. You have already defined some these rules with the <code>@app.route(&#34;/&#34;)</code> and <code>@bp.route(&#34;/&#34;)</code> decorators in your Flask app and blueprint, respectively.</p>
-<p>An important feature of Flask routes are variable parts. These are defined with angular brackets (<code>&lt;variable_name&gt;</code>) and match any string without a slash (<code>/</code>). You&#39;ll need to add an additional route to your view blueprint that contains a variable part for the page name.</p>
+        <p><a href="https://flask.palletsprojects.com/en/1.1.x/api/#url-route-registrations" target="_blank">Flask routes</a> requests to the correct function based on a set of rules. You have already defined a rule with the <code>@app.route(&#34;/&#34;)</code> decorator in your Flask app.</p>
+<p>An important feature of Flask routes are variable parts. These are defined with angular brackets (<code>&lt;variable_name&gt;</code>) and match any string without a slash (<code>/</code>). You&#39;ll need to add a function and a route that contains a variable part for the page name.</p>
 
 
       </google-codelab-step>
@@ -61,16 +61,18 @@
         <h2 is-upgraded>Functionality</h2>
 <h3 is-upgraded>1 - Requests to localhost:8080/view/ return text from a file named FrontPage.txt</h3>
 <ul>
-<li>FrontPage.txt is located in a &#34;pages&#34; directory.</li>
-<li>Rather than always returning &#34;Hello, Blueprint!&#34;, read the file and return a response based on that.</li>
+<li>FrontPage.txt is located in a &#34;pages&#34; directory (i.e. at &#34;<code>pages/FrontPage.txt</code>&#34;).</li>
+<li>Rather than always returning &#34;Hello, World!&#34;, read the file and return a response containing the text file contents.</li>
 <li>Bonus: The text is treated as HTML by the browser, which collapses any whitespace. This is OK for this milestone. If you&#39;d like, figure out a way to have the output render as plain text.</li>
+<li>Bonus: Instead of returning the text directly, can you re-use the code from requirement #2? Hint: the  <a href="https://flask.palletsprojects.com/en/1.1.x/api/?highlight=redirect#flask.redirect" target="_blank">flask.redirect</a> function may be useful.</li>
 </ul>
 <h3 is-upgraded>2 - Requests to localhost:8080/view/PageName return text from a file named PageName.txt</h3>
 <ul>
-<li>Hint: Use the variable parts feature in  <a href="https://flask.palletsprojects.com/en/1.1.x/api/#url-route-registrations" target="_blank">Flask routing</a> to extract PageName from the request path.</li>
-<li>Bonus: Perhaps code can be shared between this requirement implementation and requirement (1)?</li>
+<li>PageName.txt is located in a &#34;pages&#34; directory (i.e. at &#34;<code>pages/PageName.txt</code>&#34;).</li>
+<li>Hint: Use the variable parts feature in  <a href="https://flask.palletsprojects.com/en/1.1.x/api/#url-route-registrations" target="_blank">Flask routing</a> to extract PageName from the request path. You&#39;ll need to add an argument to the request handler function you create for this.</li>
 </ul>
 <h2 is-upgraded>Tests</h2>
+<p>For each of these requirements, use the &#34;<code>client</code>&#34; pytest fixture that you created in the  <a href="https://google-techx.github.io/software-development-studio/04a-wiki-flask/?index=/software-development-studio/#0" target="_blank">Wiki Flask setup codelab</a>.</p>
 <h3 is-upgraded>3 - Test that some expected file contents are present in a response to /view/</h3>
 <ul>
 <li>Hint: Make the &#34;pages&#34; directory path configurable (possibly by a global constant or environment variable) and create a test pages directory that can be relied on even if the real wiki pages get modified.</li>
@@ -82,7 +84,8 @@
       </google-codelab-step>
     
       <google-codelab-step label="Grading rubric" duration="0">
-        <ul>
+        <p>Remember: to receive a grade, you must submit a peer feedback form indicating which work you did and which was done by your teammates. Non-coding tasks such as help debugging also counts towards participation.</p>
+<ul>
 <li>50% - Requirement (1) – /view/</li>
 <li>30% - Requirement (2) – /view/PageName</li>
 <li>20% - All tests have been implemented and pass</li>
