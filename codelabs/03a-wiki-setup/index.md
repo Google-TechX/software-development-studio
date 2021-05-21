@@ -149,6 +149,9 @@ git fetch origin main
 git merge origin/main
 ```
 
+
+If conflicts arise, refer to the  [Handling Conflicts with Git codelab](https://google-techx.github.io/software-development-studio/01c-conflicts/?index=/software-development-studio/#4).
+
 3. Verify that you now have a ".gitignore" file with contents matching the file at  [https://github.com/github/gitignore/blob/master/Python.gitignore](https://github.com/github/gitignore/blob/master/Python.gitignore).
 
 In other tutorials, you may see instructions that request you run `git pull origin main`. This command combines a "fetch" and "merge" in one step.
