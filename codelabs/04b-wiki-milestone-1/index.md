@@ -43,6 +43,32 @@ This is expected to be completed as a group.
 
 An important feature of Flask routes are variable parts. These are defined with angular brackets (`<variable_name>`) and match any string without a slash (`/`). You'll need to add a function and a route that contains a variable part for the page name.
 
+In addition to routes, you'll be using  [Flask templates](https://flask.palletsprojects.com/en/1.1.x/tutorial/templates/) in your wiki project. 
+
+1. Create a directory named `templates`.
+2. Create a file named `main.html` in the `templates` directory.
+3. Add the following  [jinja2](https://jinja.palletsprojects.com/en/2.11.x/templates/) code to `main.html`:
+
+```
+<!DOCTYPE html>
+<title>{{ page_name }}</title>
+<pre>{{ page_content }}</pre>
+```
+
+4. To use this template import the  [render_template](https://flask.palletsprojects.com/en/1.1.x/api/#flask.render_template) function with, `from flask import render_template` at the to of your `wiki.py` module.
+5. Return the rendered template by calling the rendered template function in your request handler function(s).
+
+```console
+@app.route(...)
+def handle_request(...):
+    # TODO: load the desired page content
+    return render_template(
+        "main",
+        page_name=...,
+        page_content=...,
+    )
+```
+
 
 ## Requirements
 

@@ -53,6 +53,27 @@
       <google-codelab-step label="Getting started" duration="0">
         <p><a href="https://flask.palletsprojects.com/en/1.1.x/api/#url-route-registrations" target="_blank">Flask routes</a> requests to the correct function based on a set of rules. You have already defined a rule with the <code>@app.route(&#34;/&#34;)</code> decorator in your Flask app.</p>
 <p>An important feature of Flask routes are variable parts. These are defined with angular brackets (<code>&lt;variable_name&gt;</code>) and match any string without a slash (<code>/</code>). You&#39;ll need to add a function and a route that contains a variable part for the page name.</p>
+<p>In addition to routes, you&#39;ll be using  <a href="https://flask.palletsprojects.com/en/1.1.x/tutorial/templates/" target="_blank">Flask templates</a> in your wiki project.</p>
+<ol type="1">
+<li>Create a directory named <code>templates</code>.</li>
+<li>Create a file named <code>main.html</code> in the <code>templates</code> directory.</li>
+<li>Add the following  <a href="https://jinja.palletsprojects.com/en/2.11.x/templates/" target="_blank">jinja2</a> code to <code>main.html</code>:  <pre><code>&lt;!DOCTYPE html&gt;
+&lt;title&gt;&#123;&#123; page_name }}&lt;/title&gt;
+&lt;pre&gt;&#123;&#123; page_content }}&lt;/pre&gt;
+</code></pre>
+</li>
+<li>To use this template import the  <a href="https://flask.palletsprojects.com/en/1.1.x/api/#flask.render_template" target="_blank">render_template</a> function with, <code>from flask import render_template</code> at the to of your <code>wiki.py</code> module.</li>
+<li>Return the rendered template by calling the rendered template function in your request handler function(s).</li>
+</ol>
+<pre>@app.route(...)
+def handle_request(...):
+    # TODO: load the desired page content
+    return render_template(
+        &#34;main&#34;,
+        page_name=...,
+        page_content=...,
+    )
+</pre>
 
 
       </google-codelab-step>
