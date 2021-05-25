@@ -74,7 +74,6 @@
 <p>Motivation</p>
 <p>Goals</p>
 <p>Non-goals</p>
-<p>Glossary</p>
 <p>Functional Requirements</p>
 <p>Non-functional Requirements</p>
 <p>Use Cases</p>
@@ -86,13 +85,113 @@
 
       </google-codelab-step>
     
-      <google-codelab-step label="Setup your development environment" duration="0">
-        
+      <google-codelab-step label="Wiki Vision and Goals" duration="0">
+        <h2 is-upgraded>Vision</h2>
+<p>In 1 or 2 sentences, describe the overall goal for your team&#39;s wiki. For example, Wikipedia&#39;s vision is &#34;‘To create and distribute a free encyclopedia of the highest possible quality to every single person on the planet in their own language.&#34; ( <a href="https://en.wikipedia.org/wiki/Wikipedia:Prime_objective" target="_blank">source</a>)</p>
+<p>We suggest a more narrow topic than &#34;encyclopedia&#34; and a more narrow audience than &#34;every single person on the planet&#34; for this exercise. :-)</p>
+<h2 is-upgraded>Motivation</h2>
+<p>Describe the problem your wiki is trying to solve. For example, what is currently difficult to find, create, or navigate that your project could improve on.</p>
+<p>For example consider Wikipedia&#39;s motivation. It was extremely slow to contribute to Nupedia (a free online encyclopedia) ( <a href="https://en.wikipedia.org/wiki/History_of_Wikipedia#Formulation_of_the_concept" target="_blank">source</a>). Only a few articles were published per year, despite having many interested authors. A single full-time editor could not keep up.</p>
+<h2 is-upgraded>Goals</h2>
+<p>How will you know that your project is successful? Write goals for your project based on the problem(s) you described in the previous sections.</p>
+<p>For example, here are some goals for Wikipedia (based loosely on the  <a href="https://en.wikipedia.org/wiki/Wikipedia:Five_pillars" target="_blank">Wikipedia pillars</a>):</p>
+<ul>
+<li>Wikipedia is an encyclopedia, containing comprehensive, notable, verifiable knowledge.</li>
+<li>Anyone can edit Wikipedia and see their contributions published quickly.</li>
+<li>Wikipedia is free content that anyone can use and distribute.</li>
+</ul>
+<h2 is-upgraded>Non-goals</h2>
+<p>What are some things your project might be used for that are not intended? This section can help determine which features you might <em>not</em> need to build. It can also help identify areas where features may need to be built to discourage certain behavior.</p>
+<p>For example, here are some non-goals for Wikipedia (based loosely on the  <a href="https://en.wikipedia.org/wiki/Wikipedia:What_Wikipedia_is_not" target="_blank">Wikipedia is not</a> article):</p>
+<ul>
+<li>A Wikipedia article should not be a complete exposition of all possible details.</li>
+<li>Wikipedia is not a dictionary, or a usage or jargon guide.</li>
+<li>Wikipedia is not a place to publish your own thoughts and analyses or to publish new information.</li>
+<li>Wikipedia is not a soapbox, a battleground, or a vehicle for propaganda, advertising and showcasing.</li>
+<li>Wikipedia is not a social networking service like Facebook or Twitter.</li>
+</ul>
+
 
       </google-codelab-step>
     
-      <google-codelab-step label="Upload PDF" duration="0">
-        
+      <google-codelab-step label="Requirements" duration="0">
+        <p>Set requirements for your wiki project. In each of these sections, number the requirements for ease of reference.</p>
+<h2 is-upgraded>Functional Requirements</h2>
+<p>What should the system do? What features are necessary to solve the problem?</p>
+<p>This section should include at least the following:</p>
+<ol type="1">
+<li>View pages – Once a page has been created, a read-only view is available to read.</li>
+</ol>
+<p>You should add sub-requirements (1a, 1b, ...) describing necessary features of a page. For example, &#34;1a. Pages can link to other pages in the wiki by page name&#34;</p>
+<ol type="1">
+<li>Edit pages – A user can edit any page.</li>
+</ol>
+<p>You should sub-requirements (2a, 2b, ...) describing necessary features of editing. For example, how should users find the edit interface for a given page?</p>
+<ol type="1">
+<li>Page history – It&#39;s possible to view a summary of all changes to a given page.</li>
+</ol>
+<p>You should add sub-requirements (3a, 3b, ...). For example:</p>
+<p>3a. Page history must include the name of the person who made the edit.</p>
+<p>3b. Page history must include a description of the change.</p>
+<p>3c. Page history must include the date and time of the change.</p>
+<h2 is-upgraded>Non-functional Requirements</h2>
+<p>Add and describe relevant non-functional requirements. Non-functional requirements describe behaviors of the system that aren&#39;t user-facing features.</p>
+<p>An example of a non-functional requirement for your wiki is that &#34;It must be runnable from a Linux command-line environment.&#34;</p>
+<p>Pick a few of the examples from the  <a href="https://en.wikipedia.org/wiki/Non-functional_requirement" target="_blank">Non-functional requirement Wikipedia article</a> and describe how they might relate to your wiki.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Use Cases" duration="0">
+        <p>In this section, tell a story about one of your target users. What are they trying to do? What steps do the take to do it?</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Finishing up" duration="0">
+        <p>To turn in this assignment, share an exported PDF copy of your Product Requirements Document in your wiki project repository in GitLab.</p>
+<h2 is-upgraded>Download PDF</h2>
+<p>Download a PDF copy of your PRD document to your computer. Navigate to File -&gt; Download -&gt; PDF Document in the Google Docs menu.</p>
+<p class="image-container"><img alt="e67c08359651d159.png" style="width: 624.00px" src="img/e67c08359651d159.png"></p>
+<h2 is-upgraded>Open your development environment</h2>
+<ol type="1">
+<li>Click the pencil icon to open Cloud Shell Editor.</li>
+<li>Navigate to the File -&gt; Open menu button.</li>
+<li>Select the &#34;wiki&#34; directory which you created last week.</li>
+</ol>
+<h2 is-upgraded>Upload the PDF to Cloud Shell</h2>
+<ol type="1">
+<li>Navigate to the File -&gt; Upload Files... menu button.</li>
+<li>Select the PDF file from your computer that you downloaded from Google Docs.</li>
+</ol>
+<p>Note: Cloud Shell Editor may not be able to render the PDF. That&#39;s OK. You&#39;ll verify the file was correctly uploaded in a later step.</p>
+<ol type="1">
+<li>Make sure the file is in your &#34;wiki&#34; repository directory.</li>
+</ol>
+<h2 is-upgraded>Push to GitLab</h2>
+<ol type="1">
+<li>Add the PDF to the Git staging area. Change the path to the name of your PDF file.</li>
+</ol>
+<pre>git add wiki-prd.pdf
+</pre>
+<ol type="1">
+<li>Commit your changes.</li>
+</ol>
+<pre>git commit -m &#39;add wiki PRD&#39;
+</pre>
+<ol type="1">
+<li>Push your changes to GitLab.</li>
+</ol>
+<pre>git push origin main
+</pre>
+<h2 is-upgraded>Verify that the PDF has been uploaded</h2>
+<ol type="1">
+<li>Navigate to your project group on the  <a href="https://techx-gitlab.640k.net/" target="_blank">TechX GitLab instance</a>.</li>
+<li>Open your wiki repository.</li>
+<li>Click the PRD PDF file.</li>
+<li>Verify that you can see the PDF contents in the GitLab interface.</li>
+</ol>
+
 
       </google-codelab-step>
     
