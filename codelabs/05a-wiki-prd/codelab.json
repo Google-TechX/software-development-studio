@@ -1,0 +1,18 @@
+{
+  "environment": "web",
+  "format": "md",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2021-05-25T17:37:20Z",
+  "id": "05a-wiki-prd",
+  "duration": 0,
+  "title": "Wiki Product Requirements Document (PRD)",
+  "authors": "Tim Swast",
+  "summary": "Describe the requirements and user stories for your wiki project.",
+  "source": "1HBkS5tIfGLJP-HJylU0MOjXOFkFtZc98IRdxwIFxxJ8",
+  "theme": "",
+  "status": null,
+  "category": null,
+  "tags": [],
+  "url": "05a-wiki-prd"
+}

@@ -1,0 +1,120 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Wiki Formatting Implementation (Milestone 3)</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="05c-wiki-milestone-3"
+                  title="Wiki Formatting Implementation (Milestone 3)"
+                  environment="web"
+                  feedback-link="">
+    
+      <google-codelab-step label="Overview" duration="0">
+        <p>For this milestone, you will implement your design you described in Milestone 2.</p>
+<p>This is expected to be completed as a group.</p>
+<h2 is-upgraded>Prerequisites</h2>
+<ul>
+<li>Wiki Milestone 1</li>
+<li>Wiki Milestone 2</li>
+</ul>
+<h2 is-upgraded>What you&#39;ll need</h2>
+<ul>
+<li>GitLab Account</li>
+<li>Web browser (Google Chrome recommended)</li>
+</ul>
+<h2 class="checklist" is-upgraded>What you&#39;ll learn</h2>
+<ul>
+<li>Practical software development skills developing a larger feature</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Implement your formatting language" duration="0">
+        <p>Implement your formatting language. If you require new dependencies, be sure to update <code>requirements.txt</code> in your repo.</p>
+<p>Ideally, you should end up with a function which takes raw page source source and returns HTML. You can differ from this API if you wish.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Test your formatting language" duration="0">
+        <p>Write a test or tests which calls your formatting function. This should exercise the following features of the language:</p>
+<ul>
+<li>Headers</li>
+<li>Multiple paragraphs</li>
+<li>Page links</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Integrate your formatting function" duration="0">
+        <p>Update your view page flask route to call the formatting function.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Update Milestone 1 Tests" duration="0">
+        <p>Within high probability, your Milestone 1 tests will now be failing as your formatting language is producing different results than your Milestone 1 tests would have expected. Update these tests so they are passing again.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Requirements" duration="0">
+        <h2 is-upgraded>Code</h2>
+<h3 is-upgraded>1 - Implement the formatting language described in your design document</h3>
+<ul>
+<li>Your language, at minimum, must offer the following features:</li>
+<li>Headers</li>
+<li>Paragraphs</li>
+<li>Links to other pages</li>
+<li>You are allowed to differ from your original design doc, but if you do, please update your design document PDF in your repo to reflect the changes.</li>
+</ul>
+<h2 is-upgraded>Tests</h2>
+<h3 is-upgraded>2 - New test(s) created for formatting functionality</h3>
+<p>At least one new test created which tests formatting function.</p>
+<h3 is-upgraded>3 - Existing tests updated for changes</h3>
+<p>All existing tests still passing.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Grading rubric" duration="0">
+        <p>Remember: to receive a grade, you must submit a peer feedback form indicating which work you did and which was done by your teammates. This will be sent to you shortly after the due date.</p>
+<ul>
+<li>50% Implementation (Requirement 1)</li>
+<li>40% Test(s) (Requirement 2)</li>
+<li>10% All existing tests still passing (Requirement 3)</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>

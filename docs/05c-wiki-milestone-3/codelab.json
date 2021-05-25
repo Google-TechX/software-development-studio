@@ -1,0 +1,18 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2021-05-25T11:46:26-06:00",
+  "id": "05c-wiki-milestone-3",
+  "duration": 0,
+  "title": "Wiki Formatting Implementation (Milestone 3)",
+  "authors": "Jack Rosenthal",
+  "summary": "Create a design doc for a formatting implementation in your wiki.",
+  "source": "codelabs/05c-wiki-milestone-3/index.md",
+  "theme": "",
+  "status": null,
+  "category": null,
+  "tags": [],
+  "url": "05c-wiki-milestone-3"
+}
