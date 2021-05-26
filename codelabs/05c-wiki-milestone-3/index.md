@@ -2,6 +2,8 @@
 id: 05c-wiki-milestone-3
 summary: Create a design doc for a formatting implementation in your wiki.
 authors: Jack Rosenthal
+source: 1J-pc8Flz6206rYwyMd8hLPM-FWgxJ4LkWr8AgOW8XqI
+duration: 0
 
 ---
 

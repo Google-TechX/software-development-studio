@@ -2,6 +2,8 @@
 id: 04a-wiki-flask
 summary: Create and run a "hello world" Flask application as the foundation for your wiki.
 authors: Tim Swast
+source: 1pEDo5ZeTfRH5N1TsmQ27Ao5n1ctCYFPXln1CplgQ650
+duration: 0
 
 ---
 
@@ -44,12 +46,13 @@ In this codelab, you'll create and run a "hello world" Flask application. You'll
 In this codelab, you'll be working with your project groups on your wiki implementation. Open the source code for the wiki in Cloud Shell Editor.
 
 > aside positive
+> 
 > All students should complete these steps.
 
 ### Open the repository in Cloud Shell Editor
 
 1. Click the pencil icon to open Cloud Shell Editor.
-2. Navigate to the File -> Open menu button.
+2. Navigate to the File -&gt; Open menu button.
 3. Select the "wiki" directory which you created last week.
 
 
@@ -60,6 +63,7 @@ In this codelab, you'll be working with your project groups on your wiki impleme
 Next, add the "boilerplate" files needed for a Flask web application.
 
 > aside negative
+> 
 > One student should complete these steps. Share your screen as you do so!
 
 ### Create Python files
@@ -125,6 +129,7 @@ git push origin main
 ### Verify that the package has been uploaded
 
 > aside positive
+> 
 > All students should complete these steps.
 
 Download the code that your teammate just pushed and merge it with your local copy.
@@ -160,6 +165,7 @@ Your wiki depends on more than just the Python built-in modules. In a team envir
 By convention, Python developers create a file named "requirements.txt" containing the package names and versions of all the necessary packages to run your application.
 
 > aside negative
+> 
 > One student (different from the previous) should complete these steps. Share your screen as you do so!
 
 1. Create a file called `requirements.txt` to indicate which packages your code depends on.
@@ -225,6 +231,7 @@ git push origin main
 ### Verify that the requirements.txt file has been uploaded
 
 > aside positive
+> 
 > All students should complete these steps.
 
 Download the code that your teammate just pushed and merge it with your local copy.
@@ -256,6 +263,7 @@ pip install -r requirements.txt
 It's good software engineering practice to have tests. Create a test file for your code.
 
 > aside negative
+> 
 > One student (different from the previous) should complete these steps. Share your screen as you do so!
 
 1. Create a file named "wiki_test.py".
@@ -324,6 +332,7 @@ git push origin main
 ### Verify that the test file has been uploaded
 
 > aside positive
+> 
 > All students should complete these steps.
 
 Download the code that your teammate just pushed and merge it with your local copy.
@@ -355,6 +364,7 @@ pytest wiki_test.py
 Create a "Flask" application to be the web server for your wiki.
 
 > aside negative
+> 
 > One student (different from the previous) should complete these steps. Share your screen as you do so!
 
 1. Replace the text in the `wiki.py` file with the code to create a Flask server.
@@ -434,6 +444,7 @@ git push origin main
 ### Verify that the application has been uploaded
 
 > aside positive
+> 
 > All students should complete these steps.
 
 Download the code that your teammate just pushed and merge it with your local copy.
@@ -479,6 +490,7 @@ You should see "Hello, World!" printed.
 Since it can be hard to remember the three commands to start the Flask server, create a script with these commands.
 
 > aside negative
+> 
 > One student (different from the previous) should complete these steps. Share your screen as you do so!
 
 1. Create a new file named `run-flask.sh` in the root directory of the repository.
@@ -563,6 +575,7 @@ git push origin main
 ### Verify that the Flask server has been uploaded
 
 > aside positive
+> 
 > All students should complete these steps.
 
 Download the code that your teammate just pushed and merge it with your local copy.
@@ -600,6 +613,7 @@ It's important to add automated tests for all application code to ensure that yo
 Add tests to check that the Flask application is working properly.
 
 > aside negative
+> 
 > One student (different from the previous) should complete these steps. Share your screen as you do so!
 
 1. Edit the "wiki_test.py" file and add a test that checks for "Hello, World!" in the home page.
@@ -683,6 +697,7 @@ git push origin main
 ### Verify that the tests have been uploaded
 
 > aside positive
+> 
 > All students should complete these steps.
 
 Download the code that your teammate just pushed and merge it with your local copy.

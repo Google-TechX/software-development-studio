@@ -2,6 +2,8 @@
 id: 04b-wiki-milestone-1
 summary: Create the read-only implementation of your wiki.
 authors: Tim Swast
+source: 18-KHAEXE6zIYrMP1zgn0RkPwcP3n022MWuhIaAgbjtA
+duration: 0
 
 ---
 
@@ -41,7 +43,7 @@ This is expected to be completed as a group.
 
 [Flask routes](https://flask.palletsprojects.com/en/1.1.x/api/#url-route-registrations) requests to the correct function based on a set of rules. You have already defined a rule with the `@app.route("/")` decorator in your Flask app.
 
-An important feature of Flask routes are variable parts. These are defined with angular brackets (`<variable_name>`) and match any string without a slash (`/`). You'll need to add a function and a route that contains a variable part for the page name.
+An important feature of Flask routes are variable parts. These are defined with angular brackets (`&lt;variable_name&gt;`) and match any string without a slash (`/`). You'll need to add a function and a route that contains a variable part for the page name.
 
 In addition to routes, you'll be using  [Flask templates](https://flask.palletsprojects.com/en/1.1.x/tutorial/templates/) in your wiki project. 
 
@@ -104,7 +106,7 @@ For each of these requirements, use the "`client`" pytest fixture that you creat
 
 
 
-Remember: to receive a grade, you must submit a peer feedback form ( [docs.google.com/forms/d/e/1FAIpQLSfX6lQgZl_7xw5Ig8OowGU8njuC0g73LUuhgQduRb6PIkwWwg/viewform?usp=sf_link](https://docs.google.com/forms/d/e/1FAIpQLSfX6lQgZl_7xw5Ig8OowGU8njuC0g73LUuhgQduRb6PIkwWwg/viewform?usp=sf_link)) indicating which work you did and which was done by your teammates. Non-coding tasks such as help debugging also counts towards participation.
+Remember: to receive a grade, you must submit a peer feedback form ndicating which work you did and which was done by your teammates. Non-coding tasks such as help debugging also counts towards participation. This link will be generated and emailed to you after the due date.
 
 * 50% - Requirement (1) -- /view/
 * 30% - Requirement (2) -- /view/PageName

@@ -2,6 +2,8 @@
 id: 05a-wiki-prd
 summary: Describe the requirements and user stories for your wiki project.
 authors: Tim Swast
+source: 1HBkS5tIfGLJP-HJylU0MOjXOFkFtZc98IRdxwIFxxJ8
+duration: 0
 
 ---
 
@@ -165,19 +167,19 @@ To turn in this assignment, share an exported PDF copy of your Product Requireme
 
 ### Download PDF
 
-Download a PDF copy of your PRD document to your computer. Navigate to File -> Download -> PDF Document in the Google Docs menu.
+Download a PDF copy of your PRD document to your computer. Navigate to File -&gt; Download -&gt; PDF Document in the Google Docs menu.
 
 <img src="img/e67c08359651d159.png" alt="e67c08359651d159.png"  width="624.00" />
 
 ### Open your development environment
 
 1. Click the pencil icon to open Cloud Shell Editor.
-2. Navigate to the File -> Open menu button.
+2. Navigate to the File -&gt; Open menu button.
 3. Select the "wiki" directory which you created last week.
 
 ### Upload the PDF to Cloud Shell
 
-1. Navigate to the File -> Upload Files... menu button.
+1. Navigate to the File -&gt; Upload Files... menu button.
 2. Select the PDF file from your computer that you downloaded from Google Docs.
 
 Note: Cloud Shell Editor may not be able to render the PDF. That's OK. You'll verify the file was correctly uploaded in a later step.

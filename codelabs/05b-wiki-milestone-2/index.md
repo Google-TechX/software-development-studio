@@ -2,6 +2,8 @@
 id: 05b-wiki-milestone-2
 summary: Create a design doc for a formatting implementation in your wiki.
 authors: Jack Rosenthal
+source: 1z_S6590BWrBPIaqkb96S9mX1Ifblc0JL-FsSVcxheYo
+duration: 0
 
 ---
 
@@ -97,7 +99,7 @@ You must link at least one resource.
 
 
 
-To submit your document, press `File > Download > PDF` in Google Docs. Upload the PDF to your Cloud Console, and commit it as `FormattingDesignDoc.pdf` in your wiki repository. Push the commit to GitLab to submit.
+To submit your document, press `File &gt; Download &gt; PDF` in Google Docs. Upload the PDF to your Cloud Console, and commit it as `FormattingDesignDoc.pdf` in your wiki repository. Push the commit to GitLab to submit.
 
 
 ## Requirements
