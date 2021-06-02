@@ -89,7 +89,7 @@ flake8 .
 Try running it to see the issues it reports:
 
 ```console
-mypy .
+mypy pathfinder.py
 ```
 
 5. Open up `pathfinder.py` and work on correcting the annotation issues reported by `mypy`.
