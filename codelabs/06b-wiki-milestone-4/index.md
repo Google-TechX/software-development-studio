@@ -2,6 +2,8 @@
 id: 06b-wiki-milestone-4
 summary: Setup continuous integration on your wiki repository.
 authors: Tim Swast
+source: 1IC2_XaaSklTBX1XGbUEsebXAEIwrWrs0s_zqX8pMj78
+duration: 0
 
 ---
 

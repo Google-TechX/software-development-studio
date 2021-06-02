@@ -2,6 +2,8 @@
 id: 06a-software-verification
 summary: Use common software verification tools like linters and type checkers to fix issues in a Python program.
 authors: Jack Rosenthal
+source: 1pvf74NCNr5ySykfTzbLhxoRrArZvOSWYN5-tIZHY1LI
+duration: 0
 
 ---
 
@@ -151,6 +153,26 @@ def test_find_path_no_route():
 4. Let's look at line 74 (the first missing line). This line only gets coverage if we give cities which don't exist. Add a similar test case like the one above that makes sure we get a `KeyError`.
 5. Let's look at line 83 (the second missing line). This appears to be **unreachable code** (also called **"dead code"**), as the condition will never be satisfied (the heap property already guarantees this ordering). Let's remove this line and the condition which cannot be satisfied.
 6. Make sure tests pass and you have 100% coverage reported by pytest.
-7. Make sure flake
+7. Make sure flake8 still reports no warnings. If not, correct them.
+8. Make sure mypy still reports no warnings. If not, correct them.
+9. Commit and push your work to GitLab.
+
+
+## [Optional] Mapping your Home Town
+
+
+
+Have extra time? Create a map file with your home town and surrounding cities. You can use maps.google.com to find distances to the other cities. Run a few navigations and see how they work out.
+
+Commit and add your home town as `hometown.txt` for one extra credit point.
+
+
+## [Optional] Refactor unused parameter
+
+
+
+Have extra time?
+
+The `bidirectional` parameter to `find_shortest_path` is not used. Refactor this codebase to remove the parameter, including updating the main function and unit tests.
 
 

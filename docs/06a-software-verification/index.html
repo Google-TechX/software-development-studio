@@ -147,8 +147,24 @@ pathfinder.py      63      4    94%   74, 83, 93, 143
 <li>Let&#39;s look at line 74 (the first missing line). This line only gets coverage if we give cities which don&#39;t exist. Add a similar test case like the one above that makes sure we get a <code>KeyError</code>.</li>
 <li>Let&#39;s look at line 83 (the second missing line). This appears to be <strong>unreachable code</strong> (also called <strong>&#34;dead code&#34;</strong>), as the condition will never be satisfied (the heap property already guarantees this ordering). Let&#39;s remove this line and the condition which cannot be satisfied.</li>
 <li>Make sure tests pass and you have 100% coverage reported by pytest.</li>
-<li>Make sure flake</li>
+<li>Make sure flake8 still reports no warnings. If not, correct them.</li>
+<li>Make sure mypy still reports no warnings. If not, correct them.</li>
+<li>Commit and push your work to GitLab.</li>
 </ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="[Optional] Mapping your Home Town" duration="0">
+        <p>Have extra time? Create a map file with your home town and surrounding cities. You can use maps.google.com to find distances to the other cities. Run a few navigations and see how they work out.</p>
+<p>Commit and add your home town as <code>hometown.txt</code> for one extra credit point.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="[Optional] Refactor unused parameter" duration="0">
+        <p>Have extra time?</p>
+<p>The <code>bidirectional</code> parameter to <code>find_shortest_path</code> is not used. Refactor this codebase to remove the parameter, including updating the main function and unit tests.</p>
 
 
       </google-codelab-step>
