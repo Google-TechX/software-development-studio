@@ -1,0 +1,18 @@
+{
+  "environment": "web",
+  "format": "md",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2021-06-02T16:25:24Z",
+  "id": "06b-wiki-milestone-4",
+  "duration": 0,
+  "title": "Wiki Continuous Integration (Milestone 4)",
+  "authors": "Tim Swast",
+  "summary": "Setup continuous integration on your wiki repository.",
+  "source": "1IC2_XaaSklTBX1XGbUEsebXAEIwrWrs0s_zqX8pMj78",
+  "theme": "",
+  "status": null,
+  "category": null,
+  "tags": [],
+  "url": "06b-wiki-milestone-4"
+}

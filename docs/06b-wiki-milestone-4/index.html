@@ -1,0 +1,262 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Wiki Continuous Integration (Milestone 4)</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="06b-wiki-milestone-4"
+                  title="Wiki Continuous Integration (Milestone 4)"
+                  environment="web"
+                  feedback-link="">
+    
+      <google-codelab-step label="Overview" duration="0">
+        <p>In this milestone, you&#39;ll setup continuous integration (CI) on your wiki repository and address issues that the tooling identifies.</p>
+<p>This is expected to be completed as a group.</p>
+<h2 is-upgraded>Prerequisites</h2>
+<ul>
+<li>You must have completed the &#34;Wiki Setup&#34; codelab with your project group.</li>
+</ul>
+<h2 is-upgraded>What you&#39;ll need</h2>
+<ul>
+<li>Google account</li>
+<li>GitLab account</li>
+<li>Web browser (Google Chrome recommended)</li>
+</ul>
+<h2 class="checklist" is-upgraded>What you&#39;ll learn</h2>
+<ul>
+<li>Configure GitLab continuous integration (CI)</li>
+<li>Run a Python linter (flake8) and address issues</li>
+<li>Automatically run tests</li>
+<li>Setup code coverage and add tests for uncovered code</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Getting started" duration="0">
+        <p>Configure GitLab Continuous Integration (CI) by creating the configuration file and pushing it to your main branch.</p>
+<ol type="1">
+<li>Create a file a the root directory of your repository called <code>.gitlab-ci.yml</code> (note the leading &#34;.&#34; character).</li>
+</ol>
+<p class="image-container"><img alt="1b4b74c3d557e2b5.png" style="width: 624.00px" src="img/1b4b74c3d557e2b5.png"></p>
+<ol type="1">
+<li>At the start of the file, add a line describing the  <a href="https://docs.gitlab.com/ee/ci/yaml/README.html#image" target="_blank">container image</a> to use.</li>
+</ol>
+<pre>image: python:3.7.3
+</pre>
+<p>Since you&#39;re using Python 3.7.3 with Cloud Shell, use that version to make sure your CI system matches your development environment.</p>
+<ol type="1">
+<li>Add a job called &#34;test&#34; to the file that runs pytest on your code.</li>
+</ol>
+<pre>test:
+  script:
+  - pip install -r requirements.txt
+  - pytest .
+</pre>
+<ol type="1">
+<li>Add a job called &#34;lint&#34; to the file that installs flake8 and executes it.</li>
+</ol>
+<pre>lint:
+  script:
+  - pip install flake8==3.9.1
+  - flake8 .
+</pre>
+<ol type="1">
+<li>Check that your <code>.gitlab-ci.yml</code> file looks like the following:</li>
+</ol>
+<pre>image: python:3.7.3
+lint:
+  script:
+  - pip install flake8==3.9.1
+  - flake8 .
+test:
+  script:
+  - pip install -r requirements.txt
+  - pytest .
+</pre>
+<ol type="1">
+<li>Commit these changes and push them to your &#34;main&#34; branch.</li>
+<li>On the GitLab interface for your wiki, check that the code has been pushed.</li>
+<li>Navigate to the &#34;Commits&#34; panel.</li>
+</ol>
+<p class="image-container"><img alt="924f09a1c0939ace.png" style="width: 624.00px" src="img/924f09a1c0939ace.png"></p>
+<ol type="1">
+<li>Next to the latest commit, you should see a circular symbol. It may be a cross mark (❌), check mark (✅), or loading symbol (🌓). Click the symbol. This will take you to an overview page for the commit.</li>
+<li>Next, click the symbol under the status column.</li>
+</ol>
+<p class="image-container"><img alt="16e637ab4001ee57.png" style="width: 624.00px" src="img/16e637ab4001ee57.png"></p>
+<p>This should take you to an overview page for the continuous integration pipeline.</p>
+<ol type="1">
+<li>Here you see all the jobs that were ran in the pipeline and their status.</li>
+</ol>
+<p class="image-container"><img alt="7f54d3e108ce8e4b.png" style="width: 624.00px" src="img/7f54d3e108ce8e4b.png"></p>
+<ol type="1">
+<li>Click the name of the job (for example, &#34;lint&#34;) to see the logs.</li>
+</ol>
+<p class="image-container"><img alt="881252bc36c45de.png" style="width: 624.00px" src="img/881252bc36c45de.png"></p>
+<p>As you work on the requirements for this milestone, refer to these logs as you create additional jobs and address the issues each job finds.</p>
+<p>To complete this milestone, you will need to create additional jobs and get these jobs to pass.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Requirements" duration="0">
+        <h2 is-upgraded>1 - GitLab CI is running in your GitLab repository</h2>
+<ul>
+<li>Ensure that the <code>.gitlab-ci.yml</code> file is present and the GitLab web interface shows what was described in the Getting Started section.</li>
+</ul>
+<h2 is-upgraded>2 - lint (flake8) is passing</h2>
+<ul>
+<li>2a. The &#34;lint&#34; job runs flake8 and passes.</li>
+<li>Note: You&#39;ve already configured &#34;flake8&#34; to run in continuous integration in the Getting Started section. You&#39;ll need to address any issues it has found.</li>
+<li>Tip 1: As you work to address issues, you can run flake8 and the other tools in your development environment before pushing them to GitLab.</li>
+<li>Tip 2: Completing the extra credit may help with this requirement.</li>
+</ul>
+<h2 is-upgraded>3 - type-check (mypy) is passing</h2>
+<ul>
+<li>3a. Install &#34;mypy&#34; to your development environment.</li>
+</ul>
+<pre>pip install mypy==0.812
+</pre>
+<p>Remember to add mypy to your <code>requirements.txt</code> file!</p>
+<ul>
+<li>3b. Add at least one type hint to your wiki program. For example, I added type hints to my page view request handler.</li>
+</ul>
+<pre>@app.route(&#34;/view/&lt;page_name&gt;&#34;)
+def view(page_name: str) -&gt; str:
+    return render_template(&#34;main.html&#34;, page_name=page_name)
+</pre>
+<ul>
+<li>3c. Run mypy in your development environment.</li>
+</ul>
+<pre>mypy .
+</pre>
+<ul>
+<li>3d. Create a job called &#34;type-check&#34; in your <code>.gitlab-ci.yml</code> file.</li>
+<li>3e. Add a script to the job that (1) installs mypy and any other dependencies for your project and (2) runs mypy.</li>
+</ul>
+<h2 is-upgraded>4 - test (pytest) is passing</h2>
+<p>You might have noticed that some of your tests are failing when you looked at the logs in the Getting Started section. Some of these tests may indicate real bugs, in which case you should fix the bugs that they found. Some of the tests may need to be updated to match new requirements.</p>
+<h2 is-upgraded>5 - All lines and branches are covered by tests</h2>
+<ul>
+<li>5a. Install pytest-cov to enable coverage report generation.</li>
+</ul>
+<pre>pip install pytest-cov==2.11.1
+</pre>
+<p>Remember to add pytest-cov to your <code>requirements.txt</code> file!</p>
+<ul>
+<li>5a. Update the &#34;test&#34; job in the <code>.gitlab-ci.yml</code> configuration file to create a coverage report when the pytest command is run.</li>
+</ul>
+<p>Tip: Adjust this example from lecture to include a <code>--cov=modulename</code> argument for each module in your wiki project. Include test modules to ensure that all test code is being run.</p>
+<pre>pytest . --cov=wiki --cov=wiki_test --cov-report term-missing --cov-branch
+</pre>
+<ul>
+<li>5b. Add tests as needed to cover missing lines and/or branches.</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Extra Credit" duration="0">
+        <h2 is-upgraded>Extra Credit - format (black) is passing</h2>
+<p><a href="https://github.com/psf/black" target="_blank">Black</a> is a community-standard code formatter for Python. This means that it automatically fixes many lint errors for you. It also provides a <code>--check</code> option to check if code has not been formatted.</p>
+<ul>
+<li>Extra (a). Install black.</li>
+</ul>
+<pre>pip install black==21.4b2
+</pre>
+<ul>
+<li>Extra (b). Run black on all of your source code.</li>
+</ul>
+<p>black .</p>
+<p>Tip: The first time you run a code formatter is likely to cause many git conflicts. Check with your teammates first to ensure that they do not have any work-in-progress before formatting the code.</p>
+<ul>
+<li>Extra ©. Black conflicts in a few spots with flake8. For example, black is more lenient with the 79 columns per row rule.</li>
+</ul>
+<p>Add a <code>.flake8</code> configuration file that overrides just the rules that conflict with black. You can use  <a href="https://raw.githubusercontent.com/googleapis/python-bigquery/master/.flake8" target="_blank">https://raw.githubusercontent.com/googleapis/python-bigquery/master/.flake8</a> for this purpose.</p>
+<pre>curl https://raw.githubusercontent.com/googleapis/python-bigquery/master/.flake8  &gt; .flake8
+</pre>
+<ul>
+<li>Extra (d). Add a &#34;format&#34; job to your <code>.gitlab-ci.yml</code> configuration file that runs black in <code>--check</code> mode.</li>
+</ul>
+<h2 is-upgraded>Extra Credit - pre-commit is configured</h2>
+<p>Do not complete this until flake8 is passing and black has been run.</p>
+<p>It&#39;s common to forget to run the formatter when you are developing your code. Git provides a way to automatically run certain programs whenever you commit with what&#39;s called a  <a href="https://githooks.com/" target="_blank">&#34;pre-commit&#34; hook</a>.</p>
+<p>There is a Python program called  <a href="https://pre-commit.com/#intro" target="_blank">pre-commit</a> that can make managing these hooks easier.</p>
+<ul>
+<li>Extra (a) Install pre-commit.</li>
+</ul>
+<pre>pip install pre-commit==2.12.1
+</pre>
+<ul>
+<li>Extra (b) Create a file called <code>.pre-commit-config.yaml</code> with configurations for &#34;black&#34;, &#34;flake8&#34;, and other useful helpers.</li>
+</ul>
+<pre>repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.4.0
+    hooks:
+    -   id: trailing-whitespace
+    -   id: end-of-file-fixer
+    -   id: check-yaml
+-   repo: https://github.com/psf/black
+    rev: 21.4b2
+    hooks:
+    - id: black
+-   repo: https://gitlab.com/pycqa/flake8
+    rev: 3.9.1
+    hooks:
+    - id: flake8
+</pre>
+<ul>
+<li>Extra © Create the git pre-commit hooks.</li>
+</ul>
+<pre>pre-commit install
+</pre>
+<p>For the best outcome, all of your teammates should also complete this step after you&#39;ve committed and pushed the <code>.pre-commit-config.yaml</code> file.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Grading rubric" duration="0">
+        <p>Remember: to receive a grade, you must submit a peer feedback form indicating which work you did and which was done by your teammates. Non-coding tasks such as help debugging also counts towards participation. This link will be generated and emailed to you after the due date.</p>
+<ul>
+<li>10% - Requirement (1) – GitLab CI is running in your GitLab repository</li>
+<li>30% - Requirement (2) – lint (flake8) is passing</li>
+<li>20% - Requirement (3) – type-check (mypy) is passing</li>
+<li>30% - Requirement (4) – test (pytest) is passing</li>
+<li>10% - Requirement (5) – All branches are covered by tests</li>
+<li>3% (extra credit) – format (black) is passing</li>
+<li>2% (extra credit) – pre-commit is configured</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>

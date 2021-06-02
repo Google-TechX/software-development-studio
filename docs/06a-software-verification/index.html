@@ -1,0 +1,165 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Software Verification Tools</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="06a-software-verification"
+                  title="Software Verification Tools"
+                  environment="web"
+                  feedback-link="">
+    
+      <google-codelab-step label="Overview" duration="0">
+        <p>In this codelab, you&#39;ll use common software verification tools like linters and type checkers to fix issues in a Python program.</p>
+<h2 is-upgraded>Prerequisites</h2>
+<ul>
+<li>Using Cloud Shell and Cloud Shell Editor ( <a href="https://google-techx.github.io/software-development-studio/01a-cloud-shell/?index=/software-development-studio/#0" target="_blank">codelab</a>)</li>
+<li>Using Git ( <a href="https://google-techx.github.io/software-development-studio/01b-git/?index=/software-development-studio/#0" target="_blank">codelab</a>)</li>
+<li>Using Python and Pytest</li>
+</ul>
+<h2 is-upgraded>What you&#39;ll need</h2>
+<ul>
+<li>Google account</li>
+<li>GitLab account</li>
+<li>Web browser (Google Chrome recommended)</li>
+</ul>
+<h2 class="checklist" is-upgraded>What you&#39;ll learn</h2>
+<ul>
+<li>Use flake8 to identify issues in a Python project</li>
+<li>Analyze type issues with mypy</li>
+<li>Run a code coverage tool to identify missing tests</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Getting Started" duration="0">
+        <ol type="1">
+<li>Clone your starter code repo:</li>
+</ol>
+<pre>git clone git@techx-gitlab.640k.net:s-USERNAME/lesson06-codequality
+</pre>
+<ol type="1">
+<li><code>cd</code> into the <code>lesson06-codequality</code> directory.</li>
+<li>Run the tests using pytest and notice they pass.</li>
+</ol>
+<pre>pytest .
+</pre>
+<ol type="1">
+<li>Open up <code>pathfinder.py</code> and read the docstring at the top.</li>
+<li>Familiarize yourself with the operation of pathfinder.py by running a navigation:</li>
+</ol>
+<pre>./pathfinder.py city_map.txt Denver Boulder
+</pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Linting with flake8" duration="0">
+        <p><code>flake8</code> is a highly-trained linter capable of detecting violations of the  <a href="https://www.python.org/dev/peps/pep-0008/" target="_blank">PEP-8 style guidelines</a>.</p>
+<p>Try running the linter. You&#39;ll notice there&#39;s a number of warnings it generates:</p>
+<pre>flake8 .
+</pre>
+<ol type="1">
+<li>Open up <code>pathfinder.py</code> and work on correcting the style issues reported by <code>flake8</code>.</li>
+<li>Run <code>flake8</code> again. When you have no style issues, you should notice it prints nothing and has a successful return code (<code>echo $?</code> after running it prints <code>0</code>).</li>
+<li>Ensure the unit tests still pass (if they don&#39;t, then fix it).</li>
+<li>Commit and push your work.</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Static Type Checking with mypy" duration="0">
+        <p><code>mypy</code> is capable of understanding the type annotations put in <code>pathfinder.py</code> and detecting any type issues.</p>
+<p>Try running it to see the issues it reports:</p>
+<pre>mypy .
+</pre>
+<ol type="1">
+<li>Open up <code>pathfinder.py</code> and work on correcting the annotation issues reported by <code>mypy</code>.</li>
+<li>Run <code>mypy</code> again. When you have no style issues, you should notice it prints nothing and has a successful return code (<code>echo $?</code> after running it prints <code>0</code>).</li>
+<li>Ensure the unit tests still pass (if they don&#39;t, then fix it).</li>
+<li>Commit and push your work.</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Test Coverage" duration="0">
+        <p>Pytest has a coverage option which shows you which lines get tested by unit tests, and which tests don&#39;t.</p>
+<p>Run pytest like this to see the current code coverage:</p>
+<pre>pytest --cov=pathfinder --cov-report term-missing .
+</pre>
+<p>Here, <code>--cov=pathfinder</code> says we want a coverage report for the <code>pathfinder</code> module, and <code>--cov-report term-missing</code> asks pytest to print the lines which are missing test coverage. On my code, I got the following:</p>
+<pre>Name            Stmts   Miss  Cover   Missing
+---------------------------------------------
+pathfinder.py      63      4    94%   74, 83, 93, 143
+</pre>
+<p>This means:</p>
+<ul>
+<li><code>pathfinder.py</code> has 63 statements</li>
+<li>4 statements do not have test coverage</li>
+<li>94% of the statements do have coverage</li>
+<li>The statements which don&#39;t have coverage are located on lines 74, 83, 93, and 143</li>
+</ul>
+<ol type="1">
+<li>Line 143 (or the last coverage missing line) is a simple call to the main function, which isn&#39;t really testable (these same two lines are considered &#34;boilerplate&#34; that gets copy-pasted to many projects).  Add a special comment to the end of the line so pytest will ignore the lack of coverage here:</li>
+</ol>
+<pre>if __name__ == &#39;__main__&#39;:
+    sys.exit(main(sys.argv[1:]))  # pragma: no cover
+</pre>
+<ol type="1">
+<li>Run pytest with coverage again and notice the missing section no longer has this line.</li>
+<li>Let&#39;s look at line 93 (or the second to last missing line). This line only gets executed if there&#39;s no route from the source to the destination. Let&#39;s add a test which tests this:</li>
+</ol>
+<pre>def test_find_path_no_route():
+    # Arrange
+    city_map = {
+        &#39;A&#39;: {&#39;B&#39;: 24.0},
+        &#39;B&#39;: {&#39;A&#39;: 24.0},
+        &#39;C&#39;: {&#39;D&#39;: 12.0},
+        &#39;D&#39;: {&#39;C&#39;: 12.0},
+    }
+
+    # Act/Assert
+    with pytest.raises(ValueError):
+        pathfinder.find_shortest_path(city_map, &#39;A&#39;, &#39;D&#39;)
+</pre>
+<ol type="1">
+<li>Let&#39;s look at line 74 (the first missing line). This line only gets coverage if we give cities which don&#39;t exist. Add a similar test case like the one above that makes sure we get a <code>KeyError</code>.</li>
+<li>Let&#39;s look at line 83 (the second missing line). This appears to be <strong>unreachable code</strong> (also called <strong>&#34;dead code&#34;</strong>), as the condition will never be satisfied (the heap property already guarantees this ordering). Let&#39;s remove this line and the condition which cannot be satisfied.</li>
+<li>Make sure tests pass and you have 100% coverage reported by pytest.</li>
+<li>Make sure flake</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>

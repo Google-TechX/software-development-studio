@@ -1,0 +1,18 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2021-06-02T11:28:07-05:00",
+  "id": "06a-software-verification",
+  "duration": 0,
+  "title": "Software Verification Tools",
+  "authors": "Jack Rosenthal",
+  "summary": "Use common software verification tools like linters and type checkers to fix issues in a Python program.",
+  "source": "codelabs/06a-software-verification/index.md",
+  "theme": "",
+  "status": null,
+  "category": null,
+  "tags": [],
+  "url": "06a-software-verification"
+}
