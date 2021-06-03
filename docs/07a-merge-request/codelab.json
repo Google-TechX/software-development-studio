@@ -1,0 +1,18 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2021-06-03T15:11:43-05:00",
+  "id": "07a-merge-request",
+  "duration": 0,
+  "title": "Wiki Merge Request",
+  "authors": "Tim Swast",
+  "summary": "Get familiar with another team’s repository and create merge requests to update their project.",
+  "source": "codelabs/07a-merge-request/index.md",
+  "theme": "",
+  "status": null,
+  "category": null,
+  "tags": [],
+  "url": "07a-merge-request"
+}

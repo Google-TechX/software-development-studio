@@ -1,0 +1,253 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Wiki Merge Request</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="07a-merge-request"
+                  title="Wiki Merge Request"
+                  environment="web"
+                  feedback-link="">
+    
+      <google-codelab-step label="Overview" duration="0">
+        <p>In this codelab, you&#39;ll prepare for Milestone 5 by getting familiar with another team&#39;s repository. Also, you&#39;ll create merge requests to update their project.</p>
+<p>This should be completed with your project groups.</p>
+<h2 is-upgraded>Prerequisites</h2>
+<ul>
+<li>Cloud Shell</li>
+<li>Git</li>
+<li>Linux command line</li>
+</ul>
+<h2 is-upgraded>What you&#39;ll need</h2>
+<ul>
+<li>Google account</li>
+<li>GitLab account</li>
+<li>Web browser (Google Chrome recommended)</li>
+</ul>
+<h2 class="checklist" is-upgraded>What you&#39;ll learn</h2>
+<ul>
+<li>Push branches to another team&#39;s repository</li>
+<li>Submit a merge request to another team&#39;s repository</li>
+<li>Review and merge a merge request from another team.</li>
+<li>Resolve conflicting merge requests in the GitLab web interface</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Find the repository you&#39;ll contribute to" duration="0">
+        <aside class="special"><p> All students should complete these steps.</p>
+</aside>
+<p>The instructors have granted you Developer permissions to another team&#39;s repository in GitLab. Find their repository and clone it to your development environment.</p>
+<ol type="1">
+<li>Navigate to the Projects page in GitLab ( <a href="https://techx-gitlab.640k.net/dashboard/projects" target="_blank">techx-gitlab.640k.net/dashboard/projects</a>).</li>
+</ol>
+<p class="image-container"><img alt="ebd8c155c2464c5a.png" style="width: 624.00px" src="img/ebd8c155c2464c5a.png"></p>
+<p>You should see another wiki repository there. In this example, g-testprojectgroup2 refers to the team to which you&#39;ll be contributing your changes.</p>
+<ol type="1">
+<li>Navigate to the other team&#39;s wiki repository.</li>
+<li>Click the &#34;Clone&#34; button and copy the text from &#34;Clone with SSH&#34;.</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Clone the repository" duration="0">
+        <aside class="special"><p> All students should complete these steps.</p>
+</aside>
+<p>Next, clone the other team&#39;s repository to your development environment.</p>
+<ol type="1">
+<li>Open Cloud Shell (Terminal). <img alt="e38ac4f4637abb7b.png" style="width: 624.00px" src="img/e38ac4f4637abb7b.png"></li>
+<li>Ensure you are in the directory where you want to be before cloning the other team&#39;s repository.</li>
+</ol>
+<p>See your current directory with the <code>pwd</code> command.</p>
+<pre>pwd
+</pre>
+<p>You should see <code>/home/YOUR_USERNAME</code> or wherever you intend to clone the repository.</p>
+<p>List the contents of this directory with the <code>ls</code> command.</p>
+<pre>ls
+</pre>
+<p>You should see the directories of the other repositories you&#39;ve cloned, including your <code>wiki</code> directory.</p>
+<ol type="1">
+<li>Since the other team&#39;s repository is also named &#34;wiki&#34;, you&#39;ll need to pass an additional argument to the <code>git clone</code> command that specifies the destination directory name. As you can see from this summary of the command, there is an optional &#34;&#34; parameter after the required &#34;&#34; parameter.</li>
+</ol>
+<pre>SYNOPSIS
+       git clone [OPTIONS] [--] &lt;repository&gt; [&lt;directory&gt;]
+</pre>
+<p>Therefore, to clone the other team&#39;s repository to a directory named <code>wiki-contrib</code>, run the following command (replacing the repository with the one you copied from GitLab).</p>
+<pre>git clone REPOSITORY_FROM_GITLAB wiki-contrib
+</pre>
+<ol type="1">
+<li>Check that the <code>wiki-contrib</code> repository was created by listing its contents.</li>
+</ol>
+<pre>ls wiki-contrib
+</pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Setup your development environment" duration="0">
+        <aside class="special"><p> All students should complete these steps.</p>
+</aside>
+<p>Get your editor setup to contribute to the other team.</p>
+<ol type="1">
+<li>Open Cloud Shell Editor.</li>
+<li>Open the <code>wiki-contrib</code> directory corresponding to the other team&#39;s wiki.</li>
+</ol>
+<p class="image-container"><img alt="5fdb7d2cb6181628.png" style="width: 624.00px" src="img/5fdb7d2cb6181628.png"></p>
+<ol type="1">
+<li>Open the terminal panel in Cloud Shell Editor. <img alt="67adfbc9b8c00f6d.png" style="width: 624.00px" src="img/67adfbc9b8c00f6d.png"></li>
+<li>The team you&#39;ll be contributing to may have extra Python dependencies. Install those with the pip command.</li>
+</ol>
+<pre>pip install -r requirements.txt
+</pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Edit AUTHORS.txt" duration="0">
+        <aside class="special"><p> All students should complete these steps.</p>
+</aside>
+<p>To get practice contributing to the other team&#39;s wiki, add your name to AUTHORS.txt.</p>
+<ol type="1">
+<li>Create a new branch. Prefix the branch name with your username to prevent conflicts. For example, if your username is <code>tim</code>, create a branch called <code>tim-authors</code>.</li>
+</ol>
+<pre>git checkout -b tim-authors
+</pre>
+<ol type="1">
+<li>Edit AUTHORS.txt and add a line at the bottom (or perhaps alphabetically) with your name and email.</li>
+</ol>
+<p class="image-container"><img alt="ec47d2e23e303e40.png" style="width: 624.00px" src="img/ec47d2e23e303e40.png"></p>
+<ol type="1">
+<li>Add the AUTHORS.txt file to your Git staging area.</li>
+</ol>
+<pre>git add AUTHORS.txt
+</pre>
+<ol type="1">
+<li>Commit your changes.</li>
+</ol>
+<pre>git commit -m &#39;add YOUR_NAME as an author&#39;
+</pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Send merge requests" duration="0">
+        <aside class="special"><p> All students should complete these steps.</p>
+</aside>
+<p>You should not commit changes directly to the main branch of the wiki you are contributing to. Instead, create a &#34;merge request&#34; so that the other team can review your code before merging it.</p>
+<ol type="1">
+<li>Push your changes to the other team&#39;s repository.</li>
+</ol>
+<p>Replace <code>tim</code> with your username.</p>
+<pre>git push origin tim-authors
+</pre>
+<ol type="1">
+<li>In the previous command, you may have seen a link like:</li>
+</ol>
+<p>remote: To create a merge request for tim-authors, visit:</p>
+<p>remote:   https://techx-gitlab.640k.net/g-testprojectgroup2/wiki/-/merge_requests/new?merge_request%5Bsource_branch%5D=tim-authors</p>
+<p>Navigate to that link.</p>
+<p>If no link appeared, open the Branches page in GitLab and click the &#34;Merge request&#34; button. <img alt="906888033aa7e578.png" style="width: 624.00px" src="img/906888033aa7e578.png"></p>
+<ol type="1">
+<li>In the page that appears, scroll down and click the changes tab. <img alt="eff6bf6abb3b7004.png" style="width: 624.00px" src="img/eff6bf6abb3b7004.png"></li>
+<li>Verify that the AUTHORS.txt file has your changes.</li>
+<li>The Pipelines tab contains the Continuous Integration jobs that the other team has setup in Milestone 4. View those logs to check that your changes have not introduced test or lint failures.</li>
+<li>Click the &#34;Submit merge request&#34; button to create your merge request.</li>
+</ol>
+<p>You may receive feedback about your merge request. If you do, address any feedback the other team gives you by pushing new commits to this same branch.</p>
+<p>Note: &#34;Merge request&#34; is the term GitLab uses to represent a request to merge your changes into the main branch. Other tools use different terms. For example, GitHub calls this a &#34;pull request (PR)&#34;. Critique, Google&#39;s internal code review tool, calls this a &#34;change list (CL)&#34;.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Review merge requests" duration="0">
+        <p>You should have received several merge requests from another team on your own wiki project. Review these.</p>
+<aside class="special"><p> Take turns! Each merge request should be reviewed by a different student.</p>
+</aside>
+<p>Find a merge request to review.</p>
+<ol type="1">
+<li>Open your own wiki project on GitLab.</li>
+<li>Navigate to the Merge Requests page. <img alt="a42fa46df4c98a80.png" style="width: 624.00px" src="img/a42fa46df4c98a80.png"></li>
+<li>Click one of the merge requests to review it.</li>
+<li>In the review page, click the changes tab to see the proposed code changes. <img alt="b147c0f343bd2220.png" style="width: 624.00px" src="img/b147c0f343bd2220.png"></li>
+</ol>
+<h2 is-upgraded>Add review comments (Optional)</h2>
+<p>In most merge requests, there is something that needs to be changed. No programmers writes perfect code all the time! GitLab provides a feature for providing feedback.</p>
+<ol type="1">
+<li>If something looks wrong, hover over the line number. Click the &#34;Add a comment to this line&#34; button to share a comment with the author about that line. <img alt="6d75acf6a255a71e.png" style="width: 624.00px" src="img/6d75acf6a255a71e.png"></li>
+</ol>
+<p>Use the &#34;Add comment now&#34; button to immediately create a comment.</p>
+<p class="image-container"><img alt="725b552756610478.png" style="width: 624.00px" src="img/725b552756610478.png"></p>
+<p>Note: The &#34;Start a review&#34; button is useful if you want to draft several comments and send them out all together when you are finished with your review.</p>
+<ol type="1">
+<li>If all is well, click the &#34;Approve&#34; button to indicate that you have reviewed the code.</li>
+</ol>
+<p class="image-container"><img alt="7060cd3eca18fcc0.png" style="width: 624.00px" src="img/7060cd3eca18fcc0.png"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Merging merge requests" duration="0">
+        <aside class="special"><p> Take turns! Each merge request should be merged by a different student.</p>
+</aside>
+<h2 is-upgraded>Resolve conflicts</h2>
+<p>Since several merge requests modified the same file, conflicts are quite likely. Thankfully, these can usually be resolved from the GitLab interface.</p>
+<ol type="1">
+<li>If you see conflicts, click the &#34;Resolve conflicts&#34; button. <img alt="781aa66f79bcd1f6.png" style="width: 624.00px" src="img/781aa66f79bcd1f6.png"></li>
+<li>The interface provides a couple of options: &#34;Use ours&#34; and &#34;Use theirs&#34;. In this case, we want a combination of both, so click the &#34;Edit inline&#34; button to edit the file directly.</li>
+</ol>
+<p class="image-container"><img alt="3f35955d8c2a224f.png" style="width: 624.00px" src="img/3f35955d8c2a224f.png"></p>
+<ol type="1">
+<li>Remove any merge conflict indicators and combine the file as needed.</li>
+</ol>
+<p class="image-container"><img alt="abf3d4ee4058da70.png" style="width: 624.00px" src="img/abf3d4ee4058da70.png"></p>
+<ol type="1">
+<li>Click the &#34;Commit to source branch&#34; button to add a commit to this merge request resolving the conflicts.</li>
+<li>Navigate to the &#34;Changes&#34; tab to double-check that the conflict was resolved correctly.</li>
+</ol>
+<p class="image-container"><img alt="8e0e09109a29bc5a.png" style="width: 624.00px" src="img/8e0e09109a29bc5a.png"> <img alt="2c6cdaf2ff05df66.png" style="width: 624.00px" src="img/2c6cdaf2ff05df66.png"></p>
+<h2 is-upgraded>Merge the merge request</h2>
+<ol type="1">
+<li>Click the &#34;Merge&#34; button to actually merge this code into the main branch. <img alt="9b5ac163f80dc044.png" style="width: 624.00px" src="img/9b5ac163f80dc044.png"></li>
+<li>The &#34;Merge request&#34; is now merged. <img alt="c9bc63c41dc93c01.png" style="width: 624.00px" src="img/c9bc63c41dc93c01.png"></li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Finishing up" duration="0">
+        <p>Double-check that the code has been pushed by viewing the code on GitLab.</p>
+<p>If you finish early, contact the other teams you&#39;ll be working with to set up a time to talk about Milestone 5 together.</p>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>
