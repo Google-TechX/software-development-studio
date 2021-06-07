@@ -2,8 +2,6 @@
 id: 08a-wiki-rest
 summary: Make a simple JSON REST API to view pages on your wiki
 authors: Jack Rosenthal
-source: 1QPnjraR-etKrUG4FQ3V_XTncv7EhshDCUlN-5c2pvy4
-duration: 0
 
 ---
 
@@ -161,14 +159,13 @@ def page_api_get(page_name):
 ```
 
 Now, finish writing this code so it behaves like the examples given in the previous step. Be sure to handle all of these cases:
-
-| <strong>Condition</strong> | <strong>Formats returned</strong> | <strong><code>success</code></strong> | <strong><code>reason</code></strong> | <strong>HTTP status code</strong> |
-| --- | --- | --- | --- | --- |
-| Page exists, format is not given, or &#34;all&#34; | raw and html | <code>true</code> | Not set | 200 |
-| Page exists, format is raw | raw | <code>true</code> | Not set | 200 |
-| Page exists, format is html | html | <code>true</code> | Not set | 200 |
-| Page exists, format is something else (e.g., &#34;pdf&#34; or &#34;doc&#34;) | none | <code>false</code> | Unsupported format | 400 |
-| Page does not exist | none | <code>false</code> | Page does not exist | 404 |
+**Condition** | **Formats returned** | **`success`** | **`reason`** | **HTTP status code**
+--- | --- | --- | --- | ---
+Page exists, format is not given, or "all" | raw and html | `true` | Not set | 200
+Page exists, format is raw | raw | `true` | Not set | 200
+Page exists, format is html | html | `true` | Not set | 200
+Page exists, format is something else (e.g., "pdf" or "doc") | none | `false` | Unsupported format | 400
+Page does not exist | none | `false` | Page does not exist | 404
 
 ### Manual Testing
 
