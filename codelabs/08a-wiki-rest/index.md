@@ -164,10 +164,10 @@ Now, finish writing this code so it behaves like the examples given in the previ
 
 | <strong>Condition</strong> | <strong>Formats returned</strong> | <strong><code>success</code></strong> | <strong><code>reason</code></strong> | <strong>HTTP status code</strong> |
 | --- | --- | --- | --- | --- |
-| Page exists, format is not given, or &#34;all&#34; | raw and html | <code>true</code> | Not set | 200 |
-| Page exists, format is raw | raw | <code>true</code> | Not set | 200 |
-| Page exists, format is html | html | <code>true</code> | Not set | 200 |
-| Page exists, format is something else (e.g., &#34;pdf&#34; or &#34;doc&#34;) | none | <code>false</code> | Unsupported format | 400 |
+| Page exists, format is not given, or <code>all</code> | raw and html | <code>true</code> | Not set | 200 |
+| Page exists, format is <code>raw</code> | raw | <code>true</code> | Not set | 200 |
+| Page exists, format is <code>html</code> | html | <code>true</code> | Not set | 200 |
+| Page exists, <code>format</code> is something else (e.g., <code>pdf</code> or <code>doc</code>) | none | <code>false</code> | Unsupported format | 400 |
 | Page does not exist | none | <code>false</code> | Page does not exist | 404 |
 
 ### Manual Testing
