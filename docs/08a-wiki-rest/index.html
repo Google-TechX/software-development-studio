@@ -1,0 +1,211 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Wiki REST API</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="08a-wiki-rest"
+                  title="Wiki REST API"
+                  environment="web"
+                  feedback-link="">
+    
+      <google-codelab-step label="Overview" duration="0">
+        <p>In this codelab, you&#39;ll add a simple REST API into your wiki to retrieve the contents of pages programmatically.</p>
+<p>Adding an API to your wiki opens the doors for countless projects that could make use of your wiki. For example, a data engineer could use it to analyze which pages link to which, or a creative programmer could use it to download and print pages on their printer.</p>
+<p>You&#39;ll be working on your <em>own wiki repository</em>, not as a merge request (like you&#39;re working on for editing right now).</p>
+<h2 is-upgraded>Prerequisites</h2>
+<ul>
+<li>Using Cloud Shell and Cloud Shell Editor ( <a href="https://google-techx.github.io/software-development-studio/01a-cloud-shell/?index=/software-development-studio/#0" target="_blank">codelab</a>)</li>
+<li>Using Git ( <a href="https://google-techx.github.io/software-development-studio/01b-git/?index=/software-development-studio/#0" target="_blank">codelab</a>)</li>
+<li>Wiki Milestone 3</li>
+</ul>
+<h2 is-upgraded>What you&#39;ll need</h2>
+<ul>
+<li>Google account</li>
+<li>GitLab account</li>
+<li>Web browser (Google Chrome recommended)</li>
+</ul>
+<h2 class="checklist" is-upgraded>What you&#39;ll learn</h2>
+<ul>
+<li>Develop and test a simple REST API</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="API paths and version" duration="0">
+        <p>It&#39;s common practice to add version information into an API, that way changes to the API can be made without needing to adjust all the users immediately.</p>
+<p>For example, suppose you create an API for a weather website. Your API looks as follows:</p>
+<pre>GET /api/v1/getweather?zipcode=12345
+
+{
+    &#34;current_temperature_c&#34;: 27,
+    &#34;current_condition&#34;: &#34;sunny&#34;,
+    &#34;forecast&#34;: [
+        {...},
+        {...}
+    ]
+}
+</pre>
+<p>After releasing your API, you find out users want detailed information at each sensor location, instead of an overall summary of the temperature at a single station. This new version requires passing GPS coordinates instead of a ZIP code, as we need to find the closest station to a certain spot. We can now introduce this without breaking existing users by adjusting the new version to use routes under <code>/api/v2</code>, and users of the old API will continue to function.</p>
+<h2 is-upgraded>Your Wiki</h2>
+<p>While we don&#39;t expect you to ever make more than one version of your Wiki API in this course, it&#39;s still good practice to add these API versions, as we like to replicate real-world practices as much as possible in this course.</p>
+<p>For this activity, you&#39;ll add one API method, to get the contents of a page. Your route for this API should be:</p>
+<pre>/api/v1/page/&lt;pagename&gt;/get
+</pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="API functionality" duration="0">
+        <p>As explained in the previous section, you&#39;ll add a single API method to get the contents of a page.</p>
+<p>We imagine that some developers will want the raw (unformatted) source of a page, and some developers will want the HTML source for a page. Perhaps some applications may require both at the same time...</p>
+<p>We will add one (optional) parameter to the query string of our API: <code>format</code>. If <code>format</code> is set to <code>raw</code>, our response will only include the raw unformatted source in the JSON (to save time rendering the source and bytes in the response). If <code>format</code> is set to <code>html</code>, we will only give the HTML format in the JSON. Otherwise, if unset, we will give both in the JSON.</p>
+<p>Additionally, we will always include a boolean field named <code>success</code>. If set to <code>true</code>, we know it worked. If set to <code>false</code>, we know something went wrong, and an error message will be included in the <code>reason</code> field.</p>
+<p>For example:</p>
+<pre>GET /api/v1/page/LinuxDistros/get?format=raw
+
+200 OK
+
+{
+    &#34;success&#34;: true,
+    &#34;raw&#34;: &#34;There are many Linux distributions.\n\n:: Debian Linux...&#34;
+}
+</pre>
+<pre>GET /api/v1/page/LinuxDistros/get?format=html
+
+200 OK
+
+{
+    &#34;success&#34;: true,
+    &#34;html&#34;: &#34;&lt;P&gt;There are many Linux distributions.&lt;/P&gt;&lt;H2&gt;Debian Linux&lt;/H2&gt;...&#34;
+}
+</pre>
+<pre>GET /api/v1/page/LinuxDistros/get
+
+200 OK
+
+{
+    &#34;success&#34;: true,
+    &#34;raw&#34;: &#34;There are many Linux distributions.\n\n:: Debian Linux...&#34;,
+    &#34;html&#34;: &#34;&lt;P&gt;There are many Linux distributions.&lt;/P&gt;&lt;H2&gt;Debian Linux&lt;/H2&gt;...&#34;
+}
+</pre>
+<pre>GET /api/v1/page/LinuxDistros/get?format=pdf
+
+400 Bad Request
+
+{
+    &#34;success&#34;: false,
+    &#34;reason&#34;: &#34;Unsupported format&#34;
+}
+</pre>
+<pre>GET /api/v1/page/LostPage/get
+
+404 Not Found
+
+{
+    &#34;success&#34;: false,
+    &#34;reason&#34;: &#34;Page does not exist&#34;
+}
+</pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Implement the API" duration="0">
+        <p>In <em>your own group</em>&#39;s wiki, add a new route to your wiki application:</p>
+<pre>@app.route(&#39;/api/v1/page/&lt;page_name&gt;/get&#39;):
+def page_api_get(page_name):
+    format = flask.request.args.get(&#39;format&#39;, &#39;all&#39;)
+    # TODO: implement response
+    json_response = {}
+    status_code = 200
+    return json_response, status_code
+</pre>
+<p>Now, finish writing this code so it behaves like the examples given in the previous step. Be sure to handle all of these cases:</p>
+<table>
+<tr><td colspan="1" rowspan="1"><p><strong>Condition</strong></p>
+</td><td colspan="1" rowspan="1"><p><strong>Formats returned</strong></p>
+</td><td colspan="1" rowspan="1"><p><strong><code>success</code></strong></p>
+</td><td colspan="1" rowspan="1"><p><strong><code>reason</code></strong></p>
+</td><td colspan="1" rowspan="1"><p><strong>HTTP status code</strong></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>Page exists, format is not given, or &amp;#34;all&amp;#34;</p>
+</td><td colspan="1" rowspan="1"><p>raw and html</p>
+</td><td colspan="1" rowspan="1"><p><code>true</code></p>
+</td><td colspan="1" rowspan="1"><p>Not set</p>
+</td><td colspan="1" rowspan="1"><p>200</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>Page exists, format is raw</p>
+</td><td colspan="1" rowspan="1"><p>raw</p>
+</td><td colspan="1" rowspan="1"><p><code>true</code></p>
+</td><td colspan="1" rowspan="1"><p>Not set</p>
+</td><td colspan="1" rowspan="1"><p>200</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>Page exists, format is html</p>
+</td><td colspan="1" rowspan="1"><p>html</p>
+</td><td colspan="1" rowspan="1"><p><code>true</code></p>
+</td><td colspan="1" rowspan="1"><p>Not set</p>
+</td><td colspan="1" rowspan="1"><p>200</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>Page exists, format is something else (e.g., &amp;#34;pdf&amp;#34; or &amp;#34;doc&amp;#34;)</p>
+</td><td colspan="1" rowspan="1"><p>none</p>
+</td><td colspan="1" rowspan="1"><p><code>false</code></p>
+</td><td colspan="1" rowspan="1"><p>Unsupported format</p>
+</td><td colspan="1" rowspan="1"><p>400</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>Page does not exist</p>
+</td><td colspan="1" rowspan="1"><p>none</p>
+</td><td colspan="1" rowspan="1"><p><code>false</code></p>
+</td><td colspan="1" rowspan="1"><p>Page does not exist</p>
+</td><td colspan="1" rowspan="1"><p>404</p>
+</td></tr>
+</table>
+<h2 is-upgraded>Manual Testing</h2>
+<p>For each of the conditions above, manually test (using your browser) that your code provides the correct response. If any conditions fail to produce the correct response, correct your code.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="[Optional] Automated Tests" duration="0">
+        <p>If you have time, write an automated test using pytest for your code.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="You&#39;re done!" duration="0">
+        <p>Commit and push all your work.</p>
+<p>Check the GitLab Web UI to ensure your groups&#39; repository looks as you expect.</p>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>

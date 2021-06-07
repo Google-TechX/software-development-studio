@@ -1,0 +1,18 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2021-06-07T09:30:02-06:00",
+  "id": "08a-wiki-rest",
+  "duration": 0,
+  "title": "Wiki REST API",
+  "authors": "Jack Rosenthal",
+  "summary": "Make a simple JSON REST API to view pages on your wiki",
+  "source": "codelabs/08a-wiki-rest/index.md",
+  "theme": "",
+  "status": null,
+  "category": null,
+  "tags": [],
+  "url": "08a-wiki-rest"
+}
