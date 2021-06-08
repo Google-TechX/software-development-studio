@@ -1,0 +1,121 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Choosing a License</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="09a-wiki-license"
+                  title="Choosing a License"
+                  environment="web"
+                  feedback-link="">
+    
+      <google-codelab-step label="Overview" duration="0">
+        <p>In this codelab, you&#39;ll choose and apply an open source license for your wiki projects.</p>
+<h2 is-upgraded>Prerequisites</h2>
+<ul>
+<li>Using Cloud Shell and Cloud Shell Editor ( <a href="https://google-techx.github.io/software-development-studio/01a-cloud-shell/?index=/software-development-studio/#0" target="_blank">codelab</a>)</li>
+<li>Using Git ( <a href="https://google-techx.github.io/software-development-studio/01b-git/?index=/software-development-studio/#0" target="_blank">codelab</a>)</li>
+<li>Creating Merge Requests on GitLab</li>
+</ul>
+<h2 is-upgraded>What you&#39;ll need</h2>
+<ul>
+<li>Google account</li>
+<li>GitLab account</li>
+<li>Web browser (Google Chrome recommended)</li>
+</ul>
+<h2 class="checklist" is-upgraded>What you&#39;ll learn</h2>
+<ul>
+<li>Using collaboration tools to document a group decision</li>
+<li>Practice creating a merge request</li>
+<li>Assign a license to a code repository</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Choose a license" duration="0">
+        <p>As a group, decide on an  <a href="https://opensource.org/licenses" target="_blank">open source license</a> for your wiki project.</p>
+<p>To help you decide, you may reference several public resources:</p>
+<ul>
+<li><a href="https://choosealicense.com/licenses/" target="_blank">Choose A License</a></li>
+<li><a href="https://opensource.org/licenses" target="_blank">Open Source Initiative</a></li>
+<li><a href="https://opensource.google/docs/thirdparty/licenses/#types" target="_blank">Google Open Source documentation</a></li>
+</ul>
+<p>To decide, you may want to propose a few and vote on them. The  <a href="https://www.apache.org/foundation/voting#expressing-votes-1-0-1-and-fractions" target="_blank">Apache organization recommends a -1, 0, +1 voting system</a> for group decisions, where +1 means yes, -1 means no (true veto), and 0 or anything in-between -1 and +1 means maybe/maybe-not.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Create a merge request" duration="0">
+        <p>Once you have chosen a license,</p>
+<ol type="1">
+<li>Create a new branch called &#34;license&#34; in your wiki repository.</li>
+</ol>
+<pre>git checkout -b license
+</pre>
+<ol type="1">
+<li>Create a file called &#34;LICENSE.txt&#34; with the contents of the license you&#39;ve chosen. Here are links to license texts that we have discussed.</li>
+</ol>
+<p><strong>Apache 2.0:  </strong><a href="https://www.apache.org/licenses/LICENSE-2.0.txt" target="_blank">https://www.apache.org/licenses/LICENSE-2.0.txt</a></p>
+<p><strong>BSD:  </strong><a href="https://opensource.org/licenses/BSD-3-Clause" target="_blank">https://opensource.org/licenses/BSD-3-Clause</a></p>
+<p><strong>MIT:  </strong><a href="https://opensource.org/licenses/MIT" target="_blank">https://opensource.org/licenses/MIT</a></p>
+<p><strong>GPL:  </strong><a href="https://www.gnu.org/licenses/gpl-3.0.txt" target="_blank">https://www.gnu.org/licenses/gpl-3.0.txt</a></p>
+<p><strong>LGPL:  </strong><a href="https://www.gnu.org/licenses/lgpl-3.0.txt" target="_blank">https://www.gnu.org/licenses/lgpl-3.0.txt</a></p>
+<ol type="1">
+<li>Add the LICENSE.txt file to your git staging area. Commit your changes. Push your branch to GitLab.</li>
+<li>Create a merge request for this change.</li>
+</ol>
+<p class="image-container"><img alt="906888033aa7e578.png" style="width: 624.00px" src="img/906888033aa7e578.png"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Approve merge request" duration="0">
+        <p>To verify that every author is OK with the license, each student in your group and the contributor group should approve the merge request.</p>
+<ol type="1">
+<li>In the GitLab interface, click the Approve button (if you approve) to accept the Merge Request.</li>
+</ol>
+<p class="image-container"><img alt="7060cd3eca18fcc0.png" style="width: 624.00px" src="img/7060cd3eca18fcc0.png"></p>
+<ol type="1">
+<li>Do the same for the Merge Request on the group wiki you are contributing to.</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Finishing up" duration="0">
+        <p>Once the Merge Request is approved by everyone, merge the license into the main branch.</p>
+<p class="image-container"><img alt="9b5ac163f80dc044.png" style="width: 624.00px" src="img/9b5ac163f80dc044.png"></p>
+<p>Check that &#34;LICENSE.txt&#34; appears in the main branch of your wiki repository and it contains the expected text.</p>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>
