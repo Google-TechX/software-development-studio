@@ -1,0 +1,154 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Wiki Retrospective</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="10a-wiki-retrospective"
+                  title="Wiki Retrospective"
+                  environment="web"
+                  feedback-link="">
+    
+      <google-codelab-step label="Overview" duration="0">
+        <p>In this milestone, you&#39;ll reflect on the wiki project as a group. What worked well? What did you learn? What would you do differently next time?</p>
+<h2 is-upgraded>Prerequisites</h2>
+<ul>
+<li>You must have completed (or mostly completed) work on you wiki project.</li>
+</ul>
+<h2 is-upgraded>What you&#39;ll need</h2>
+<ul>
+<li>Google account</li>
+<li>GitLab account</li>
+<li>Web browser (Google Chrome recommended)</li>
+</ul>
+<h2 class="checklist" is-upgraded>What you&#39;ll learn</h2>
+<ul>
+<li>Prepare a technical presentation</li>
+<li>Identify and share lessons learned</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Getting started" duration="0">
+        <p>The goal of a retrospective is to document what happened, identify what went well, what could have been better, and plan what might be done differently next time.</p>
+<p>Create a document and share it with your teammates. Add the following headings:</p>
+<ul>
+<li>Target audience</li>
+<li>Timeline</li>
+<li>What went well</li>
+<li>What could have gone better</li>
+<li>Lessons learned</li>
+</ul>
+<p>Work with your group to fill these out.</p>
+<p>Most importantly, this exercise should be <em>blameless</em>. Focus on identifying the contributing causes (What happened? What assumptions were made? What expectations were there?) without indicting any individual or team for bad or inappropriate behavior. Assume that everyone involved in an incident had good intentions and did the right thing with the information they had.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Target audience" duration="0">
+        <p>Your retrospective should be targeted at your classmates. Also imagine any future cohorts of students who might be able to learn from your experience.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Timeline" duration="0">
+        <p>List the main events of the project and their dates in chronological order. The project milestones may be a good starting point for this section. You may also want to use the git commit history as a reminder of what work was done and when.</p>
+<p>Once you have listed the main events, each of you may share their general feeling of how things went. See:  <a href="https://www.funretrospectives.com/the-peaks-and-valleys-timeline/" target="_blank">https://www.funretrospectives.com/the-peaks-and-valleys-timeline/</a></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="What went well" duration="0">
+        <p>Identify the things that really worked well. These could be technical solutions, team process (emails, meetings, chat, pair programming), or anything else that helped the project be successful.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="What could have gone better" duration="0">
+        <p>Identify the things that didn&#39;t work as well as you&#39;d hoped. These issues could be technical, team process, or anything else that prevented the project from being as good as you&#39;d hoped it would be.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Lessons learned" duration="0">
+        <p>What would you do differently next time you build a project like this? What would you tell students who are just starting their wiki projects?</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Finishing up" duration="0">
+        <p>To turn in this assignment, share an exported PDF copy of your Retrospective in your wiki project repository in GitLab.</p>
+<h2 is-upgraded>Download PDF</h2>
+<p>Download a PDF copy of your PRD document to your computer. Navigate to File -&gt; Download -&gt; PDF Document in the Google Docs menu.</p>
+<p class="image-container"><img alt="e67c08359651d159.png" style="width: 624.00px" src="img/e67c08359651d159.png"></p>
+<h2 is-upgraded>Open your development environment</h2>
+<ol type="1">
+<li>Click the pencil icon to open Cloud Shell Editor.</li>
+<li>Navigate to the File -&gt; Open menu button.</li>
+<li>Select the &#34;wiki&#34; directory which you created last week.</li>
+</ol>
+<h2 is-upgraded>Upload the PDF to Cloud Shell</h2>
+<ol type="1">
+<li>Navigate to the File -&gt; Upload Files... menu button.</li>
+<li>Select the PDF file from your computer that you downloaded from Google Docs.</li>
+</ol>
+<p>Note: Cloud Shell Editor may not be able to render the PDF. That&#39;s OK. You&#39;ll verify the file was correctly uploaded in a later step.</p>
+<ol type="1">
+<li>Make sure the file is in your &#34;wiki&#34; repository directory.</li>
+</ol>
+<h2 is-upgraded>Push to GitLab</h2>
+<ol type="1">
+<li>Add the PDF to the Git staging area. Change the path to the name of your PDF file.</li>
+</ol>
+<pre>git add wiki-retrospective.pdf
+</pre>
+<ol type="1">
+<li>Commit your changes.</li>
+</ol>
+<pre>git commit -m &#39;add wiki retrospective&#39;
+</pre>
+<ol type="1">
+<li>Push your changes to GitLab.</li>
+</ol>
+<pre>git push origin main
+</pre>
+<h2 is-upgraded>Verify that the PDF has been uploaded</h2>
+<ol type="1">
+<li>Navigate to your project group on the  <a href="https://techx-gitlab.640k.net/" target="_blank">TechX GitLab instance</a>.</li>
+<li>Open your wiki repository.</li>
+<li>Click the PRD PDF file.</li>
+<li>Verify that you can see the PDF contents in the GitLab interface.</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>
