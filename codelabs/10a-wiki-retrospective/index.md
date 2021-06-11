@@ -138,7 +138,7 @@ git push origin main
 
 1. Navigate to your project group on the  [TechX GitLab instance](https://techx-gitlab.640k.net/).
 2. Open your wiki repository.
-3. Click the PRD PDF file.
+3. Click the Retrospective PDF file.
 4. Verify that you can see the PDF contents in the GitLab interface.
 
 
