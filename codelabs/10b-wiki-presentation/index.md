@@ -83,7 +83,7 @@ Remember: to receive a grade, you must submit a peer feedback form indicating wh
 
 * 40% - Presentation meets requirements
 * 42% - Presentation execution (based on feedback from classmates)
-* 18% (Individual) -- Provide feedback to other groups about their presentation, 3 points per feedback submission.
+* 18% (Individual) -- Provide feedback to other groups about their presentation via the  [Final Presentation Delivery form](https://docs.google.com/forms/d/e/1FAIpQLSf-US7mYx8tVzP8fc-r7FgYV9NmnfNUTqWgo-uhZIDgv2OH0Q/viewform?usp=sf_link), 3 points per feedback submission.
 
 ### Presentation execution
 
