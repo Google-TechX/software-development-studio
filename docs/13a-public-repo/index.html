@@ -1,0 +1,338 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Migrating Repositories to Public GitLab</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="13a-public-repo"
+                  title="Migrating Repositories to Public GitLab"
+                  environment="web"
+                  feedback-link="">
+    
+      <google-codelab-step label="Overview" duration="0">
+        <p>During this course, you&#39;ve used the private GitLab instance at  <a href="https://techx-gitlab.640k.net/" target="_blank">techx-gitlab.640k.net</a>. After this course completes, this instance will be shutdown and removed. In addition to private instances, GitLab provides a public instance (Software as a Service / SaaS) with  <a href="https://about.gitlab.com/pricing/" target="_blank">free hosting for individuals</a>.</p>
+<p>In this codelab, you&#39;ll migrate the source code for your wiki projects to a public GitLab repository so that you reference it from your resumes and continue to improve it.</p>
+<h2 is-upgraded>What you&#39;ll need</h2>
+<ul>
+<li>Google account</li>
+<li>Web browser (Google Chrome recommended)</li>
+</ul>
+<h2 class="checklist" is-upgraded>What you&#39;ll learn</h2>
+<ul>
+<li>Upload files to Cloud Shell Editor</li>
+<li>Write a project summary in Markdown</li>
+<li>Configure GitLab Software as a Service (SaaS)</li>
+<li>Use &#34;remotes&#34; in the Git command-line</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Upload screenshots of your wiki" duration="0">
+        <p>As you know, Cloud Shell limits access to your wikis to just the user who is running the Flask web server. This makes it difficult for people to see what it is you&#39;ve built.</p>
+<p>To allow people to see what you&#39;ve built, add some screenshots to your wiki repository.</p>
+<aside class="special"><p> Complete these steps with your project groups. One student should share their screen while the others help navigate.</p>
+</aside>
+<ol type="1">
+<li>For each kind of page in your wiki (home page, view, edit, history), take a screenshot.</li>
+</ol>
+<p>On Chromebooks, press Ctrl + Show Windows  <img alt="f593df11ddea1c38.png" style="width: 18.67px" src="img/f593df11ddea1c38.png"> to take a full-screen screenshot or Shift + Ctrl + Show windows  <img alt="f593df11ddea1c38.png" style="width: 18.67px" src="img/f593df11ddea1c38.png"> to take a screenshot of just a part of the screen.</p>
+<ol type="1">
+<li>In Cloud Shell Editor, create a directory called &#34;screenshots&#34;.</li>
+<li>Navigate to the File -&gt; Upload Files... menu button.</li>
+<li>For each screenshot, select the file from your computer.</li>
+<li>Make sure the file is in your &#34;screenshots&#34; directory. If not, move it to the correct location.</li>
+<li>Add the screenshots directory to your git staging area.</li>
+<li>Commit your changes and push to GitLab.</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Create a README" duration="0">
+        <p>A README file is the first thing most people will see when viewing a code repository. Make sure to highlight the important information about your project in this file to leave a good impression!</p>
+<h2 is-upgraded>Markdown syntax</h2>
+<p>GitLab supports Markdown for formatting text in files ending with the <code>.md</code> file extension. Reference this Markdown cheatsheet as you create a README file for your wiki repository.</p>
+<p><strong>Top-level heading (title / h1)</strong></p>
+<pre># Wiki - Built with Python and Flask
+</pre>
+<p><strong>Paragraphs</strong></p>
+<pre>Paragraphs are useful whitespace.
+
+Separate paragraphs by a completely empty line.
+</pre>
+<p><strong>Second-level headings (section / h2)</strong></p>
+<pre>## License
+</pre>
+<p><strong>Links</strong></p>
+<pre>[text in square brackets](https://example.com/url/in/parentheses)
+</pre>
+<p><strong>Images</strong></p>
+<pre>![alt text in square brackets](screenshots/my-screenshot.png)
+</pre>
+<p><strong>Plain text / Code / Command-line formatting</strong></p>
+<pre></pre>
+<p>anything between three &#34;backticks&#34; is rendered with a code (monospace) font</p>
+<pre><code></code></pre>
+<h2 is-upgraded>Author the README file</h2>
+<aside class="special"><p> Complete these steps with your project groups. One student should share their screen while the others help navigate.</p>
+</aside>
+<p>Follow these steps to create the README file. You may use the text provided or modify it to better suit your particular project.</p>
+<ol type="1">
+<li>Create a README file named <code>README.md</code> for your wiki project.</li>
+</ol>
+<p class="image-container"><img alt="84d702d65df0893f.png" style="width: 624.00px" src="img/84d702d65df0893f.png"></p>
+<ol type="1">
+<li>By default, Cloud Shell Editor opens a preview of Markdown files. Double click the body of the file to open the editor.</li>
+</ol>
+<p class="image-container"><img alt="87a0479a0f432b7b.png" style="width: 624.00px" src="img/87a0479a0f432b7b.png"></p>
+<p class="image-container"><img alt="fc4e957de596240b.png" style="width: 624.00px" src="img/fc4e957de596240b.png"></p>
+<ol type="1">
+<li>Add a top-level heading (title) to your README. Usually, this is the project name.</li>
+</ol>
+<pre># Wiki - Built with Python and Flask
+</pre>
+<ol type="1">
+<li>Create a blank line after the heading, then add a short (1-3 sentences) summary of the project.</li>
+</ol>
+<pre># Wiki - Built with Python and Flask
+
+A wiki server that uses text files on the local filesystem to store page data.
+</pre>
+<ol type="1">
+<li>Create a sub-section for Screenshots after the summary.</li>
+</ol>
+<pre>A wiki server ...
+
+## Screenshots
+</pre>
+<ol type="1">
+<li>Include a couple of images to highlight the project. Use relative links so that the images render correctly when uploaded to GitLab. Also, include alt-text for accessibility.</li>
+</ol>
+<pre>## Screenshots
+
+![A screenshot of the wiki page viewer. Screenshot includes a page title, header text, and links.](screenshots/view.png)
+</pre>
+<ol type="1">
+<li>Include an &#34;Installation&#34; sub-section describing what is needed to run the project.</li>
+</ol>
+<pre>## Screenshots
+
+...
+
+## Installation
+
+This project has been tested with Python 3.7.3. To install the necessary dependencies, first create and activate a virtual environment.
+
+</pre>
+<p>Create a directory to store virtual environments.</p>
+<p>mkdir &#34;$HOME/venvs&#34;</p>
+<p>Create the virtual environment.</p>
+<p>python3 -m venv &#34;$HOME/venvs/dev&#34;</p>
+<p>Activate the virtual environment.</p>
+<p>This must be done every time you open a terminal.</p>
+<p>You may want to add this to your .bashrc file.</p>
+<p>source &#34;$HOME/venvs/dev/bin/activate&#34;</p>
+<pre><code>Install the necessary dependencies with pip.
+
+</code></pre>
+<p>pip install -r requirements.txt</p>
+<pre><code></code></pre>
+<ol type="1">
+<li>Add a &#34;Usage&#34; sub-sections describing how to run the project.</li>
+</ol>
+<pre>## Installation
+
+...
+
+## Usage
+
+Run the web server.
+
+</pre>
+<p>./run-flask.sh</p>
+<pre><code>Access the wiki by opening a web preview browser tab on port 8080.
+</code></pre>
+<ol type="1">
+<li>Add a sub-section for the project license. Include the name of the license your group has chosen, as well as a link to the LICENSE.txt file.</li>
+</ol>
+<pre>## Usage
+
+...
+
+## License
+
+Apache 2.0, see [LICENSE.txt](LICENSE.txt).
+</pre>
+<ol type="1">
+<li>Finally, add the changes to your git staging area, commit, and push to GitLab.</li>
+<li>Verify that the README renders as expected when you browse your wiki repository on GitLab.</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Configure GitLab SaaS" duration="0">
+        <p>Until now, you&#39;ve been using a private GitLab server, hosted by the instructors. This server will be shutdown and removed shortly after the class, so you&#39;ll need to migrate your repositories to a public GitLab server.</p>
+<aside class="special"><p> Each student should complete these steps.</p>
+</aside>
+<ol type="1">
+<li>Navigate to the public landing page for GitLab at  <a href="https://gitlab.com/" target="_blank">gitlab.com</a>.</li>
+<li>Click the &#34;Sign in&#34; button.</li>
+</ol>
+<p class="image-container"><img alt="392943c73f82dc37.png" style="width: 624.00px" src="img/392943c73f82dc37.png"></p>
+<ol type="1">
+<li>On the login page, click the &#34;Register now&#34; button to create an account (or sign in if you already have a personal GitLab account).</li>
+</ol>
+<p class="image-container"><img alt="eaea4a7958835ab3.png" style="width: 624.00px" src="img/eaea4a7958835ab3.png"></p>
+<p>Since you&#39;ll be using this account after the completion of this course, use a personal email address, <em>not</em> your google.com account to register.</p>
+<ol type="1">
+<li>Once you&#39;ve registered and logged in, click your profile picture and then the  <a href="https://gitlab.com/-/profile/preferences" target="_blank">Preferences</a> button.</li>
+</ol>
+<p class="image-container"><img alt="73e108943856f639.png" style="width: 346.00px" src="img/73e108943856f639.png"></p>
+<ol type="1">
+<li>Select the  <a href="https://gitlab.com/-/profile/keys" target="_blank">SSH Keys</a> item in the left navigation pane.</li>
+</ol>
+<p class="image-container"><img alt="fab30b988dc401f9.png" style="width: 624.00px" src="img/fab30b988dc401f9.png"></p>
+<ol type="1">
+<li>In a separate tab or window, open Cloud Shell from the  <a href="https://console.cloud.google.com/" target="_blank">Google Cloud Console</a>.</li>
+<li>(In Cloud Shell) Display the SSH key you have been using for this course and copy the output.</li>
+</ol>
+<pre>cat &#34;$HOME/.ssh/id_ed25519.pub&#34;
+</pre>
+<ol type="1">
+<li>(In GitLab) Paste the contents of the SSH key you just copied. <img alt="58c078aa361beab.png" style="width: 624.00px" src="img/58c078aa361beab.png"></li>
+<li>Click the &#34;Add key&#34; button.</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Create a GitLab project" duration="0">
+        <p>Now that your GitLab account is configured, create a project to host your wiki repository.</p>
+<aside class="special"><p> Each student should complete these steps.</p>
+</aside>
+<ol type="1">
+<li>First, click the ➕ button. Next, navigate to the &#34;New project&#34; page.</li>
+</ol>
+<p class="image-container"><img alt="e662d0d31126c6f2.png" style="width: 624.00px" src="img/e662d0d31126c6f2.png"></p>
+<ol type="1">
+<li>Select the &#34;Create blank project&#34; option in the new project page.</li>
+</ol>
+<p class="image-container"><img alt="e44fd9d03c4e81e.png" style="width: 624.00px" src="img/e44fd9d03c4e81e.png"></p>
+<ol type="1">
+<li>Give your project a name such as &#34;wiki&#34;.</li>
+</ol>
+<p>Set the visibility level to &#34;public&#34; so that you&#39;ll be able to send links to your project.</p>
+<p>Do <em>not</em> check the &#34;initialize repository&#34; option.</p>
+<p class="image-container"><img alt="bb073dbecdc2589b.png" style="width: 624.00px" src="img/bb073dbecdc2589b.png"></p>
+<ol type="1">
+<li>Click the &#34;Create project&#34; button.</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Push your code to GitLab" duration="0">
+        <p>Until now, you&#39;ve only been pushing to a single repository, referenced by the name &#34;origin&#34; in the Git command-line. Git can be used to reference multiple repositories, called &#34;remotes&#34;.</p>
+<aside class="special"><p> Each student should complete these steps.</p>
+</aside>
+<ol type="1">
+<li>Before you continue, make sure that you have synced your Cloud Shell wiki repository with the latest version from your group&#39;s GitLab repository.</li>
+</ol>
+<p>Run the usual set of Git commands to from your wiki repository directory:</p>
+<pre>git checkout main
+
+git fetch origin main
+
+git merge origin/main
+</pre>
+<ol type="1">
+<li>List all the repositories you can currently fetch from and push to.</li>
+</ol>
+<pre>git remote -v
+</pre>
+<p>You should see &#34;origin&#34; listed twice: once for fetch and once for push.</p>
+<ol type="1">
+<li>In a separate tab, navigate to the project you just created in GitLab.</li>
+</ol>
+<p>It should look like this:</p>
+<p class="image-container"><img alt="ca27a2b93d311fac.png" style="width: 624.00px" src="img/ca27a2b93d311fac.png"></p>
+<p>To get there from the main GitLab page, navigate to your projects.</p>
+<p class="image-container"><img alt="eba90a09c6b719b5.png" style="width: 624.00px" src="img/eba90a09c6b719b5.png"></p>
+<p>Then, click the name of the wiki project you recently created.</p>
+<p class="image-container"><img alt="eb832afffbe418cf.png" style="width: 624.00px" src="img/eb832afffbe418cf.png"></p>
+<ol type="1">
+<li>Click the Clone button and copy the &#34;Clone with SSH&#34; URL.</li>
+</ol>
+<p class="image-container"><img alt="658afa01a4332442.png" style="width: 624.00px" src="img/658afa01a4332442.png"></p>
+<ol type="1">
+<li>In Cloud Shell, create an new &#34;remote&#34; called &#34;public&#34; pointing at this repository.  <pre><code>Replace `git@gitlab.com:tswast/wiki.git` with the URL you just copied.
+</code></pre>
+</li>
+</ol>
+<pre>git remote add public git@gitlab.com:tswast/wiki.git
+</pre>
+<ol type="1">
+<li>Check that the remote was created correctly.</li>
+</ol>
+<pre>git remote -v
+</pre>
+<p>You should see both &#34;origin&#34; and &#34;public&#34; listed twice.</p>
+<ol type="1">
+<li>Push your main branch to this remote.</li>
+</ol>
+<pre>git push public main
+</pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Finishing up" duration="0">
+        <p>Check that your wiki code was uploaded. You should see your README and source code. To double-check that the wiki is visible publicly, try to view it from an incognito window.</p>
+<p>Congratulations, you&#39;ve just published your wiki project!</p>
+<h2 is-upgraded>Next steps</h2>
+<ul>
+<li>Add your wiki project to your resume. See the  <a href="https://docs.google.com/document/u/0/d/1TC7louBdToGuh-X8t71Xf_DoGrYKnUbhF9pduTMG3nY/edit?resourcekey=0-2Fjuhyo3YHg0zxI2zdhHqQ" target="_blank">example resume blurb</a> for inspiration.</li>
+<li>This codelab may be followed for any repositories from in-class activities or homework for your own future reference. Out of respect for future students, we request that you keep the activity / homework repositories private in the GitLab settings.</li>
+</ul>
+<h2 is-upgraded>Project ideas</h2>
+<p>No software project is 100% complete. There are always things that could be nice to add. You may want to try continuing development of this project outside of class. If so, here are some ideas on next things to try.</p>
+<ul>
+<li>Run your project outside of Cloud Shell by installing Python and Git on your personal computer.</li>
+<li>Implement authentication. To avoid adding a database component, you may consider  <a href="https://firebase.google.com/docs/auth/web/start" target="_blank">Firebase Authentication</a>.</li>
+<li>Deploy your project by exploring the options suggested in the  <a href="https://flask.palletsprojects.com/en/2.0.x/deploying/index.html" target="_blank">Flask documentation</a>.</li>
+<li>Or use your software engineering skills to build something new!</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>
