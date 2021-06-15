@@ -89,9 +89,11 @@ Separate paragraphs by a completely empty line.
 <pre>![alt text in square brackets](screenshots/my-screenshot.png)
 </pre>
 <p><strong>Plain text / Code / Command-line formatting</strong></p>
-<pre></pre>
-<p>anything between three &#34;backticks&#34; is rendered with a code (monospace) font</p>
-<pre><code></code></pre>
+<pre>```
+anything between three &#34;backticks&#34;
+is rendered with a code (monospace) font
+```
+</pre>
 <h2 is-upgraded>Author the README file</h2>
 <aside class="special"><p> Complete these steps with your project groups. One student should share their screen while the others help navigate.</p>
 </aside>
@@ -142,20 +144,25 @@ A wiki server that uses text files on the local filesystem to store page data.
 
 This project has been tested with Python 3.7.3. To install the necessary dependencies, first create and activate a virtual environment.
 
-</pre>
-<p>Create a directory to store virtual environments.</p>
-<p>mkdir &#34;$HOME/venvs&#34;</p>
-<p>Create the virtual environment.</p>
-<p>python3 -m venv &#34;$HOME/venvs/dev&#34;</p>
-<p>Activate the virtual environment.</p>
-<p>This must be done every time you open a terminal.</p>
-<p>You may want to add this to your .bashrc file.</p>
-<p>source &#34;$HOME/venvs/dev/bin/activate&#34;</p>
-<pre><code>Install the necessary dependencies with pip.
+```
+# Create a directory to store virtual environments.
+mkdir &#34;$HOME/venvs&#34;
 
-</code></pre>
-<p>pip install -r requirements.txt</p>
-<pre><code></code></pre>
+# Create the virtual environment.
+python3 -m venv &#34;$HOME/venvs/dev&#34;
+
+# Activate the virtual environment.
+# This must be done every time you open a terminal.
+# You may want to add this to your .bashrc file.
+source &#34;$HOME/venvs/dev/bin/activate&#34;
+```
+
+Install the necessary dependencies with pip.
+
+```
+pip install -r requirements.txt
+```
+</pre>
 <ol type="1">
 <li>Add a &#34;Usage&#34; sub-sections describing how to run the project.</li>
 </ol>
@@ -167,10 +174,12 @@ This project has been tested with Python 3.7.3. To install the necessary depende
 
 Run the web server.
 
+```
+./run-flask.sh
+```
+
+Access the wiki by opening a web preview browser tab on port 8080.
 </pre>
-<p>./run-flask.sh</p>
-<pre><code>Access the wiki by opening a web preview browser tab on port 8080.
-</code></pre>
 <ol type="1">
 <li>Add a sub-section for the project license. Include the name of the license your group has chosen, as well as a link to the LICENSE.txt file.</li>
 </ol>

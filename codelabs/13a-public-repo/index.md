@@ -97,12 +97,12 @@ Separate paragraphs by a completely empty line.
 
 **Plain text / Code / Command-line formatting**
 
-```console
+````console
 ```
 anything between three "backticks"
 is rendered with a code (monospace) font
 ```
-```
+````
 
 ### Author the README file
 
@@ -154,7 +154,7 @@ A wiki server ...
 
 7. Include an "Installation" sub-section describing what is needed to run the project.
 
-```console
+````console
 ## Screenshots
 
 ...
@@ -181,11 +181,11 @@ Install the necessary dependencies with pip.
 ```
 pip install -r requirements.txt
 ```
-```
+````
 
 8. Add a "Usage" sub-sections describing how to run the project.
 
-```console
+````console
 ## Installation
 
 ...
@@ -199,7 +199,7 @@ Run the web server.
 ```
 
 Access the wiki by opening a web preview browser tab on port 8080.
-```
+````
 
 9. Add a sub-section for the project license. Include the name of the license your group has chosen, as well as a link to the LICENSE.txt file.
 
